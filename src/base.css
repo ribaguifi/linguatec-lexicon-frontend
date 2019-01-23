@@ -1,10 +1,12 @@
 body.home {
     /*background: #FC565B; */ /* magenta */
     background: #ff5800; /* naranja */
+    background: rgb(252, 109, 89);
 }
 
 header.rg-header {
     background: #ff5800; /* naranja */
+    background: rgb(252, 109, 89);
 }
 
 header.rg-header .navbar {
