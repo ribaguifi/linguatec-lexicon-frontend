@@ -53,13 +53,13 @@
             </div>
         </header>
 
-        <main role="main" class="container rg-main">
+        <main class="container rg-main">
             {% block content %}
             {% block search-tools %}
             <form action="{% url 'search' %}">
                 <div class="input-group rg-search">
 
-                    <input class="form-control" type="text" placeholder="Search">
+                    <input class="form-control" name="q" type="text" placeholder="Search">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button" id="button-search"><i class="fas fa-search"></i></button>
                     </div>

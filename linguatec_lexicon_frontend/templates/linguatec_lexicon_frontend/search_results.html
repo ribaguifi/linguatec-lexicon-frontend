@@ -3,23 +3,32 @@
 {% block content %}
 {{ block.super }}
 
-<div class="rg-search-results">
-    <div class="rg-word">
-        <span>escarabajo pelotero</span>
-        <span class="rg-word-gramcat">sustantivo masculino (s. m.)</span>
-    </div>
-    <div class="rg-entries">
-        <div class="rg-entry">
-            escarabacho pilotero, cuco pilotero, bolero, furrunllón, cagaletero
-            <div class="rg-entry-examples">
-                <div class="rg-entry-example">
+<div>
+    Resultados para <strong>{{ query }}</strong>
+</div>
 
+<div class="rg-search-results">
+    {% for word in results %}
+    <article>
+        <header class="rg-word">
+            <h2>{{ word.term }}</h2>
+            <span class="rg-word-gramcat">{{ word.gramcat }}</span>
+        </header>
+        <div class="rg-entries">
+            {% for entry in word.entries %}
+            <div class="rg-entry">
+                {{ entry.translation }}
+                <div class="rg-entry-examples">
+                    {% for example in entry.examples %}
+                    <div class="rg-entry-example">
+                        {{ example }}
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
+            {% endfor %}
         </div>
-        <div class="rg-entry">
-            [escarabacho] (var. fonética escarabaxo), cucarabacho
-        </div>
-    </div>
+    </article>
+    {% endfor %}
 </div>
 {% endblock %}
