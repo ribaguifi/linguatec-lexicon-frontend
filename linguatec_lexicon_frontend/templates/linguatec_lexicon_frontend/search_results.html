@@ -1,0 +1,34 @@
+{% extends "linguatec_lexicon_frontend/base_site.html" %}
+
+{% block content %}
+{{ block.super }}
+
+<div>
+    Resultados para <strong>{{ query }}</strong>
+</div>
+
+<div class="rg-search-results">
+    {% for word in results %}
+    <article>
+        <header class="rg-word">
+            <h2>{{ word.term }}</h2>
+            <span class="rg-word-gramcat">{{ word.gramcat }}</span>
+        </header>
+        <div class="rg-entries">
+            {% for entry in word.entries %}
+            <div class="rg-entry">
+                {{ entry.translation }}
+                <div class="rg-entry-examples">
+                    {% for example in entry.examples %}
+                    <div class="rg-entry-example">
+                        {{ example }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </article>
+    {% endfor %}
+</div>
+{% endblock %}

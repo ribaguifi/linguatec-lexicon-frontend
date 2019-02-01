@@ -1,0 +1,27 @@
+test:
+  script:
+    - echo "Nothing to do!"
+    # TODO update when exist any test
+
+staging:
+  stage: deploy
+  when: manual
+  before_script:
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - mkdir -p ~/.ssh
+  - eval $(ssh-agent -s)
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  - ssh-add <(echo "$STAGING_PRIVATE_KEY")
+  script:
+  - ssh -p22 linguatec@aragonario.conectividadcolectiva.org "rm -rf linguatec-lexicon-frontend/"
+  - ssh -p22 linguatec@aragonario.conectividadcolectiva.org "mkdir -p linguatec-lexicon-frontend"
+  - ssh -p22 linguatec@aragonario.conectividadcolectiva.org "ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts"
+  - ssh -p22 linguatec@aragonario.conectividadcolectiva.org "git clone git@gitlab.com:linguatec/linguatec-lexicon-frontend.git linguatec-lexicon-frontend/source"
+  - ssh -p22 linguatec@aragonario.conectividadcolectiva.org "virtualenv -p /usr/bin/python3 linguatec-lexicon-frontend/env"
+  - ssh -p22 linguatec@aragonario.conectividadcolectiva.org "linguatec-lexicon-frontend/env/bin/pip install -r linguatec-lexicon-frontend/source/requirements.txt"
+  - ssh -p22 linguatec@aragonario.conectividadcolectiva.org "linguatec-lexicon-frontend/env/bin/pip install -e linguatec-lexicon-frontend/source/"
+  # Requires to have a properly configured django project at ~/frontend
+  - ssh -p22 linguatec@aragonario.conectividadcolectiva.org "linguatec-lexicon-frontend/env/bin/python ~/frontend/manage.py migrate --noinput"
+  - ssh -p22 linguatec@aragonario.conectividadcolectiva.org "linguatec-lexicon-frontend/env/bin/python ~/frontend/manage.py collectstatic --noinput"
+  only:
+  - master
