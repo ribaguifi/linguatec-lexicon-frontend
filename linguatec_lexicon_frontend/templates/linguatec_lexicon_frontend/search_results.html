@@ -25,6 +25,11 @@
                     </div>
                     {% endfor %}
                 </div>
+                {% if entry.conjugation %}
+                <div class="rg-entry-conjugation">
+                    {{ entry.conjugation.raw }}
+                </div>
+                {% endif %}
             </div>
             {% endfor %}
         </div>
