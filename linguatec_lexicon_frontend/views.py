@@ -6,10 +6,6 @@ from django.views.generic.base import TemplateView
 from django.urls import reverse, NoReverseMatch
 
 
-def linguatec_home(request):
-    context = {}
-    return TemplateResponse(request, 'linguatec_lexicon_frontend/home.html', context)
-
 
 def linguatec_search(request):
     context = {}
@@ -66,6 +62,10 @@ class LinguatecBaseView(TemplateView):
         # TODO mark item as active (using url name)
 
         return urls  # menu
+
+
+class HomeView(LinguatecBaseView):
+    template_name = 'linguatec_lexicon_frontend/home.html'
 
 
 class ContactView(LinguatecBaseView):
