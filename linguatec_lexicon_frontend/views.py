@@ -30,3 +30,7 @@ def linguatec_search(request):
 
 class LegalNoticeView(TemplateView):
     template_name = "linguatec_lexicon_frontend/legal-notice.html"
+
+
+class PrivacyPolicy(TemplateView):
+    template_name = "linguatec_lexicon_frontend/privacy-policy.html"
