@@ -1,12 +1,9 @@
 body.home {
-    /*background: #FC565B; */ /* magenta */
-    background: #ff5800; /* naranja */
-    background: rgb(252, 109, 89);
+    background: #FC565B;
 }
 
 header.rg-header {
-    background: #ff5800; /* naranja */
-    background: rgb(252, 109, 89);
+    background: #FC565B;
 }
 
 header.rg-header .navbar {
@@ -25,7 +22,9 @@ header.rg-header h2 {
 }
 
 header.rg-header .navbar-toggler {
-    font-size: 0.7em;
+    font-size: 1.2em;
+    border: 0;
+    padding: 0;
 }
 
 footer.rg-footer {
@@ -36,13 +35,20 @@ footer.rg-footer {
     margin-top: 1.5rem;
 }
 
+.rg-search #input-search {
+    background: #e8e8e8;
+    border-radius: 0;
+    margin-right: 0.5em;
+}
+
 .home .rg-search #button-search {
     background: #333333;
     color: white;
 }
 
 .rg-main .rg-search #button-search {
-    background: #ff5800; /* naranja */
+    background: #FC565B;
+    border-radius: 0;
     color: white;
 }
 
@@ -62,4 +68,8 @@ footer.rg-footer {
     color: #333333;
     font-weight: bold;
     margin-top: 1rem;
+}
+
+.rg-search-results .rg-entry-example {
+    font-style: italic;
 }
