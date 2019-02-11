@@ -6,25 +6,6 @@ from django.views.generic.base import TemplateView
 from django.urls import reverse, NoReverseMatch
 
 
-
-def linguatec_search(request):
-    context = {}
-    query = request.GET.get('q', None)
-    if query is not None:
-        client = coreapi.Client()
-        schema = client.get('http://api.conectividadcolectiva.org/')
-        querystring_args = {'search': query}
-        url = schema['words'] + '?' + urllib.parse.urlencode(querystring_args)
-        results = client.get(url)
-
-        context.update({
-            'query': query,
-            'results': results,
-        })
-
-    return TemplateResponse(request, 'linguatec_lexicon_frontend/search_results.html', context)
-
-
 class MenuItem(object):
     name = ''
     url = ''
@@ -78,3 +59,24 @@ class LegalNoticeView(LinguatecBaseView):
 
 class PrivacyPolicy(LinguatecBaseView):
     template_name = "linguatec_lexicon_frontend/privacy-policy.html"
+
+
+class SearchView(LinguatecBaseView):
+    template_name = "linguatec_lexicon_frontend/search_results.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+        query = request.GET.get('q', None)
+        if query is not None:
+            client = coreapi.Client()
+            schema = client.get('http://api.conectividadcolectiva.org/')
+            querystring_args = {'search': query}
+            url = schema['words'] + '?' + urllib.parse.urlencode(querystring_args)
+            results = client.get(url)
+
+            context.update({
+                'query': query,
+                'results': results,
+            })
+
+        return TemplateResponse(request, 'linguatec_lexicon_frontend/search_results.html', context)
