@@ -2,6 +2,7 @@ import coreapi
 import urllib.parse
 from django.shortcuts import render
 from django.template.response import TemplateResponse
+from django.views.generic.base import TemplateView
 
 
 def linguatec_home(request):
@@ -25,3 +26,7 @@ def linguatec_search(request):
         })
 
     return TemplateResponse(request, 'linguatec_lexicon_frontend/search_results.html', context)
+
+
+class LegalNoticeView(TemplateView):
+    template_name = "linguatec_lexicon_frontend/legal-notice.html"
