@@ -28,6 +28,9 @@ def linguatec_search(request):
     return TemplateResponse(request, 'linguatec_lexicon_frontend/search_results.html', context)
 
 
+class ContactView(TemplateView):
+    template_name = "linguatec_lexicon_frontend/contact.html"
+
 class LegalNoticeView(TemplateView):
     template_name = "linguatec_lexicon_frontend/legal-notice.html"
 
