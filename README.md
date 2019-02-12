@@ -16,7 +16,7 @@ django-admin startproject frontend
 
 ```
 
-Update settings:
+Update settings to include app as installed and set URL of the linguatec lexicon API:
 ```
 # settings.py
 INSTALLED_APPS = [
@@ -25,6 +25,10 @@ INSTALLED_APPS = [
 ]
 
 STATIC_ROOT = '/home/linguatec/frontend/static/'
+
+# Linguatec lexicon backend API URL
+LINGUATEC_LEXICON_API_URL = 'https://api.example.org/'
+
 ```
 
 Update `urls.py`
