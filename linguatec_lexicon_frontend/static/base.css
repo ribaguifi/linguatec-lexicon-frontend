@@ -59,9 +59,18 @@ footer.rg-footer {
 .rg-search-results .rg-word {
     color: #707070;
 }
+
+.rg-search-results .rg-word h2 {
+    font-size: 1rem;
+}
+
 .rg-search-results .rg-word .rg-word-gramcat {
-    color: #C8C8C8;
     display: block;
+}
+
+.rg-search-results .rg-word-gramcat {
+    color: #C8C8C8;
+    font-weight: normal;
 }
 
 .rg-search-results .rg-entries .rg-entry {
@@ -70,6 +79,18 @@ footer.rg-footer {
     margin-top: 1rem;
 }
 
+.rg-search-results .rg-entries .rg-entry .rg-usecase-comment {
+    font-weight: normal;
+}
+
 .rg-search-results .rg-entry-example {
     font-style: italic;
+}
+
+.rg-word-separator {
+    background:#e8e8e8;
+    margin-bottom: 1.5rem;
+    margin-left: 6px;
+    width: 32px;
+    height: 2px;
 }

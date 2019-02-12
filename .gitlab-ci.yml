@@ -1,7 +1,13 @@
 test:
   script:
-    - echo "Nothing to do!"
-    # TODO update when exist any test
+  - apt-get update -qy
+  - apt-get install -y --no-install-recommends python3-pip python3-dev
+  - pip3 install virtualenv
+  - virtualenv env
+  - source env/bin/activate
+  - pip3 install -r requirements.txt
+  - pip3 install .
+  - python -m unittest -v linguatec_lexicon_frontend.tests
 
 staging:
   stage: deploy
