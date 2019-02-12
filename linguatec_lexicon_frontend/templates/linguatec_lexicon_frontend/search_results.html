@@ -1,4 +1,5 @@
 {% extends "linguatec_lexicon_frontend/base_site.html" %}
+{% load linguatec %}
 
 {% block content %}
 {{ block.super }}
@@ -8,7 +9,11 @@
     <article>
         <header class="rg-word">
             <h2>{{ word.term }}</h2>
-            <span class="rg-word-gramcat">{{ word.gramcat }}</span>
+            <span class="rg-word-gramcat">
+                {% for gramcat in word.gramcats %}
+                    {{ gramcat|verbose_gramcat }}
+                {% endfor %}
+            </span>
         </header>
         <div class="rg-entries">
             {% for entry in word.entries %}
