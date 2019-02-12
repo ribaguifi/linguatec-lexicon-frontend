@@ -18,7 +18,7 @@
         <div class="rg-entries">
             {% for entry in word.entries %}
             <div class="rg-entry">
-                {{ entry.translation }}
+                {{ entry.translation|render_entry }}
                 <div class="mt-3 rg-entry-examples">
                     {% for example in entry.examples %}
                     <div class="rg-entry-example">

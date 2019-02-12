@@ -70,6 +70,10 @@ footer.rg-footer {
     margin-top: 1rem;
 }
 
+.rg-search-results .rg-entries .rg-entry .rg-usecase-comment {
+    font-weight: normal;
+}
+
 .rg-search-results .rg-entry-example {
     font-style: italic;
 }
