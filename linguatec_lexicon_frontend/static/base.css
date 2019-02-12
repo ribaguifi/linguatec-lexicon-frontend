@@ -59,6 +59,11 @@ footer.rg-footer {
 .rg-search-results .rg-word {
     color: #707070;
 }
+
+.rg-search-results .rg-word h2 {
+    font-size: 1rem;
+}
+
 .rg-search-results .rg-word .rg-word-gramcat {
     display: block;
 }
