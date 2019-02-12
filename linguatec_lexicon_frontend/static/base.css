@@ -86,3 +86,11 @@ footer.rg-footer {
 .rg-search-results .rg-entry-example {
     font-style: italic;
 }
+
+.rg-word-separator {
+    background:#e8e8e8;
+    margin-bottom: 1.5rem;
+    margin-left: 6px;
+    width: 32px;
+    height: 2px;
+}
