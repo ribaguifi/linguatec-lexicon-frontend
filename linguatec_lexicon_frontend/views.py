@@ -1,5 +1,7 @@
 import coreapi
 import urllib.parse
+
+from django.conf import settings
 from django.shortcuts import render
 from django.template.response import TemplateResponse
 from django.views.generic.base import TemplateView
@@ -68,8 +70,9 @@ class SearchView(LinguatecBaseView):
         context = self.get_context_data(**kwargs)
         query = request.GET.get('q', None)
         if query is not None:
+            api_url = settings.LINGUATEC_LEXICON_API_URL
             client = coreapi.Client()
-            schema = client.get('http://api.conectividadcolectiva.org/')
+            schema = client.get(api_url)
             querystring_args = {'search': query}
             url = schema['words'] + '?' + urllib.parse.urlencode(querystring_args)
             results = client.get(url)
