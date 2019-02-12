@@ -64,7 +64,7 @@
             <form action="{% url 'search' %}">
                 <div class="input-group rg-search">
 
-                    <input id="input-search" class="form-control" name="q" type="text" placeholder="Search">
+                    <input id="input-search" class="form-control" name="q" type="text" placeholder="{{ query }}">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button" id="button-search"><i class="fas fa-search"></i></button>
                     </div>
