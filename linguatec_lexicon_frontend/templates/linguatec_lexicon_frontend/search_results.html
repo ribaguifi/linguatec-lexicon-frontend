@@ -39,7 +39,7 @@
                         </div>
                         {% for tense, values in tenses.items %}
                         <div class="col-6">
-                            <h4>{{ tense }}</h4>
+                            {% if tense %}<h4>{{ tense }}</h4>{% endif %}
                             {% for value in values %}
                             {{ value }}<br />
                             {% endfor %}
