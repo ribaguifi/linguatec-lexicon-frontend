@@ -23,60 +23,61 @@
 </head>
 
 <body class="{% block bodyclass %}{% endblock %}">
-    <div class="">
-        <header class="container rg-header">
-            <div class="">
-                <nav class="navbar navbar-expand-lg navbar-dark row">
-                    <div class="col-9">
-                        {% block branding %}{% endblock %}
-                    </div>
-                    <div class="col-3 text-right">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    </div>
+    <header class="container-fluid rg-header">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="col-9">
+                    {% block branding %}{% endblock %}
+                </div>
+                <div class="col-3 text-right">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                     <div class="collapse navbar-collapse text-right pr-3" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             {% for menugroup in  menu %}
-                                {% for navitem in  menugroup %}
-                                <li class="nav-item {% if navitem.active %}active{% endif %}">
-                                    <a class="nav-link" href="{{ navitem.url }}">{{ navitem.name }}</a>
-                                    {% if navitem.active %}
-                                    <span class="sr-only">(current)</span>
-                                    {% endif %}
-                                </li>
-                                {% endfor %}
-                                {% if not forloop.last %}
-                                <div class="rg-navbar-separator">....</div>
+                            {% for navitem in  menugroup %}
+                            <li class="nav-item {% if navitem.active %}active{% endif %}">
+                                <a class="nav-link" href="{{ navitem.url }}">{{ navitem.name }}</a>
+                                {% if navitem.active %}
+                                <span class="sr-only">(current)</span>
                                 {% endif %}
+                            </li>
+                            {% endfor %}
+                            {% if not forloop.last %}
+                            <li class="rg-navbar-separator">....</li>
+                            {% endif %}
                             {% endfor %}
                             {# TODO logos? #}
                         </ul>
                     </div>
-                </nav>
-            </div>
-        </header>
-
-        <main class="container rg-main">
-            {% block content %}
-            {% block search-tools %}
-            <form action="{% url 'search' %}">
-                <div class="input-group rg-search">
-
-                    <input id="input-search" class="form-control" name="q" type="text" placeholder="{{ query }}">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="button-search"><i class="fas fa-search"></i></button>
-                    </div>
-
                 </div>
-            </form>
-            {% endblock %}
-            {% endblock %}
-        </main>
+            </nav>
+        </div>
+    </header>
 
-        {% block footer %}
+    <main class="container rg-main">
+        {% block content %}
+        {% block search-tools %}
+        <form action="{% url 'search' %}">
+            <div class="input-group rg-search">
+
+                <input id="input-search" class="form-control" name="q" type="text" placeholder="{{ query }}">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-search"><i
+                            class="fas fa-search"></i></button>
+                </div>
+
+            </div>
+        </form>
         {% endblock %}
+        {% endblock %}
+    </main>
+
+    {% block footer %}
+    {% endblock %}
 
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -86,7 +87,6 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
 
-    </div>
 </body>
 
 </html>

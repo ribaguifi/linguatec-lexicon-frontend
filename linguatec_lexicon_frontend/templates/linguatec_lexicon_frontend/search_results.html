@@ -26,9 +26,33 @@
                     </div>
                     {% endfor %}
                 </div>
-                {% if entry.conjugation %}
+                {% if entry.conjugation %}{# is a verb! #}
                 <div class="rg-entry-conjugation">
-                    {{ entry.conjugation.raw }}
+                    {{ entry.conjugation.intro }}
+
+                    {# case full conjugation #}
+                    {% if entry.conjugation.conjugation %}
+                    {% for mood, tenses in entry.conjugation.conjugation.items %}
+                    <div class="row">
+                        <div class="col-12">
+                            <h3>{{ mood }}</h3>
+                        </div>
+                        {% for tense, values in tenses.items %}
+                        <div class="col-6">
+                            {% if tense %}<h4>{{ tense }}</h4>{% endif %}
+                            {% for value in values %}
+                            {{ value }}<br />
+                            {% endfor %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+
+                    {# case refer to another verb as conj model #}
+                    {% elif entry.conjugation.model %}
+                        <span class="rg-entry-keyword">modelo conjugación:</span>
+                        <a href="#TODO"><strong>{{ entry.conjugation.model }}</strong></a>
+                    {% endif %}
                 </div>
                 {% endif %}
             </div>

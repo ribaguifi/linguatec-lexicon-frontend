@@ -68,7 +68,8 @@ footer.rg-footer {
     display: block;
 }
 
-.rg-search-results .rg-word-gramcat {
+.rg-search-results .rg-word-gramcat,
+.rg-search-results .rg-entry-keyword {
     color: #C8C8C8;
     font-weight: normal;
 }
@@ -85,6 +86,10 @@ footer.rg-footer {
 
 .rg-search-results .rg-entry-example {
     font-style: italic;
+}
+
+.rg-search-results .rg-entry-conjugation {
+    font-weight: normal;
 }
 
 .rg-word-separator {
