@@ -24,18 +24,18 @@
 
 <body class="{% block bodyclass %}{% endblock %}">
     <header class="container-fluid rg-header">
-        <div class="row">
+        <div class="">
             <nav class="navbar navbar-expand-lg navbar-dark">
-                <div class="col-9">
+                <div class="">
                     {% block branding %}{% endblock %}
                 </div>
-                <div class="col-3 text-right">
+                <div class="text-right">
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse text-right pr-3" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse text-right" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             {% for menugroup in  menu %}
                             {% for navitem in  menugroup %}
