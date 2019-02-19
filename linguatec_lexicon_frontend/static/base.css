@@ -50,13 +50,18 @@ footer.rg-footer {
     margin-top: 1.5rem;
 }
 
+.home .rg-main .rg-search #input-search {
+    background: white;
+    margin-right: 0;
+}
+
 .rg-search #input-search {
     background: #e8e8e8;
     border-radius: 0;
     margin-right: 0.5em;
 }
 
-.home .rg-search #button-search {
+.home .rg-main .rg-search #button-search {
     background: #333333;
     color: white;
 }
@@ -64,6 +69,7 @@ footer.rg-footer {
 .rg-main .rg-search #button-search {
     background: #FC565B;
     border-radius: 0;
+    border-width: 0;
     color: white;
 }
 
