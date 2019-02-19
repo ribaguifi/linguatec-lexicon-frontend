@@ -73,9 +73,10 @@ class SearchView(LinguatecBaseView):
             api_url = settings.LINGUATEC_LEXICON_API_URL
             client = coreapi.Client()
             schema = client.get(api_url)
-            querystring_args = {'search': query}
-            url = schema['words'] + '?' + urllib.parse.urlencode(querystring_args)
-            results = client.get(url)
+            querystring_args = {'q': query}
+            url = schema['words'] + 'search/?' + urllib.parse.urlencode(querystring_args)
+            response = client.get(url)
+            results = response["results"]
 
             context.update({
                 'query': query,
