@@ -29,6 +29,7 @@ header.rg-header .navbar-toggler {
 
 footer.rg-footer {
     background: white;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.16);
 }
 
 #footer_collapse_button {
