@@ -14,15 +14,24 @@
 {% endblock %}
 
 {% block footer %}
-<footer class="container fixed-bottom p-2 rg-footer">
+<footer class="container-fluid fixed-bottom rg-footer">
     <div class="row text-center">
-        <div class="col">
+        <div class="col-12">
+            <a id="footer_collapse_button" class="collapsed" data-toggle="collapse" href="#collapseLogos"
+                role="button" aria-expanded="false" aria-controls="collapseLogos">
+                <i class="fas fa-angle-up fa-3x"></i>
+                <i class="fas fa-angle-down fa-3x"></i>
+            </a>
+        </div>
+    </div>
+    <div class="row text-center collapse" id="collapseLogos">
+        <div class="col-12">
             <img class="img-fluid" alt="POCTEFA" src="{% static 'interreg-POCTEFA-LINGUATEC.jpg' %}" />
         </div>
-        <div class="col">
-                <img class="img-fluid" alt="Turismo de Aragón" src="{% static 'aragon-turismo-wide.svg' %}" />
-            </div>
-        <div class="col">
+        <div class="col-12">
+            <img class="img-fluid" alt="Turismo de Aragón" src="{% static 'aragon-turismo-wide.svg' %}" />
+        </div>
+        <div class="col-12">
             <img class="img-fluid" alt="Gobierno de Aragón" src="{% static 'gobierno-aragon.jpg' %}" />
         </div>
     </div>

@@ -31,6 +31,21 @@ footer.rg-footer {
     background: white;
 }
 
+#footer_collapse_button {
+    display: block;
+    margin-top: -0.5rem;
+}
+
+#footer_collapse_button .fa-angle-down,
+#footer_collapse_button.collapsed .fa-angle-up {
+    display: inline-block;
+}
+
+#footer_collapse_button .fa-angle-up,
+#footer_collapse_button.collapsed .fa-angle-down {
+    display: none;
+}
+
 .rg-search {
     margin-top: 1.5rem;
 }
