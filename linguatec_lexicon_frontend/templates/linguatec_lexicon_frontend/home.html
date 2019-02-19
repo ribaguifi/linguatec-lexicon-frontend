@@ -5,12 +5,27 @@
 {% block bodyclass %}home{% endblock %}
 {% block content %}
 
-<div class="">
-    <h1 class="text-center">Aragonario</h1>
-    <h2>Diccionario<br />castellano - aragonés</h2>
+<div class="home-content">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center">Aragonario</h1>
+            <h2>Diccionario<br />castellano - aragonés</h2>
+        </div>
+    </div>
+
+    {{ block.super }}
 </div>
 
-{{ block.super }}
+<div class="row d-flex align-items-end external-links">
+    <div class="col-6">
+        <a class="ref-external" href="http://www.lenguasdearagon.org"><img src="# {# TODO #}" alt="logotipo Lenguas de Aragón" /></a><br />
+        <a class="ref-external" href="http://www.lenguasdearagon.org">www.lenguasdearagon.org</a>
+    </div>
+    <div class="col-6">
+        {# TODO: https://gitlab.com/linguatec/linguatec-lexicon-frontend/issues/13 #}
+        <a class="ref-external" href="#TODO">Traductor automático</a>
+    </div>
+</div>
 {% endblock %}
 
 {% block footer %}
