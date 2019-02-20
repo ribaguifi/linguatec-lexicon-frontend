@@ -66,6 +66,10 @@ footer.rg-footer {
     margin-right: 0;
 }
 
+.home .external-links a {
+    color: white;
+}
+
 .rg-search #input-search {
     background: #e8e8e8;
     border-radius: 0;
