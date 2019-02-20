@@ -57,6 +57,18 @@ footer.rg-footer {
     display: none;
 }
 
+.rg-logo img {
+    width: 240px;
+}
+
+.rg-logo {
+    margin-bottom: 30px;
+}
+
+.rg-footer #collapseLogos {
+    margin-bottom: 2px;
+}
+
 .rg-search {
     margin-top: 1.5rem;
 }
