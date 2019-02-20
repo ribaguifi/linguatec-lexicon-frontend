@@ -24,58 +24,61 @@
 
 <body class="{% block bodyclass %}{% endblock %}">
     <header class="container-fluid rg-header">
-        <div class="">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="">
-                    {% block branding %}{% endblock %}
-                </div>
-                <div class="text-right">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-                <div class="fixed-top collapse navbar-collapse" id="navbarSupportedContent">
-                    <div class="row justify-content-end">
-                        <div class="col-8 rg-navbar-content pt-3">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <i class="fas fa-times"></i>
-                            </button>
-                            <div class="rg-navbar-separator"></div>
-                            <ul class="navbar-nav mr-auto">
-                                {% for menugroup in  menu %}
-                                {% for navitem in  menugroup %}
-                                <li class="nav-item {% if navitem.active %}active{% endif %}">
-                                    <a class="nav-link" href="{{ navitem.url }}">{{ navitem.name }}</a>
-                                    {% if navitem.active %}
-                                    <span class="sr-only">(current)</span>
-                                    {% endif %}
-                                </li>
-                                {% endfor %}
-                                <li class="rg-navbar-separator"></li>
-                                {% endfor %}
-                                <div class="col-12 rg-logo">
-                                    <img class="img-fluid" alt="INTERREG POCTEFA LINGUATEC"
-                                        src="{% static 'logo-interreg-poctefa-RGB-LINGUATEC.svg' %}" />
-                                </div>
-                                <div class="col-12 rg-logo">
-                                    <img class="img-fluid" alt="Turismo de Aragón"
-                                        src="{% static 'logo-aragon-turismo-wide.svg' %}" />
-                                </div>
-                                <div class="col-12 rg-logo">
-                                    <img class="img-fluid" alt="Gobierno de Aragón"
-                                        src="{% static 'logo-gobierno-aragon.svg' %}" />
-                                </div>
-                            </ul>
+        <div class="rg-header-container row">
+            <div class="rg-header-content col-12">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="">
+                        {% block branding %}{% endblock %}
+                    </div>
+                    <div class="text-right">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    <div class="fixed-top collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="row justify-content-end">
+                            <div class="col-8 rg-navbar-content pt-3">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <div class="rg-navbar-separator"></div>
+                                <ul class="navbar-nav mr-auto">
+                                    {% for menugroup in  menu %}
+                                    {% for navitem in  menugroup %}
+                                    <li class="nav-item {% if navitem.active %}active{% endif %}">
+                                        <a class="nav-link" href="{{ navitem.url }}">{{ navitem.name }}</a>
+                                        {% if navitem.active %}
+                                        <span class="sr-only">(current)</span>
+                                        {% endif %}
+                                    </li>
+                                    {% endfor %}
+                                    <li class="rg-navbar-separator"></li>
+                                    {% endfor %}
+                                    <div class="col-12 rg-logo">
+                                        <img class="img-fluid" alt="INTERREG POCTEFA LINGUATEC"
+                                            src="{% static 'logo-interreg-poctefa-RGB-LINGUATEC.svg' %}" />
+                                    </div>
+                                    <div class="col-12 rg-logo">
+                                        <img class="img-fluid" alt="Turismo de Aragón"
+                                            src="{% static 'logo-aragon-turismo-wide.svg' %}" />
+                                    </div>
+                                    <div class="col-12 rg-logo">
+                                        <img class="img-fluid" alt="Gobierno de Aragón"
+                                            src="{% static 'logo-gobierno-aragon.svg' %}" />
+                                    </div>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-            </nav>
+                </nav>
+            </div>
         </div>
+        <div class="rg-header-bottom"></div>
     </header>
 
     <main class="container rg-main">
@@ -109,7 +112,8 @@
         </div>
         <div class="row text-center collapse" id="collapseLogos">
             <div class="col-12 rg-logo">
-                <img class="img-fluid" alt="INTERREG POCTEFA LINGUATEC" src="{% static 'logo-interreg-poctefa-RGB-LINGUATEC.svg' %}" />
+                <img class="img-fluid" alt="INTERREG POCTEFA LINGUATEC"
+                    src="{% static 'logo-interreg-poctefa-RGB-LINGUATEC.svg' %}" />
             </div>
             <div class="col-12 rg-logo">
                 <img class="img-fluid" alt="Turismo de Aragón" src="{% static 'logo-aragon-turismo-wide.svg' %}" />

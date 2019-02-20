@@ -3,23 +3,30 @@ body.home {
 }
 
 header.rg-header {
-    background: #FC565B;
     margin-bottom: 1.5rem;
 }
 
+.rg-header-content {
+    background: #FC565B;
+}
+
+.rg-header-bottom {
+    background-image: url(header-bg.png);
+    background-position-x: 53px;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    height: 18px;
+}
+
 header.rg-header .navbar {
+    flex-wrap: nowrap;
     padding-left: 0;
     padding-right: 0;
     padding-bottom: 0;
 }
 
-header.rg-header h1 {
-    font-size: 1.2em;
-    margin-right: 0.5rem;
-}
-
-header.rg-header h2 {
-    font-size: 0.7em;
+.rg-header .navbar-brand {
+    width: 300px;
 }
 
 header.rg-header .navbar-toggler {
