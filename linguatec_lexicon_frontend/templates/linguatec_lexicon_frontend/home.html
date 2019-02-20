@@ -8,21 +8,22 @@
 <div class="home-content">
     <div class="row">
         <div class="col-12">
-            <img alt="Aragonario: Diccionario castellano - aragonés" src="{% static 'aragonario-darkgray.svg' %}"/>
+            <img alt="Aragonario: Diccionario castellano - aragonés" src="{% static 'aragonario-darkgray.svg' %}" />
         </div>
     </div>
 
     {{ block.super }}
 </div>
 
-<div class="row d-flex align-items-end external-links mt-5">
+<div class="row text-center align-items-end external-links mt-5">
     <div class="col">
-        <a class="ref-external" href="http://www.lenguasdearagon.org"><img src="# {# TODO #}" alt="logotipo Lenguas de Aragón" /></a><br />
+        <img src="{% static 'logo-lenguas-de-aragon-white.svg' %}" alt="logotipo Lenguas de Aragón"
+            class="mb-3" /><br />
         <a class="ref-external" href="http://www.lenguasdearagon.org">lenguasdearagon.org</a>
     </div>
     <div class="col">
         {# TODO: https://gitlab.com/linguatec/linguatec-lexicon-frontend/issues/13 #}
-        <a class="ref-external" href="#TODO">Traductor automático</a>
+        <a class="ref-external" href="#TODO">Traductor Automático</a>
     </div>
 </div>
 {% endblock %}

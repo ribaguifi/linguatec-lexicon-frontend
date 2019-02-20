@@ -38,6 +38,10 @@ header.rg-header .navbar-toggler {
     margin-right: 15px;
 }
 
+.rg-main {
+    margin-bottom: calc(42px + 2rem); /** fixed footer height (42px) + real margin */
+}
+
 footer.rg-footer {
     background: white;
     box-shadow: 0 -2px 4px rgba(0,0,0,0.16);
@@ -80,7 +84,9 @@ footer.rg-footer {
 }
 
 .home .external-links a {
+    background: #d9484d;
     color: white;
+    padding: 0.5rem 1rem;
 }
 
 .rg-search #input-search {
