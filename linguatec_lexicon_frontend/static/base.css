@@ -76,6 +76,13 @@ footer.rg-footer {
 
 .rg-search {
     margin-top: 1.5rem;
+    background: url('search-input-bg.svg') no-repeat;
+    background-size: auto 80px;
+    padding-bottom: 18px;
+}
+
+.home .rg-search {
+    background: none;
 }
 
 .home .rg-main .rg-search #input-search {
@@ -90,7 +97,8 @@ footer.rg-footer {
 }
 
 .rg-search #input-search {
-    background: #e8e8e8;
+    background: #f0f0f0; /* same color than .rg-search background image */
+    border-width: 0;
     border-radius: 0;
     margin-right: 0.5em;
     height: 62px;
