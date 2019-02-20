@@ -27,6 +27,16 @@ header.rg-header .navbar-toggler {
     padding: 0;
 }
 
+.rg-navbar-content {
+    background: white;
+    color: #333333;
+    box-shadow: -7px 4px 4px rgba(0,0,0,0.4);
+}
+.rg-navbar-separator {
+    border-bottom: 1px solid #C8C8C8;
+    margin-right: 15px;
+}
+
 footer.rg-footer {
     background: white;
     box-shadow: 0 -2px 4px rgba(0,0,0,0.16);

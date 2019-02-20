@@ -25,7 +25,7 @@
 <body class="{% block bodyclass %}{% endblock %}">
     <header class="container-fluid rg-header">
         <div class="">
-            <nav class="navbar navbar-expand-lg navbar-dark">
+            <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="">
                     {% block branding %}{% endblock %}
                 </div>
@@ -35,25 +35,45 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse text-right" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            {% for menugroup in  menu %}
-                            {% for navitem in  menugroup %}
-                            <li class="nav-item {% if navitem.active %}active{% endif %}">
-                                <a class="nav-link" href="{{ navitem.url }}">{{ navitem.name }}</a>
-                                {% if navitem.active %}
-                                <span class="sr-only">(current)</span>
-                                {% endif %}
-                            </li>
-                            {% endfor %}
-                            {% if not forloop.last %}
-                            <li class="rg-navbar-separator">....</li>
-                            {% endif %}
-                            {% endfor %}
-                            {# TODO logos? #}
-                        </ul>
+                </div>
+                <div class="fixed-top collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="row justify-content-end">
+                        <div class="col-8 rg-navbar-content py-3">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <div class="rg-navbar-separator"></div>
+                            <ul class="navbar-nav mr-auto">
+                                {% for menugroup in  menu %}
+                                {% for navitem in  menugroup %}
+                                <li class="nav-item {% if navitem.active %}active{% endif %}">
+                                    <a class="nav-link" href="{{ navitem.url }}">{{ navitem.name }}</a>
+                                    {% if navitem.active %}
+                                    <span class="sr-only">(current)</span>
+                                    {% endif %}
+                                </li>
+                                {% endfor %}
+                                <li class="rg-navbar-separator"></li>
+                                {% endfor %}
+                                <div class="col-12">
+                                    <img class="img-fluid" alt="POCTEFA"
+                                        src="{% static 'interreg-POCTEFA-LINGUATEC.jpg' %}" />
+                                </div>
+                                <div class="col-12">
+                                    <img class="img-fluid" alt="Turismo de Aragón"
+                                        src="{% static 'aragon-turismo-wide.svg' %}" />
+                                </div>
+                                <div class="col-12">
+                                    <img class="img-fluid" alt="Gobierno de Aragón"
+                                        src="{% static 'gobierno-aragon.jpg' %}" />
+                                </div>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+
             </nav>
         </div>
     </header>
