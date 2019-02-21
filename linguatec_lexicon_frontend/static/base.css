@@ -77,6 +77,15 @@ footer.rg-footer {
     margin-bottom: 30px;
 }
 
+.rg-header .rg-logo:first-of-type,
+.rg-footer .rg-logo:first-of-type {
+    margin-top: 32px;
+}
+
+.rg-footer #collapse_button_container {
+    height: 2rem;
+}
+
 .rg-footer #collapseLogos {
     margin-bottom: 2px;
 }
