@@ -12,7 +12,7 @@ header.rg-header {
 
 .rg-header-bottom {
     background-image: url(header-bg-color.svg);
-    background-position-x: 53px;
+    background-position-x: 50px; /* header-bg.width x (53/300) */
     background-position-y: bottom;
     background-repeat: no-repeat;
     height: 18px;
@@ -26,11 +26,20 @@ header.rg-header .navbar {
 }
 
 .rg-header .navbar-brand {
-    width: 300px;
+    /*
+    for xs devices (360px)
+        15px padding-left
+        16px (1rem) navbar-brand.margin-right
+        32px (2rem) navbar-toggler icon
+        15px padding-right
+        ------------------
+        78px
+    */
+    width: 282px;
 }
 
 header.rg-header .navbar-toggler {
-    font-size: 1.2em;
+    font-size: 2em;
     border: 0;
     padding: 0;
 }
