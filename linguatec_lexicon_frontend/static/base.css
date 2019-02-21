@@ -35,6 +35,14 @@ header.rg-header .navbar-toggler {
     padding: 0;
 }
 
+header.rg-header .navbar-toggler .fa-bars {
+    color: white;
+}
+
+.home header.rg-header .navbar-toggler .fa-bars {
+    color: #333333;
+}
+
 .rg-navbar-content {
     background: white;
     color: #333333;
@@ -55,6 +63,7 @@ footer.rg-footer {
 }
 
 #footer_collapse_button {
+    color: #333333;
     display: block;
     margin-top: -0.5rem;
 }
