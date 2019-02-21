@@ -11,7 +11,7 @@ header.rg-header {
 }
 
 .rg-header-bottom {
-    background-image: url(header-bg.png);
+    background-image: url(header-bg-color.svg);
     background-position-x: 53px;
     background-position-y: bottom;
     background-repeat: no-repeat;
@@ -92,8 +92,10 @@ footer.rg-footer {
 
 .rg-search {
     margin-top: 1.5rem;
-    background: url('search-input-bg.svg') no-repeat;
-    background-size: auto 80px;
+    background-image: url('search-input-bg.svg');
+    background-repeat: no-repeat;
+    background-position: 16px bottom;
+    background-size: auto 18px;
     padding-bottom: 18px;
 }
 
