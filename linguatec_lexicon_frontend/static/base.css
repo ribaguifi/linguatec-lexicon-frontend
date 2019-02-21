@@ -3,45 +3,150 @@ body.home {
 }
 
 header.rg-header {
+    margin-bottom: 1.5rem;
+}
+
+.rg-header-content {
     background: #FC565B;
 }
 
+.rg-header-bottom {
+    background-image: url(header-bg-color.svg);
+    background-position-x: 50px; /* header-bg.width x (53/300) */
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    height: 18px;
+}
+
 header.rg-header .navbar {
+    flex-wrap: nowrap;
     padding-left: 0;
     padding-right: 0;
     padding-bottom: 0;
 }
 
-header.rg-header h1 {
-    font-size: 1.2em;
-    margin-right: 0.5rem;
-}
-
-header.rg-header h2 {
-    font-size: 0.7em;
+.rg-header .navbar-brand .navbar-brand-logo {
+    /*
+    for xs devices (360px)
+        15px padding-left
+        16px (1rem) navbar-brand.margin-right
+        32px (2rem) navbar-toggler icon
+        15px padding-right
+        ------------------
+        78px
+    */
+    width: 282px;
 }
 
 header.rg-header .navbar-toggler {
-    font-size: 1.2em;
+    font-size: 2em;
     border: 0;
     padding: 0;
 }
 
+header.rg-header .navbar-toggler .fa-bars {
+    color: white;
+}
+
+.home header.rg-header .navbar-toggler .fa-bars {
+    color: #333333;
+}
+
+.rg-navbar-content {
+    background: white;
+    color: #333333;
+    box-shadow: -7px 4px 4px rgba(0,0,0,0.4);
+    /** playground ** TODO: open as modal coming from right side
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    /** endplayground **/
+}
+.rg-navbar-separator {
+    border-bottom: 1px solid #C8C8C8;
+    margin-right: 15px;
+}
+
+.rg-main {
+    margin-bottom: calc(42px + 2rem); /** fixed footer height (42px) + real margin */
+}
+
 footer.rg-footer {
     background: white;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.16);
+}
+
+#footer_collapse_button {
+    color: #333333;
+    display: block;
+    margin-top: -0.5rem;
+}
+
+#footer_collapse_button .fa-angle-down,
+#footer_collapse_button.collapsed .fa-angle-up {
+    display: inline-block;
+}
+
+#footer_collapse_button .fa-angle-up,
+#footer_collapse_button.collapsed .fa-angle-down {
+    display: none;
+}
+
+.rg-logo img {
+    width: 240px;
+}
+
+.rg-logo {
+    margin-bottom: 30px;
+}
+
+.rg-logos-container,
+.rg-footer .rg-logo:first-of-type {
+    margin-top: 32px;
+}
+
+.rg-footer #collapse_button_container {
+    height: 2rem;
+}
+
+.rg-footer #collapseLogos {
+    margin-bottom: 2px;
 }
 
 .rg-search {
     margin-top: 1.5rem;
+    background-image: url('search-input-bg.svg');
+    background-repeat: no-repeat;
+    background-position: 16px bottom;
+    background-size: auto 18px;
+    padding-bottom: 18px;
+}
+
+.home .rg-search {
+    background: none;
+}
+
+.home .rg-main .rg-search #input-search {
+    background: white;
+    margin-right: 0;
+}
+
+.home .external-links a {
+    background: #d9484d;
+    color: white;
+    padding: 0.5rem 1rem;
 }
 
 .rg-search #input-search {
-    background: #e8e8e8;
+    background: #f0f0f0; /* same color than .rg-search background image */
+    border-width: 0;
     border-radius: 0;
     margin-right: 0.5em;
+    height: 62px;
 }
 
-.home .rg-search #button-search {
+.home .rg-main .rg-search #button-search {
     background: #333333;
     color: white;
 }
@@ -49,7 +154,9 @@ footer.rg-footer {
 .rg-main .rg-search #button-search {
     background: #FC565B;
     border-radius: 0;
+    border-width: 0;
     color: white;
+    width: 62px;
 }
 
 .rg-search-results {

@@ -5,26 +5,25 @@
 {% block bodyclass %}home{% endblock %}
 {% block content %}
 
-<div class="">
-    <h1 class="text-center">Aragonario</h1>
-    <h2>Diccionario<br />castellano - aragonés</h2>
-</div>
-
-{{ block.super }}
-{% endblock %}
-
-{% block footer %}
-<footer class="container fixed-bottom p-2 rg-footer">
-    <div class="row text-center">
-        <div class="col">
-            <img class="img-fluid" alt="POCTEFA" src="{% static 'interreg-POCTEFA-LINGUATEC.jpg' %}" />
-        </div>
-        <div class="col">
-                <img class="img-fluid" alt="Turismo de Aragón" src="{% static 'aragon-turismo-wide.svg' %}" />
-            </div>
-        <div class="col">
-            <img class="img-fluid" alt="Gobierno de Aragón" src="{% static 'gobierno-aragon.jpg' %}" />
+<div class="home-content">
+    <div class="row">
+        <div class="col-12">
+            <img alt="Aragonario: Diccionario castellano - aragonés" src="{% static 'aragonario-darkgray.svg' %}" />
         </div>
     </div>
-</footer>
+
+    {{ block.super }}
+</div>
+
+<div class="row text-center align-items-end external-links mt-5">
+    <div class="col">
+        <img src="{% static 'logo-lenguas-de-aragon-white.svg' %}" alt="logotipo Lenguas de Aragón"
+            class="mb-3" /><br />
+        <a class="ref-external" href="http://www.lenguasdearagon.org">lenguasdearagon.org</a>
+    </div>
+    <div class="col">
+        {# TODO: https://gitlab.com/linguatec/linguatec-lexicon-frontend/issues/13 #}
+        <a class="ref-external" href="#TODO">Traductor Automático</a>
+    </div>
+</div>
 {% endblock %}

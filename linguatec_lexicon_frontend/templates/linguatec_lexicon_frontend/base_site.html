@@ -1,8 +1,6 @@
 {% extends "linguatec_lexicon_frontend/base.html" %}
+{% load static %}
 
 {% block branding %}
-<div class="navbar-brand d-flex">
-    <h1 class="">Aragonario</h1>
-    <h2 class="">Diccionario<br />castellano - aragonés</h2>
-</div>
+    <img class="navbar-brand-logo" alt="Aragonario: Diccionario castellano - aragonés" src="{% static 'aragonario-wide-white.svg' %}"/>
 {% endblock %}

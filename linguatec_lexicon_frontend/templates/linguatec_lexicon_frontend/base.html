@@ -10,12 +10,12 @@
     {% endblock %}
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <!-- fontawesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{% static 'base.css' %}">
     {% block extrastyle %}{% endblock %}
@@ -24,37 +24,56 @@
 
 <body class="{% block bodyclass %}{% endblock %}">
     <header class="container-fluid rg-header">
-        <div class="">
-            <nav class="navbar navbar-expand-lg navbar-dark">
-                <div class="">
-                    {% block branding %}{% endblock %}
-                </div>
-                <div class="text-right">
+        <div class="rg-header-container row">
+            <div class="rg-header-content col-12">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="navbar-brand">
+                        {% block branding %}{% endblock %}
+                    </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                        <i class="fas fa-bars"></i>
                     </button>
-                    <div class="collapse navbar-collapse text-right" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            {% for menugroup in  menu %}
-                            {% for navitem in  menugroup %}
-                            <li class="nav-item {% if navitem.active %}active{% endif %}">
-                                <a class="nav-link" href="{{ navitem.url }}">{{ navitem.name }}</a>
-                                {% if navitem.active %}
-                                <span class="sr-only">(current)</span>
-                                {% endif %}
-                            </li>
-                            {% endfor %}
-                            {% if not forloop.last %}
-                            <li class="rg-navbar-separator">....</li>
-                            {% endif %}
-                            {% endfor %}
-                            {# TODO logos? #}
-                        </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="rg-header-bottom"></div>
+        <!-- navbar-content -->
+        <div class="row collapse navbar-collapse navbar-light" id="navbarSupportedContent">
+            <div class="col-3"></div>
+            <div class="col-9 navbar-nav rg-navbar-content px-3">
+                <button class="text-left navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="rg-navbar-separator"></div>
+                {% for menugroup in  menu %}
+                {% for navitem in  menugroup %}
+                <div class="nav-item {% if navitem.active %}active{% endif %}">
+                    <a class="nav-link" href="{{ navitem.url }}">{{ navitem.name }}</a>
+                    {% if navitem.active %}
+                    <span class="sr-only">(current)</span>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <div class="rg-navbar-separator"></div>
+                {% endfor %}
+                <div class="rg-logos-container">
+                    <div class="rg-logo">
+                        <img class="img-fluid" alt="INTERREG POCTEFA LINGUATEC"
+                            src="{% static 'logo-interreg-poctefa-RGB-LINGUATEC.svg' %}" />
+                    </div>
+                    <div class="rg-logo">
+                        <img class="img-fluid" alt="Turismo de Aragón"
+                            src="{% static 'logo-aragon-turismo-wide.svg' %}" />
+                    </div>
+                    <div class="rg-logo">
+                        <img class="img-fluid" alt="Gobierno de Aragón" src="{% static 'logo-gobierno-aragon.svg' %}" />
                     </div>
                 </div>
-            </nav>
+            </div>
         </div>
     </header>
 
@@ -66,7 +85,7 @@
 
                 <input id="input-search" class="form-control" name="q" type="text" placeholder="{{ query }}">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="button-search"><i
+                    <button class="btn btn-outline-secondary" type="submit" id="button-search"><i
                             class="fas fa-search"></i></button>
                 </div>
 
@@ -77,15 +96,40 @@
     </main>
 
     {% block footer %}
+    <footer class="container-fluid fixed-bottom rg-footer">
+        <div class="row text-center" id="collapse_button_container">
+            <div class="col-12">
+                <a id="footer_collapse_button" class="collapsed" data-toggle="collapse" href="#collapseLogos"
+                    role="button" aria-expanded="false" aria-controls="collapseLogos">
+                    <i class="fas fa-angle-up fa-3x"></i>
+                    <i class="fas fa-angle-down fa-3x"></i>
+                </a>
+            </div>
+        </div>
+        <div class="row text-center collapse" id="collapseLogos">
+            <div class="col-12 rg-logo">
+                <img class="img-fluid" alt="INTERREG POCTEFA LINGUATEC"
+                    src="{% static 'logo-interreg-poctefa-RGB-LINGUATEC.svg' %}" />
+            </div>
+            <div class="col-12 rg-logo">
+                <img class="img-fluid" alt="Turismo de Aragón" src="{% static 'logo-aragon-turismo-wide.svg' %}" />
+            </div>
+            <div class="col-12 rg-logo">
+                <img class="img-fluid" alt="Gobierno de Aragón" src="{% static 'logo-gobierno-aragon.svg' %}" />
+            </div>
+        </div>
+    </footer>
     {% endblock %}
 
-
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 
 </body>
 
