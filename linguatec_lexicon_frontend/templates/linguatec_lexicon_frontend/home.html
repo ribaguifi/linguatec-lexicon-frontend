@@ -5,11 +5,10 @@
 {% block bodyclass %}home{% endblock %}
 {% block content %}
 
-<div class="home-content">
-    <div class="row">
-        <div class="col-12">
-            <img alt="Aragonario: Diccionario castellano - aragonés" src="{% static 'aragonario-darkgray.svg' %}" />
-        </div>
+<div class="home-content row">
+    <div class="col-12 col-md" id="aragonarioLogo">
+        <img class="d-md-none" alt="Aragonario: Diccionario castellano - aragonés"
+            src="{% static 'aragonario-darkgray.svg' %}" />
     </div>
 
     {{ block.super }}

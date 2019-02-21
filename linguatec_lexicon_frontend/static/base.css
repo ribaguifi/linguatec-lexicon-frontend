@@ -206,3 +206,27 @@ footer.rg-footer {
     width: 32px;
     height: 2px;
 }
+
+/** tablet rules **/
+@media (min-width: 768px) {
+    body.home {
+        background: white;
+    }
+
+    #aragonarioLogo {
+        height: 127px;
+        background: url("aragonario-color.svg") no-repeat;
+    }
+
+    .rg-search {
+        margin-top: 0px;
+    }
+
+    .home .rg-main .rg-search #input-search {
+        background: #f0f0f0;
+    }
+
+    .home .rg-main .rg-search #button-search {
+        background: #fc565b;
+    }
+}
