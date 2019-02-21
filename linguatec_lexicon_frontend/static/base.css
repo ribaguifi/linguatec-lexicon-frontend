@@ -25,7 +25,7 @@ header.rg-header .navbar {
     padding-bottom: 0;
 }
 
-.rg-header .navbar-brand {
+.rg-header .navbar-brand .navbar-brand-logo {
     /*
     for xs devices (360px)
         15px padding-left
@@ -56,6 +56,12 @@ header.rg-header .navbar-toggler .fa-bars {
     background: white;
     color: #333333;
     box-shadow: -7px 4px 4px rgba(0,0,0,0.4);
+    /** playground ** TODO: open as modal coming from right side
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    /** endplayground **/
 }
 .rg-navbar-separator {
     border-bottom: 1px solid #C8C8C8;
@@ -95,7 +101,7 @@ footer.rg-footer {
     margin-bottom: 30px;
 }
 
-.rg-header .rg-logo:first-of-type,
+.rg-logos-container,
 .rg-footer .rg-logo:first-of-type {
     margin-top: 32px;
 }
