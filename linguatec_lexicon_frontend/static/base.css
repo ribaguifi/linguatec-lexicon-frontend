@@ -102,7 +102,7 @@ footer.rg-footer {
 }
 
 .rg-logos-container,
-.rg-footer .rg-logo:first-of-type {
+.rg-footer #collapseLogos {
     margin-top: 32px;
 }
 
