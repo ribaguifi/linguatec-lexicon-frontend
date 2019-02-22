@@ -21,3 +21,15 @@ def retrieve_gramcats():
         next_page = response["next"]
 
     return gramcats
+
+
+def retrieve_near_words(query):
+    api_url = settings.LINGUATEC_LEXICON_API_URL
+    client = coreapi.Client()
+    schema = client.get(api_url)
+    querystring_args = {'q': query}
+    url = schema['words'] + 'near/?' + urllib.parse.urlencode(querystring_args)
+    response = client.get(url)
+    results = response["results"]
+
+    return results
