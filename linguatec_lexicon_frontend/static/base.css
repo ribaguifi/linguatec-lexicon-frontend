@@ -237,4 +237,8 @@ footer.rg-footer {
     .home .rg-main .rg-search #button-search {
         background: #fc565b;
     }
+
+    .rg-search-results {
+        padding-left: 6rem;
+    }
 }
