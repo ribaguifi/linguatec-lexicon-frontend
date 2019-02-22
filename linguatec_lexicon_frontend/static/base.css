@@ -213,6 +213,14 @@ footer.rg-footer {
         background: white;
     }
 
+    .home .rg-header {
+        display: none;
+    }
+
+    .home .rg-main {
+        margin-top: 4rem;
+    }
+
     #aragonarioLogo {
         height: 127px;
         background: url("aragonario-color.svg") no-repeat;
