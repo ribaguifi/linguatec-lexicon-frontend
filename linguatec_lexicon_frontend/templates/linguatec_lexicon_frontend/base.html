@@ -67,7 +67,7 @@
         </div>
     </header>
 
-    <main class="container-fluid rg-main">
+    <main class="{% block mainclass %}container-fluid{% endblock %} rg-main">
         {% block content %}
 
         <div class="col-12 col-md-7 ml-md-5">
