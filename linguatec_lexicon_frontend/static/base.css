@@ -241,4 +241,8 @@ footer.rg-footer {
     .rg-search-results {
         padding-left: 6rem;
     }
+
+    .home .rg-navbar-separator {
+        display: none;
+    }
 }
