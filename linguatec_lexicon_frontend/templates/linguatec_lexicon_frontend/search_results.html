@@ -60,6 +60,20 @@
         </div>
     </article>
     <div class="rg-word-separator"></div>
+    {% empty %}
+    <div class="no-results">
+        <p class="pl-3"><span class="fas fa-frown fa-2x"></span> No se ha encontrado esta palabra.</p>
+        {% if near_words %}
+        <p>Te listamos las palabras más cercanas lexicográficamente:</p>
+        <div class="row near-words">
+            {% for word in near_words %}
+            <div class="col-3">
+                <a href="{{ word.link }}{# TODO TODO #}">{{ word.term }}</a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
     {% endfor %}
 </div>
 {% endblock %}
