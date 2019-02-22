@@ -11,18 +11,19 @@
             src="{% static 'aragonario-darkgray.svg' %}" />
     </div>
 
-    {{ block.super }}
+    <div class="col-md-7">
+        {% include "linguatec_lexicon_frontend/components/search-tools.html" %}
+
+        <div class="d-none d-md-block navbar-light">
+            <div class="navbar-nav">
+                {% include "linguatec_lexicon_frontend/components/external-links.html" with navbar=True %}
+                {% include "linguatec_lexicon_frontend/components/navbar-menu.html" %}
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="row text-center align-items-end external-links mt-5">
-    <div class="col">
-        <img src="{% static 'logo-lenguas-de-aragon-white.svg' %}" alt="logotipo Lenguas de Aragón"
-            class="mb-3" /><br />
-        <a class="ref-external" href="http://www.lenguasdearagon.org">lenguasdearagon.org</a>
-    </div>
-    <div class="col">
-        {# TODO: https://gitlab.com/linguatec/linguatec-lexicon-frontend/issues/13 #}
-        <a class="ref-external" href="#TODO">Traductor Automático</a>
-    </div>
+<div class="row text-center align-items-end external-links mt-5 d-md-none">
+    {% include "linguatec_lexicon_frontend/components/external-links.html" %}
 </div>
 {% endblock %}

@@ -49,17 +49,7 @@
                     <i class="fas fa-times"></i>
                 </button>
                 <div class="rg-navbar-separator"></div>
-                {% for menugroup in  menu %}
-                {% for navitem in  menugroup %}
-                <div class="nav-item {% if navitem.active %}active{% endif %}">
-                    <a class="nav-link" href="{{ navitem.url }}">{{ navitem.name }}</a>
-                    {% if navitem.active %}
-                    <span class="sr-only">(current)</span>
-                    {% endif %}
-                </div>
-                {% endfor %}
-                <div class="rg-navbar-separator"></div>
-                {% endfor %}
+                {% include "linguatec_lexicon_frontend/components/navbar-menu.html" %}
                 <div class="rg-logos-container">
                     <div class="rg-logo">
                         <img class="img-fluid" alt="INTERREG POCTEFA LINGUATEC"
@@ -79,20 +69,10 @@
 
     <main class="container rg-main">
         {% block content %}
-        {% block search-tools %}
-        <div class="col-md-7">
-            <form action="{% url 'search' %}">
-                <div class="input-group rg-search">
-                    <input id="input-search" class="form-control" name="q" type="text" placeholder="{{ query }}">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit" id="button-search"><i
-                                class="fas fa-search"></i></button>
-                    </div>
 
-                </div>
-            </form>
+        <div class="col-md-7">
+            {% include "linguatec_lexicon_frontend/components/search-tools.html" %}
         </div>
-        {% endblock %}
         {% endblock %}
     </main>
 
