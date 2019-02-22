@@ -1,0 +1,11 @@
+{% for menugroup in  menu %}
+    {% for navitem in  menugroup %}
+    <div class="nav-item {% if navitem.active %}active{% endif %}">
+        <a class="nav-link" href="{{ navitem.url }}">{{ navitem.name }}</a>
+        {% if navitem.active %}
+        <span class="sr-only">(current)</span>
+        {% endif %}
+    </div>
+    {% endfor %}
+    <div class="rg-navbar-separator"></div>
+{% endfor %}

@@ -52,11 +52,36 @@ header.rg-header .navbar-toggler .fa-bars {
     color: #333333;
 }
 
+.rg-header .navbar-collapse.collapsing {
+    position: initial;
+}
+
+.rg-header .navbar-collapse.collapsing .rg-navbar-content {
+    transition: none;
+}
+/* TODO menu transition right 0.35s ease;
+.rg-header .navbar-collapse {
+
+}
+
+.rg-header .collapse:not(.show) {
+    display: block;
+}
+
+.rg-header .collapse:not(.show) .rg-navbar-content {
+    right: -100%;
+    height: 0;
+}
+
+.show .rg-navbar-content {
+    height: auto;
+}*/
+
 .rg-navbar-content {
     background: white;
     color: #333333;
     box-shadow: -7px 4px 4px rgba(0,0,0,0.4);
-    /** playground ** TODO: open as modal coming from right side
+    /** playground **/
     position: absolute;
     top: 0;
     right: 0;
@@ -102,7 +127,7 @@ footer.rg-footer {
 }
 
 .rg-logos-container,
-.rg-footer .rg-logo:first-of-type {
+.rg-footer #collapseLogos {
     margin-top: 32px;
 }
 
@@ -205,4 +230,44 @@ footer.rg-footer {
     margin-left: 6px;
     width: 32px;
     height: 2px;
+}
+
+/** tablet rules **/
+@media (min-width: 768px) {
+    body.home {
+        background: white;
+    }
+
+    .home .rg-header {
+        display: none;
+    }
+
+    .home .rg-main {
+        margin-top: 4rem;
+    }
+
+    #aragonarioLogo {
+        height: 127px;
+        background: url("aragonario-color.svg") no-repeat;
+    }
+
+    .rg-search {
+        margin-top: 0px;
+    }
+
+    .home .rg-main .rg-search #input-search {
+        background: #f0f0f0;
+    }
+
+    .home .rg-main .rg-search #button-search {
+        background: #fc565b;
+    }
+
+    .rg-search-results {
+        padding-left: 6rem;
+    }
+
+    .home .rg-navbar-separator {
+        display: none;
+    }
 }

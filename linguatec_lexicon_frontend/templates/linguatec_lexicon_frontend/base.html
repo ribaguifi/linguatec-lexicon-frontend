@@ -41,25 +41,15 @@
         <div class="rg-header-bottom"></div>
         <!-- navbar-content -->
         <div class="row collapse navbar-collapse navbar-light" id="navbarSupportedContent">
-            <div class="col-3"></div>
-            <div class="col-9 navbar-nav rg-navbar-content px-3">
+            <div class="col"></div>
+            <div class="col-9 col-md-3 navbar-nav rg-navbar-content px-3">
                 <button class="text-left navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <i class="fas fa-times"></i>
                 </button>
                 <div class="rg-navbar-separator"></div>
-                {% for menugroup in  menu %}
-                {% for navitem in  menugroup %}
-                <div class="nav-item {% if navitem.active %}active{% endif %}">
-                    <a class="nav-link" href="{{ navitem.url }}">{{ navitem.name }}</a>
-                    {% if navitem.active %}
-                    <span class="sr-only">(current)</span>
-                    {% endif %}
-                </div>
-                {% endfor %}
-                <div class="rg-navbar-separator"></div>
-                {% endfor %}
+                {% include "linguatec_lexicon_frontend/components/navbar-menu.html" %}
                 <div class="rg-logos-container">
                     <div class="rg-logo">
                         <img class="img-fluid" alt="INTERREG POCTEFA LINGUATEC"
@@ -77,21 +67,12 @@
         </div>
     </header>
 
-    <main class="container rg-main">
+    <main class="{% block mainclass %}container-fluid{% endblock %} rg-main">
         {% block content %}
-        {% block search-tools %}
-        <form action="{% url 'search' %}">
-            <div class="input-group rg-search">
 
-                <input id="input-search" class="form-control" name="q" type="text" placeholder="{{ query }}">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit" id="button-search"><i
-                            class="fas fa-search"></i></button>
-                </div>
-
-            </div>
-        </form>
-        {% endblock %}
+        <div class="col-12 col-md-7 ml-md-5">
+            {% include "linguatec_lexicon_frontend/components/search-tools.html" %}
+        </div>
         {% endblock %}
     </main>
 
@@ -107,14 +88,14 @@
             </div>
         </div>
         <div class="row text-center collapse" id="collapseLogos">
-            <div class="col-12 rg-logo">
+            <div class="col-12 col-md-4 rg-logo">
                 <img class="img-fluid" alt="INTERREG POCTEFA LINGUATEC"
                     src="{% static 'logo-interreg-poctefa-RGB-LINGUATEC.svg' %}" />
             </div>
-            <div class="col-12 rg-logo">
+            <div class="col-12 col-md-4 rg-logo">
                 <img class="img-fluid" alt="Turismo de Aragón" src="{% static 'logo-aragon-turismo-wide.svg' %}" />
             </div>
-            <div class="col-12 rg-logo">
+            <div class="col-12 col-md-4 rg-logo">
                 <img class="img-fluid" alt="Gobierno de Aragón" src="{% static 'logo-gobierno-aragon.svg' %}" />
             </div>
         </div>
