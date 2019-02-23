@@ -232,6 +232,11 @@ footer.rg-footer {
     height: 2px;
 }
 
+.near-words a {
+    color: #333333;
+    font-weight: bold;
+}
+
 /** tablet rules **/
 @media (min-width: 768px) {
     body.home {

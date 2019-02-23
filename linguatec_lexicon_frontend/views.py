@@ -7,6 +7,8 @@ from django.template.response import TemplateResponse
 from django.views.generic.base import TemplateView
 from django.urls import reverse, NoReverseMatch
 
+from linguatec_lexicon_frontend import utils
+
 
 class MenuItem(object):
     name = ''
@@ -77,10 +79,32 @@ class SearchView(LinguatecBaseView):
             url = schema['words'] + 'search/?' + urllib.parse.urlencode(querystring_args)
             response = client.get(url)
             results = response["results"]
-
             context.update({
                 'query': query,
                 'results': results,
             })
 
+            if response["count"] == 0:
+                context["near_words"] = utils.retrieve_near_words(query)
+
         return TemplateResponse(request, 'linguatec_lexicon_frontend/search_results.html', context)
+
+
+class WordDetailView(LinguatecBaseView):
+    template_name = "linguatec_lexicon_frontend/search_results.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        pk = kwargs.get('pk')
+        context = self.get_context_data(**kwargs)
+
+        api_url = settings.LINGUATEC_LEXICON_API_URL
+        client = coreapi.Client()
+        schema = client.get(api_url)
+        url = schema['words'] + '{pk}/'.format(pk=pk)
+        word = client.get(url)
+
+        context.update({
+            'results': [word],
+        })
+
+        return TemplateResponse(request, self.template_name, context)
