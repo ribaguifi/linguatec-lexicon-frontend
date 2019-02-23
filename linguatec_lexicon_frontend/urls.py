@@ -10,4 +10,5 @@ urlpatterns = [
     path('politica-de-privacidad/', views.PrivacyPolicy.as_view(), name='privacy-policy'),
     path('dgpl/', RedirectView.as_view(url='http://lenguasdearagon.org'), name='dgpl'),
     path('search/', views.SearchView.as_view(), name='search'),
+    path('words/<int:pk>/', views.WordDetailView.as_view(), name='word-detail')
 ]

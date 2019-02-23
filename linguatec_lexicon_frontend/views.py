@@ -88,3 +88,23 @@ class SearchView(LinguatecBaseView):
                 context["near_words"] = utils.retrieve_near_words(query)
 
         return TemplateResponse(request, 'linguatec_lexicon_frontend/search_results.html', context)
+
+
+class WordDetailView(LinguatecBaseView):
+    template_name = "linguatec_lexicon_frontend/search_results.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        pk = kwargs.get('pk')
+        context = self.get_context_data(**kwargs)
+
+        api_url = settings.LINGUATEC_LEXICON_API_URL
+        client = coreapi.Client()
+        schema = client.get(api_url)
+        url = schema['words'] + '{pk}/'.format(pk=pk)
+        word = client.get(url)
+
+        context.update({
+            'results': [word],
+        })
+
+        return TemplateResponse(request, self.template_name, context)
