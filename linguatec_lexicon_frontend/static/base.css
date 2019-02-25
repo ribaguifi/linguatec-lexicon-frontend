@@ -149,12 +149,7 @@ footer.rg-footer {
 }
 
 .home .rg-search {
-    background: none;
-}
-
-.home .rg-main .rg-search #input-search {
-    background: white;
-    margin-right: 0;
+    background-position: 32px bottom;
 }
 
 .home .external-links a {
@@ -241,6 +236,18 @@ footer.rg-footer {
     font-weight: bold;
 }
 
+/** only xs devices **/
+@media (max-width: 575.98px) {
+    .home .rg-search {
+        background: none;
+    }
+
+    .home .rg-main .rg-search #input-search {
+        background: white;
+        margin-right: 0;
+    }
+}
+
 /** tablet rules **/
 @media (min-width: 768px) {
     body.home {
@@ -278,7 +285,7 @@ footer.rg-footer {
 
     .home .rg-main .navbar-nav .nav-item a::before {
         content: " ";
-        width: 1.5rem;
+        width: 1rem;
         display: inline-block;
         line-height: 1rem;
         position: relative;
