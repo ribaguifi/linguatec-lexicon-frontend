@@ -283,9 +283,13 @@ footer.rg-footer {
 
 /** lg rules **/
 @media (min-width: 992px) {
-    .navbar-light .navbar-nav .nav-link {
+    .rg-header .navbar-light .navbar-nav .nav-link {
         color: white;
         font-size: 0.875rem;
+    }
+
+    #aragonarioLogo.col-lg-4 {
+        max-width: 300px;
     }
 
     footer.rg-footer {
