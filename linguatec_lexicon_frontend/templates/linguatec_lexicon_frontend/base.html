@@ -26,7 +26,7 @@
     <header class="container-fluid rg-header">
         <div class="rg-header-container row">
             <div class="rg-header-content col-12">
-                <nav class="navbar navbar-expand-lg navbar-light">
+                <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
                     <div class="navbar-brand">
                         {% block branding %}{% endblock %}
                     </div>
@@ -35,6 +35,9 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-bars"></i>
                     </button>
+                    <div class="navbar-nav d-none d-lg-flex">
+                        {% include "linguatec_lexicon_frontend/components/navbar-menu.html" with grouplimit=1 %}
+                    </div>
                 </nav>
             </div>
         </div>

@@ -277,3 +277,11 @@ footer.rg-footer {
         display: none;
     }
 }
+
+/** lg rules **/
+@media (min-width: 992px) {
+    .navbar-light .navbar-nav .nav-link {
+        color: white;
+        font-size: 0.875rem;
+    }
+}
