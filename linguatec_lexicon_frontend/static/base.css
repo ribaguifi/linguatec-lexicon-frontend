@@ -160,6 +160,7 @@ footer.rg-footer {
 .home .external-links a {
     background: #d9484d;
     color: white;
+    font-size: 0.8125rem;
     padding: 0.5rem 1rem;
 }
 
