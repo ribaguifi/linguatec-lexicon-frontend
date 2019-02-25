@@ -292,6 +292,19 @@ footer.rg-footer {
         max-width: 300px;
     }
 
+    .rg-main {
+        /** TODO test in different devices and browsers **/
+        /*.fixed-bottom {*/
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1030;
+        /*}*/
+        margin-bottom: calc(150px + 3rem); /** footer size + desired margin **/
+        z-index: 1040;
+    }
+
     footer.rg-footer {
         box-shadow: none;
     }
