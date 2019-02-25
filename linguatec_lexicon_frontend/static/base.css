@@ -321,7 +321,7 @@ footer.rg-footer {
         max-width: 300px;
     }
 
-    .rg-main {
+    .home .rg-main {
         /** TODO test in different devices and browsers **/
         /*.fixed-bottom {*/
         position: fixed;
