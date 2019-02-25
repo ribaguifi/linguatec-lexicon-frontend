@@ -272,6 +272,28 @@ footer.rg-footer {
         background: #fc565b;
     }
 
+    .home .rg-main .navbar-nav .nav-item {
+        padding-left: 2rem;
+    }
+
+    .home .rg-main .navbar-nav .nav-item a::before {
+        content: " ";
+        width: 1.5rem;
+        display: inline-block;
+        line-height: 1rem;
+        position: relative;
+        bottom: -0.5rem;
+        left: 0.5rem;
+    }
+
+    .home .rg-main .navbar-nav .nav-item:hover a::before {
+        border-bottom: 2px solid #fc565b;
+    }
+
+    .home .rg-main .navbar-nav .nav-item a.nav-link:hover {
+        color: #fc565b;
+    }
+
     .rg-search-results {
         padding-left: 6rem;
     }
