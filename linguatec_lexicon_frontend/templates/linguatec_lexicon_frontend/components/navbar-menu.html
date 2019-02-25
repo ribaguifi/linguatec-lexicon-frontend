@@ -1,4 +1,5 @@
 {% for menugroup in  menu %}
+    {% if not grouplimit or grouplimit > forloop.counter0 %}
     {% for navitem in  menugroup %}
     <div class="nav-item {% if navitem.active %}active{% endif %}">
         <a class="nav-link" href="{{ navitem.url }}">{{ navitem.name }}</a>
@@ -8,4 +9,5 @@
     </div>
     {% endfor %}
     <div class="rg-navbar-separator"></div>
+    {% endif %}
 {% endfor %}

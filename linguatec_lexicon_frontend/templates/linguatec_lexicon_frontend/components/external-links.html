@@ -1,11 +1,13 @@
 {% load static %}
 <div class="{% if navbar %}nav-item{% else %}col{% endif %}">
-    {% if not navbar %}
-    <img src="{% static 'logo-lenguas-de-aragon-white.svg' %}" alt="logotipo Lenguas de Aragón" class="mb-3" /><br />
-    {% endif %}
-    <a class="{% if navbar %}nav-link {% endif %}ref-external" href="http://www.lenguasdearagon.org">Lenguas de Aragón</a>
+    <a class="{% if navbar %}nav-link {% endif %}ref-external" href="http://www.lenguasdearagon.org">
+        {% if not navbar %}
+        <img src="{% static 'logo-lenguas-de-aragon-white.svg' %}" alt="logotipo Lenguas de Aragón" class="mb-3 mb-lg-0" /><br />
+        {% endif %}
+        <span>Lenguas de Aragón</span>
+    </a>
 </div>
 <div class="{% if navbar %}nav-item{% else %}col{% endif %}">
     {# TODO: https://gitlab.com/linguatec/linguatec-lexicon-frontend/issues/13 #}
-    <a class="{% if navbar %}nav-link {% endif %}ref-external" href="#TODO">Traductor Automático</a>
+    <a class="{% if navbar %}nav-link {% endif %}ref-external" href="#TODO"><span>Traductor Automático</span></a>
 </div>

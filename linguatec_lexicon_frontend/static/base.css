@@ -149,18 +149,17 @@ footer.rg-footer {
 }
 
 .home .rg-search {
-    background: none;
-}
-
-.home .rg-main .rg-search #input-search {
-    background: white;
-    margin-right: 0;
+    background-position: 32px bottom;
 }
 
 .home .external-links a {
+    font-size: 0.8125rem;
+    padding: 0.5rem 1rem;
+}
+
+.home .external-links a span {
     background: #d9484d;
     color: white;
-    padding: 0.5rem 1rem;
 }
 
 .rg-search #input-search {
@@ -237,6 +236,18 @@ footer.rg-footer {
     font-weight: bold;
 }
 
+/** only xs devices **/
+@media (max-width: 575.98px) {
+    .home .rg-search {
+        background: none;
+    }
+
+    .home .rg-main .rg-search #input-search {
+        background: white;
+        margin-right: 0;
+    }
+}
+
 /** tablet rules **/
 @media (min-width: 768px) {
     body.home {
@@ -268,11 +279,102 @@ footer.rg-footer {
         background: #fc565b;
     }
 
+    .home .rg-main .navbar-nav .nav-item {
+        padding-left: 2rem;
+    }
+
+    .home .rg-main .navbar-nav .nav-item a::before {
+        content: " ";
+        width: 1rem;
+        display: inline-block;
+        line-height: 1rem;
+        position: relative;
+        bottom: -0.5rem;
+        left: 0.5rem;
+    }
+
+    .home .rg-main .navbar-nav .nav-item:hover a::before {
+        border-bottom: 2px solid #fc565b;
+    }
+
+    .home .rg-main .navbar-nav .nav-item a.nav-link:hover {
+        color: #fc565b;
+    }
+
     .rg-search-results {
         padding-left: 6rem;
     }
 
     .home .rg-navbar-separator {
         display: none;
+    }
+}
+
+/** lg rules **/
+@media (min-width: 992px) {
+    .rg-header .navbar-light .navbar-nav .nav-link {
+        color: white;
+        font-size: 0.875rem;
+    }
+
+    #aragonarioLogo.col-lg-4 {
+        max-width: 300px;
+    }
+
+    .home .rg-main {
+        /** TODO test in different devices and browsers **/
+        /*.fixed-bottom {*/
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1030;
+        /*}*/
+        margin-bottom: calc(150px + 3rem); /** footer size + desired margin **/
+        z-index: 1040;
+    }
+
+    footer.rg-footer {
+        box-shadow: none;
+    }
+
+    .footer-lg-separator {
+        background: #fc565b;
+        height: 2px;
+    }
+
+    .footer-lg-external-links {
+        margin-top: 32px;
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-lg-external-links a {
+        background: #fc565b;
+        display: inline-block;
+        color: white;
+        font-size: 0.75rem;
+        padding: 0 1rem;
+    }
+
+    .footer-lg-external-links a:first-child {
+        margin-right: 1rem;
+    }
+
+    .footer-lg-external-links a span {
+        display: inline-block;
+        padding: 0.5rem 0;
+    }
+
+    .footer-lg-external-links img {
+        padding-right: 1rem;
+    }
+
+    .footer-lg-nav {
+        margin-left: 1rem;
+    }
+    .footer-lg-nav a {
+        color: black;
+        font-size: 0.75rem;
+        font-weight: bold;
     }
 }

@@ -28,6 +28,7 @@ class LinguatecBaseView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['menu'] = self.generate_menu_items()
+        context['menu_footer_lg'] = self.generate_menu_footer_lg_items()
         return context
 
     def generate_menu_items(self):
@@ -48,6 +49,14 @@ class LinguatecBaseView(TemplateView):
 
         return urls  # menu
 
+    def generate_menu_footer_lg_items(self):
+        urls = (
+            MenuItem('Aviso legal', 'legal-notice'),
+            MenuItem('Política de privacidad', 'privacy-policy'),
+            MenuItem('Contacto', 'contact'),
+            MenuItem('Ayuda', 'help'),
+        )
+        return urls
 
 class HomeView(LinguatecBaseView):
     template_name = 'linguatec_lexicon_frontend/home.html'
@@ -76,7 +85,8 @@ class SearchView(LinguatecBaseView):
             client = coreapi.Client()
             schema = client.get(api_url)
             querystring_args = {'q': query}
-            url = schema['words'] + 'search/?' + urllib.parse.urlencode(querystring_args)
+            url = schema['words'] + 'search/?' + \
+                urllib.parse.urlencode(querystring_args)
             response = client.get(url)
             results = response["results"]
             context.update({

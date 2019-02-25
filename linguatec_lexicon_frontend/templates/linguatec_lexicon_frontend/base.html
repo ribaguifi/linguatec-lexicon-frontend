@@ -26,7 +26,7 @@
     <header class="container-fluid rg-header">
         <div class="rg-header-container row">
             <div class="rg-header-content col-12">
-                <nav class="navbar navbar-expand-lg navbar-light">
+                <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
                     <div class="navbar-brand">
                         {% block branding %}{% endblock %}
                     </div>
@@ -35,6 +35,9 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-bars"></i>
                     </button>
+                    <div class="navbar-nav d-none d-lg-flex">
+                        {% include "linguatec_lexicon_frontend/components/navbar-menu.html" with grouplimit=1 %}
+                    </div>
                 </nav>
             </div>
         </div>
@@ -70,7 +73,7 @@
     <main class="{% block mainclass %}container-fluid{% endblock %} rg-main">
         {% block content %}
 
-        <div class="col-12 col-md-7 ml-md-5">
+        <div class="col-12 col-md-7 col-lg-5 ml-md-5">
             {% include "linguatec_lexicon_frontend/components/search-tools.html" %}
         </div>
         {% endblock %}
@@ -78,7 +81,7 @@
 
     {% block footer %}
     <footer class="container-fluid fixed-bottom rg-footer">
-        <div class="row text-center" id="collapse_button_container">
+        <div class="row text-center d-lg-none" id="collapse_button_container">
             <div class="col-12">
                 <a id="footer_collapse_button" class="collapsed" data-toggle="collapse" href="#collapseLogos"
                     role="button" aria-expanded="false" aria-controls="collapseLogos">
@@ -87,16 +90,53 @@
                 </a>
             </div>
         </div>
-        <div class="row text-center collapse" id="collapseLogos">
-            <div class="col-12 col-md-4 rg-logo">
-                <img class="img-fluid" alt="INTERREG POCTEFA LINGUATEC"
-                    src="{% static 'logo-interreg-poctefa-RGB-LINGUATEC.svg' %}" />
+        <div class="row d-none d-lg-block">
+            <div class="col-12">
+                <div class="footer-lg-separator"></div>
             </div>
-            <div class="col-12 col-md-4 rg-logo">
-                <img class="img-fluid" alt="Turismo de Aragón" src="{% static 'logo-aragon-turismo-wide.svg' %}" />
+        </div>
+        <div class="row justify-content-center">
+            {% block footernav %}
+            <div class="d-none d-lg-block col-lg-6">
+                <div class="row">
+                    <div class="col-12 footer-lg-external-links">
+                        <a class="ref-external" href="http://www.lenguasdearagon.org">
+                            <img src="{% static 'logo-lenguas-de-aragon-white.svg' %}" alt="logotipo Lenguas de Aragón" />
+                            <span>Lenguas de Aragón</span>
+                        </a>
+                        <a class="ref-external" href="#TODO"><span>Traductor Automático</span></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 footer-lg-nav">
+                        <ul class="list-inline">
+                            {% for navitem in menu_footer_lg %}
+                            <li class="list-inline-item">
+                                <a href="{{ navitem.url }}">{{ navitem.name }}</a>
+                            </li>
+                            {% if not forloop.last %}
+                            <li class="list-inline-item">/</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="col-12 col-md-4 rg-logo">
-                <img class="img-fluid" alt="Gobierno de Aragón" src="{% static 'logo-gobierno-aragon.svg' %}" />
+            {% endblock %}
+            <div class="col-12 col-lg-6">
+                <div class="row text-center collapse d-lg-flex" id="collapseLogos">
+                    <div class="col-12 col-md-4 rg-logo">
+                        <img class="img-fluid" alt="INTERREG POCTEFA LINGUATEC"
+                            src="{% static 'logo-interreg-poctefa-RGB-LINGUATEC.svg' %}" />
+                    </div>
+                    <div class="col-12 col-md-4 rg-logo">
+                        <img class="img-fluid" alt="Turismo de Aragón"
+                            src="{% static 'logo-aragon-turismo-wide.svg' %}" />
+                    </div>
+                    <div class="col-12 col-md-4 rg-logo">
+                        <img class="img-fluid" alt="Gobierno de Aragón" src="{% static 'logo-gobierno-aragon.svg' %}" />
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
