@@ -158,10 +158,13 @@ footer.rg-footer {
 }
 
 .home .external-links a {
-    background: #d9484d;
-    color: white;
     font-size: 0.8125rem;
     padding: 0.5rem 1rem;
+}
+
+.home .external-links a span {
+    background: #d9484d;
+    color: white;
 }
 
 .rg-search #input-search {
@@ -283,5 +286,49 @@ footer.rg-footer {
     .navbar-light .navbar-nav .nav-link {
         color: white;
         font-size: 0.875rem;
+    }
+
+    footer.rg-footer {
+        box-shadow: none;
+    }
+
+    .footer-lg-separator {
+        background: #fc565b;
+        height: 2px;
+    }
+
+    .footer-lg-external-links {
+        margin-top: 32px;
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-lg-external-links a {
+        background: #fc565b;
+        display: inline-block;
+        color: white;
+        font-size: 0.75rem;
+        padding: 0 1rem;
+    }
+
+    .footer-lg-external-links a:first-child {
+        margin-right: 1rem;
+    }
+
+    .footer-lg-external-links a span {
+        display: inline-block;
+        padding: 0.5rem 0;
+    }
+
+    .footer-lg-external-links img {
+        padding-right: 1rem;
+    }
+
+    .footer-lg-nav {
+        margin-left: 1rem;
+    }
+    .footer-lg-nav a {
+        color: black;
+        font-size: 0.75rem;
+        font-weight: bold;
     }
 }
