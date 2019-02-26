@@ -1,22 +1,24 @@
-{% extends "linguatec_lexicon_frontend/base_site.html" %}
+{% extends "linguatec_lexicon_frontend/base_static_pages.html" %}
+{% load static %}
+
 {% block content %}
+<div class="col-12">
+    <h1>Contacto</h1>
 
-<h1>Contacto</h1>
+    <p>Para cualquier consulta:</p>
+    <address>
+        <strong>Dirección General de Política Lingüistica</strong><br />
+        Avda. Ranillas 5 D<br />
+        50071 Zaragoza
+    </address>
 
-<p>Para cualquier consulta:</p>
-<address>
-<strong>Dirección General de Política Lingüistica</strong><br/>
-Avda. Ranillas 5 D<br/>
-50071  Zaragoza
-</address>
+    <p>
+        Tfno: <a href="tel:+34 976 715 465"></a>976 715 465<br />
+        Email: <a href="mailto:dgpollinguistica@aragon.es">dgpollinguistica@aragon.es</a>
+    </p>
 
-<p>
-Tfno: <a href="tel:+34 976 715 465"></a>976 715 465<br/>
-Email: <a href="mailto:dgpollinguistica@aragon.es">dgpollinguistica@aragon.es</a>
-</p>
-
-<div class="rg-contact-map">
-    <!-- TODO include map -->
+    <div class="rg-contact-map">
+        <!-- TODO include map -->
+    </div>
 </div>
-
 {% endblock %}
