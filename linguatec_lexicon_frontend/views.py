@@ -41,13 +41,12 @@ class LinguatecBaseView(TemplateView):
             (
                 MenuItem('Inicio', 'home'),
                 MenuItem('Proyecto Linguatec', 'linguatec-project'),
-                MenuItem('Ayuda', 'help'),
                 MenuItem('Contacto', 'contact'),
+                MenuItem('Ayuda', 'help'),
             ),
             (
                 MenuItem('Aviso legal', 'legal-notice'),
                 MenuItem('Política de privacidad', 'privacy-policy'),
-                MenuItem('Dirección General de Política Lingüística', 'dgpl'),
             ),
         )
         # TODO mark item as active (using url name)
@@ -63,8 +62,13 @@ class LinguatecBaseView(TemplateView):
         )
         return urls
 
+
 class HomeView(LinguatecBaseView):
     template_name = 'linguatec_lexicon_frontend/home.html'
+
+
+class HelpView(LinguatecBaseView):
+    template_name = 'linguatec_lexicon_frontend/help.html'
 
 
 class ContactView(LinguatecBaseView):
@@ -73,6 +77,10 @@ class ContactView(LinguatecBaseView):
 
 class LegalNoticeView(LinguatecBaseView):
     template_name = "linguatec_lexicon_frontend/legal-notice.html"
+
+
+class LinguatecProjectView(LinguatecBaseView):
+    template_name = "linguatec_lexicon_frontend/linguatec-project.html"
 
 
 class PrivacyPolicy(LinguatecBaseView):

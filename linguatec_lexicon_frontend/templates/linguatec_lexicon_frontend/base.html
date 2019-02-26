@@ -94,7 +94,7 @@
     </main>
 
     {% block footer %}
-    <footer class="container-fluid fixed-bottom rg-footer">
+    <footer class="container-fluid {% block footerclass %}fixed-bottom{% endblock %} rg-footer">
         <div class="row text-center d-lg-none" id="collapse_button_container">
             <div class="col-12">
                 <a id="footer_collapse_button" class="collapsed" data-toggle="collapse" href="#collapseLogos"
@@ -114,12 +114,12 @@
             <div class="d-none d-lg-block col-lg-6">
                 <div class="row">
                     <div class="col-12 footer-lg-external-links">
-                        <a class="ref-external" href="http://www.lenguasdearagon.org">
+                        <a class="ref-external" href="{% url 'lenguas-de-aragon' %}">
                             <img src="{% static 'logo-lenguas-de-aragon-white.svg' %}"
                                 alt="logotipo Lenguas de Aragón" />
                             <span>Lenguas de Aragón</span>
                         </a>
-                        <a class="ref-external" href="#TODO"><span>Traductor Automático</span></a>
+                        <a class="ref-external" href="{% url 'traductor' %}"><span>Traductor Automático</span></a>
                     </div>
                 </div>
                 <div class="row">
