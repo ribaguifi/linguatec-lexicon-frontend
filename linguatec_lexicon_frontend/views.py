@@ -63,6 +63,7 @@ class LinguatecBaseView(TemplateView):
         )
         return urls
 
+
 class HomeView(LinguatecBaseView):
     template_name = 'linguatec_lexicon_frontend/home.html'
 
@@ -73,6 +74,10 @@ class ContactView(LinguatecBaseView):
 
 class LegalNoticeView(LinguatecBaseView):
     template_name = "linguatec_lexicon_frontend/legal-notice.html"
+
+
+class LinguatecProjectView(LinguatecBaseView):
+    template_name = "linguatec_lexicon_frontend/linguatec-project.html"
 
 
 class PrivacyPolicy(LinguatecBaseView):
