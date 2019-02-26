@@ -236,6 +236,23 @@ footer.rg-footer {
     font-weight: bold;
 }
 
+/** static content pages styles **/
+.rg-creative-commons {
+    background: #2b2b2b;
+    display: inline-block;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.rg-creative-commons img {
+    width: 62px;
+    height: 62px;
+    margin-left: 0.5rem;
+}
+
+.rg-creative-commons img:first-child {
+    margin-left: 0;
+}
+
 /** only xs devices **/
 @media (max-width: 575.98px) {
     .home .rg-search {
