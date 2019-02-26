@@ -47,7 +47,6 @@ class LinguatecBaseView(TemplateView):
             (
                 MenuItem('Aviso legal', 'legal-notice'),
                 MenuItem('Política de privacidad', 'privacy-policy'),
-                MenuItem('Dirección General de Política Lingüística', 'dgpl'),
             ),
         )
         # TODO mark item as active (using url name)
