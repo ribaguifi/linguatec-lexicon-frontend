@@ -29,6 +29,11 @@ class LinguatecBaseView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['menu'] = self.generate_menu_items()
         context['menu_footer_lg'] = self.generate_menu_footer_lg_items()
+
+        api_url = settings.LINGUATEC_LEXICON_API_URL
+        client = coreapi.Client()
+        schema = client.get(api_url)
+        context['autocomplete_api_url'] = schema['words'] + 'near/'
         return context
 
     def generate_menu_items(self):
