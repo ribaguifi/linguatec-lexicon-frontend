@@ -152,14 +152,16 @@ footer.rg-footer {
     background-position: 32px bottom;
 }
 
-.home .external-links a {
-    font-size: 0.8125rem;
-    padding: 0.5rem 1rem;
+.home .external-links .col {
+    padding-right: 0;
+    padding-left: 0;
 }
 
-.home .external-links a span {
+.home .external-links a.ref-external {
     background: #d9484d;
     color: white;
+    font-size: 0.8125rem;
+    padding: 0.5rem 1rem;
 }
 
 .rg-search #input-search {
@@ -234,6 +236,15 @@ footer.rg-footer {
 .near-words a {
     color: #333333;
     font-weight: bold;
+}
+
+a.ref-external::after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f35d";
+    display: inline-block;
+    padding-left: 3px;
+    vertical-align: text-bottom;
+    font-weight: 900;
 }
 
 /** static content pages styles **/

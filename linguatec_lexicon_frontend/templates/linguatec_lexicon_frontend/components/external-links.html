@@ -1,9 +1,11 @@
 {% load static %}
 <div class="{% if navbar %}nav-item{% else %}col{% endif %}">
-    <a class="{% if navbar %}nav-link {% endif %}ref-external" href="{% url 'lenguas-de-aragon' %}">
-        {% if not navbar %}
+    {% if not navbar %}
+    <a href="{% url 'lenguas-de-aragon' %}">
         <img src="{% static 'logo-lenguas-de-aragon-white.svg' %}" alt="logotipo Lenguas de Aragón" class="mb-3 mb-lg-0" /><br />
-        {% endif %}
+    </a>
+    {% endif %}
+    <a class="{% if navbar %}nav-link {% endif %}ref-external" href="{% url 'lenguas-de-aragon' %}">
         <span>Lenguas de Aragón</span>
     </a>
 </div>
