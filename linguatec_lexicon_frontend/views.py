@@ -41,8 +41,8 @@ class LinguatecBaseView(TemplateView):
             (
                 MenuItem('Inicio', 'home'),
                 MenuItem('Proyecto Linguatec', 'linguatec-project'),
-                MenuItem('Ayuda', 'help'),
                 MenuItem('Contacto', 'contact'),
+                MenuItem('Ayuda', 'help'),
             ),
             (
                 MenuItem('Aviso legal', 'legal-notice'),
@@ -66,6 +66,10 @@ class LinguatecBaseView(TemplateView):
 
 class HomeView(LinguatecBaseView):
     template_name = 'linguatec_lexicon_frontend/home.html'
+
+
+class HelpView(LinguatecBaseView):
+    template_name = 'linguatec_lexicon_frontend/help.html'
 
 
 class ContactView(LinguatecBaseView):
