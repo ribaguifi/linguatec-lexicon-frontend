@@ -397,10 +397,15 @@ a.ref-external::after {
         right: 0;
         bottom: 0;
         left: 0;
-        z-index: 1030;
+        /*z-index: 1030;*/
         /*}*/
         margin-bottom: calc(150px + 3rem); /** footer size + desired margin **/
         z-index: 1040;
+    }
+
+    .home .ui-widget.ui-widget-content.ui-autocomplete {
+        /*background: #f0f0f0;*/
+        z-index: 1050;
     }
 
     .rg-search-results {
