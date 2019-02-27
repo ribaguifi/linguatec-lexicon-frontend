@@ -300,6 +300,14 @@ a.ref-external::after {
         background: url("aragonario-color.svg") no-repeat;
     }
 
+    .rg-header .navbar-brand .navbar-brand-logo {
+        width: 350px;
+    }
+
+    .rg-header-bottom {
+        background-position-x: calc(350px * 53/300);
+    }
+
     .rg-search {
         margin-top: 0px;
     }
