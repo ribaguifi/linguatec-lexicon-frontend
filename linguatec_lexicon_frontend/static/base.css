@@ -222,7 +222,6 @@ footer.rg-footer {
 
 .rg-search-results .rg-entry-conjugation {
     font-weight: normal;
-    margin-bottom: 1rem;
 }
 
 .rg-search-results .rg-entry-conjugation .rg-verbal-mood {
@@ -246,6 +245,7 @@ footer.rg-footer {
 
 .rg-word-separator {
     background:#e8e8e8;
+    margin-top: 1rem;
     margin-bottom: 1.5rem;
     margin-left: 6px;
     width: 32px;
