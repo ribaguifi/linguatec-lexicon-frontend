@@ -228,6 +228,26 @@ footer.rg-footer {
 
 .rg-search-results .rg-entry-conjugation {
     font-weight: normal;
+    margin-bottom: 1rem;
+}
+
+.rg-search-results .rg-entry-conjugation .rg-verbal-mood {
+    background: #FC565B;
+    display: inline-block;
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    padding: 0 15px;
+}
+
+.rg-search-results .rg-entry-conjugation .rg-verbal-tense {
+    background: #c8c8c8;
+    padding-left: 15px;
+}
+
+.rg-search-results .rg-entry-conjugation .rg-verbal-conjugation {
+    background: #f0f0f0;
+    padding-left: 15px;
+    margin-bottom: 0.5rem;
 }
 
 .rg-word-separator {
@@ -381,6 +401,10 @@ a.ref-external::after {
         /*}*/
         margin-bottom: calc(150px + 3rem); /** footer size + desired margin **/
         z-index: 1040;
+    }
+
+    .rg-search-results {
+        padding-bottom: 5rem;
     }
 
     footer.rg-footer {

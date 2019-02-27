@@ -35,14 +35,18 @@
                     {% for mood, tenses in entry.conjugation.conjugation.items %}
                     <div class="row">
                         <div class="col-12">
-                            <h3>{{ mood }}</h3>
+                            <h3 class="rg-verbal-mood">{{ mood }}</h3>
                         </div>
                         {% for tense, values in tenses.items %}
-                        <div class="col-6">
-                            {% if tense %}<h4>{{ tense }}</h4>{% endif %}
-                            {% for value in values %}
-                            {{ value }}<br />
-                            {% endfor %}
+                        <div class="col-6 col-sm-4 col-xl-2">
+                            {% if tense %}<h4 class="rg-verbal-tense">{{ tense }}</h4>{% endif %}
+                            <div class="rg-verbal-conjugation">
+                                <ul class="list-unstyled">
+                                    {% for value in values %}
+                                    <li>{{ value }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
                         {% endfor %}
                     </div>
@@ -51,7 +55,7 @@
                     {# case refer to another verb as conj model #}
                     {% elif entry.conjugation.model %}
                         <span class="rg-entry-keyword">modelo conjugación:</span>
-                        <a href="#TODO"><strong>{{ entry.conjugation.model }}</strong></a>
+                        <strong>{{ entry.conjugation.model }}</strong>
                     {% endif %}
                 </div>
                 {% endif %}
