@@ -98,6 +98,10 @@ header.rg-header .navbar-toggler .fa-bars {
     margin-bottom: calc(42px + 2rem); /** fixed footer height (42px) + real margin */
 }
 
+.home .rg-main #aragonarioLogo img {
+    width: 330px;
+}
+
 footer.rg-footer {
     background: white;
     box-shadow: 0 -2px 4px rgba(0,0,0,0.16);
@@ -265,8 +269,8 @@ a.ref-external::after {
     margin-left: 0;
 }
 
-/** only xs devices **/
-@media (max-width: 575.98px) {
+/** sm and smaller devices **/
+@media (max-width: 767.98px) {
     .home .rg-search {
         background: none;
     }
@@ -294,6 +298,14 @@ a.ref-external::after {
     #aragonarioLogo {
         height: 127px;
         background: url("aragonario-color.svg") no-repeat;
+    }
+
+    .rg-header .navbar-brand .navbar-brand-logo {
+        width: 350px;
+    }
+
+    .rg-header-bottom {
+        background-position-x: 64px;
     }
 
     .rg-search {
@@ -413,5 +425,16 @@ a.ref-external::after {
         color: black;
         font-size: 0.75rem;
         font-weight: bold;
+    }
+}
+
+/** xl rules **/
+@media (min-width: 1200px) {
+    .rg-header .navbar-brand .navbar-brand-logo {
+        width: 528px;
+    }
+
+    .rg-header-bottom {
+        background-position-x: 105px;
     }
 }
