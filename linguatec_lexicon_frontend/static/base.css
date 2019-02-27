@@ -12,22 +12,15 @@ header.rg-header {
 
 .rg-header-bottom {
     background-image: url(header-bg-color.svg);
-    background-position-x: 50px; /* header-bg.width x (53/300) */
+    background-position-x: 38px; /* header-bg.width x (53/300) */
     background-position-y: bottom;
     background-repeat: no-repeat;
     height: 18px;
 }
 
-header.rg-header .navbar {
-    flex-wrap: nowrap;
-    padding-left: 0;
-    padding-right: 0;
-    padding-bottom: 0;
-}
-
 .rg-header .navbar-brand .navbar-brand-logo {
     /*
-    for xs devices (360px)
+    minimum width supported (320px)
         15px padding-left
         16px (1rem) navbar-brand.margin-right
         32px (2rem) navbar-toggler icon
@@ -35,7 +28,8 @@ header.rg-header .navbar {
         ------------------
         78px
     */
-    width: 282px;
+    /*width: 282px;*/
+    width: 240px;
 }
 
 header.rg-header .navbar-toggler {
@@ -289,6 +283,17 @@ a.ref-external::after {
     margin-left: 0;
 }
 
+/** xs devices **/
+@media (max-width: 575.98px) {
+    body {
+        min-width: 320px;
+    }
+    header.rg-header .navbar {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
 /** sm and smaller devices **/
 @media (max-width: 767.98px) {
     .home .rg-search {
@@ -301,7 +306,16 @@ a.ref-external::after {
     }
 }
 
-/** tablet rules **/
+/** sm rules **/
+@media (min-width: 576px) {
+    .rg-header .navbar-brand .navbar-brand-logo {
+        width: 282px;
+    }
+    .rg-header-bottom {
+        background-position-x: 50px;
+}
+
+/** md rules **/
 @media (min-width: 768px) {
     body.home {
         background: white;
