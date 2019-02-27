@@ -98,6 +98,10 @@ header.rg-header .navbar-toggler .fa-bars {
     margin-bottom: calc(42px + 2rem); /** fixed footer height (42px) + real margin */
 }
 
+.home .rg-main #aragonarioLogo img {
+    width: 330px;
+}
+
 footer.rg-footer {
     background: white;
     box-shadow: 0 -2px 4px rgba(0,0,0,0.16);
@@ -265,8 +269,8 @@ a.ref-external::after {
     margin-left: 0;
 }
 
-/** only xs devices **/
-@media (max-width: 575.98px) {
+/** sm and smaller devices **/
+@media (max-width: 767.98px) {
     .home .rg-search {
         background: none;
     }
