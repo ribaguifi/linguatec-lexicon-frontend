@@ -5,7 +5,7 @@ from django.conf import settings
 from django.shortcuts import render
 from django.template.response import TemplateResponse
 from django.views.generic.base import TemplateView
-from django.urls import reverse, NoReverseMatch
+from django.urls import resolve, reverse, NoReverseMatch
 
 from linguatec_lexicon_frontend import utils
 
@@ -15,8 +15,10 @@ class MenuItem(object):
     url = ''
     active = False
 
-    def __init__(self, name=None, url=None, active=False):
+    def __init__(self, name, url, current_url_name=None):
         self.name = name
+        self.url_name = url
+        self.active = (self.url_name == current_url_name)
         try:
             self.url = reverse(url)
         except NoReverseMatch:
@@ -26,30 +28,33 @@ class MenuItem(object):
 class LinguatecBaseView(TemplateView):
 
     def get_context_data(self, **kwargs):
+        # detect active menu-item
+        current_view = resolve(self.request.path_info)
+
         context = super().get_context_data(**kwargs)
-        context['menu'] = self.generate_menu_items()
+        context['menu'] = self.generate_menu_items(current_view.url_name)
         context['menu_footer_lg'] = self.generate_menu_footer_lg_items()
 
         api_url = settings.LINGUATEC_LEXICON_API_URL
         client = coreapi.Client()
         schema = client.get(api_url)
         context['autocomplete_api_url'] = schema['words'] + 'near/'
+
         return context
 
-    def generate_menu_items(self):
+    def generate_menu_items(self, current_url_name):
         urls = (
             (
-                MenuItem('Inicio', 'home'),
-                MenuItem('Proyecto Linguatec', 'linguatec-project'),
-                MenuItem('Contacto', 'contact'),
-                MenuItem('Ayuda', 'help'),
+                MenuItem('Inicio', 'home', current_url_name),
+                MenuItem('Proyecto Linguatec', 'linguatec-project', current_url_name),
+                MenuItem('Contacto', 'contact', current_url_name),
+                MenuItem('Ayuda', 'help', current_url_name),
             ),
             (
-                MenuItem('Aviso legal', 'legal-notice'),
-                MenuItem('Política de privacidad', 'privacy-policy'),
+                MenuItem('Aviso legal', 'legal-notice', current_url_name),
+                MenuItem('Política de privacidad', 'privacy-policy', current_url_name),
             ),
         )
-        # TODO mark item as active (using url name)
 
         return urls  # menu
 

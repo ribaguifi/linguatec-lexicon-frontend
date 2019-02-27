@@ -88,6 +88,7 @@ header.rg-header .navbar-toggler .fa-bars {
     z-index: 9999;
     /** endplayground **/
 }
+
 .rg-navbar-separator {
     border-bottom: 1px solid #C8C8C8;
     margin-right: 15px;
@@ -343,6 +344,10 @@ a.ref-external::after {
     .rg-header .navbar-light .navbar-nav .nav-link {
         color: white;
         font-size: 0.875rem;
+    }
+
+    .rg-header .navbar-light .navbar-nav .active .nav-link {
+        text-decoration: underline;
     }
 
     #aragonarioLogo.col-lg-4 {
