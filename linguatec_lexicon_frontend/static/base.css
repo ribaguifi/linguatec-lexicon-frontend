@@ -305,7 +305,7 @@ a.ref-external::after {
     }
 
     .rg-header-bottom {
-        background-position-x: calc(350px * 53/300);
+        background-position-x: 64px;
     }
 
     .rg-search {
@@ -425,5 +425,16 @@ a.ref-external::after {
         color: black;
         font-size: 0.75rem;
         font-weight: bold;
+    }
+}
+
+/** xl rules **/
+@media (min-width: 1200px) {
+    .rg-header .navbar-brand .navbar-brand-logo {
+        width: 528px;
+    }
+
+    .rg-header-bottom {
+        background-position-x: 105px;
     }
 }
