@@ -2,7 +2,7 @@
     {% if not grouplimit or grouplimit > forloop.counter0 %}
     {% for navitem in  menugroup %}
     <div class="nav-item {% if navitem.active %}active{% endif %}">
-        <a class="nav-link" href="{{ navitem.url }}">{{ navitem.name }}</a>
+        <a class="nav-link" href="{% url navitem.url %}">{{ navitem.name }}</a>
         {% if navitem.active %}
         <span class="sr-only">(current)</span>
         {% endif %}
