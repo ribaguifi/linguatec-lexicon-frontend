@@ -312,6 +312,10 @@ a.ref-external::after {
         padding-left: 2rem;
     }
 
+    .home .rg-main .navbar-nav .nav-item.active {
+        display: none;
+    }
+
     .home .rg-main .navbar-nav .nav-item a::before {
         content: " ";
         width: 1rem;
