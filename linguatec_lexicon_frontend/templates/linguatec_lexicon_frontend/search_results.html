@@ -38,7 +38,7 @@
                             <h3>{{ mood }}</h3>
                         </div>
                         {% for tense, values in tenses.items %}
-                        <div class="col-6">
+                        <div class="col-6 col-sm-4 col-lg-2">
                             {% if tense %}<h4>{{ tense }}</h4>{% endif %}
                             {% for value in values %}
                             {{ value }}<br />
