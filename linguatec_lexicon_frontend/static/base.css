@@ -383,6 +383,10 @@ a.ref-external::after {
         z-index: 1040;
     }
 
+    .rg-search-results {
+        padding-bottom: 5rem;
+    }
+
     footer.rg-footer {
         box-shadow: none;
     }
