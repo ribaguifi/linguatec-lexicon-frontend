@@ -127,7 +127,7 @@
                         <ul class="list-inline">
                             {% for navitem in menu_footer_lg %}
                             <li class="list-inline-item">
-                                <a href="{{ navitem.url }}">{{ navitem.name }}</a>
+                                <a href="{% url navitem.url %}">{{ navitem.name }}</a>
                             </li>
                             {% if not forloop.last %}
                             <li class="list-inline-item">/</li>

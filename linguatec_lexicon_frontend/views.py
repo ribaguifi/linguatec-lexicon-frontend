@@ -5,7 +5,7 @@ from django.conf import settings
 from django.shortcuts import render
 from django.template.response import TemplateResponse
 from django.views.generic.base import TemplateView
-from django.urls import resolve, reverse, NoReverseMatch
+from django.urls import resolve
 
 from linguatec_lexicon_frontend import utils
 
@@ -15,14 +15,10 @@ class MenuItem(object):
     url = ''
     active = False
 
-    def __init__(self, name, url, current_url_name=None):
+    def __init__(self, name, url, current_url=None):
         self.name = name
-        self.url_name = url
-        self.active = (self.url_name == current_url_name)
-        try:
-            self.url = reverse(url)
-        except NoReverseMatch:
-            self.url = '#TODO-%s' % url  # TODO
+        self.url = url
+        self.active = (self.url == current_url)
 
 
 class LinguatecBaseView(TemplateView):
