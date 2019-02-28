@@ -301,12 +301,19 @@ footer.rg-footer {
 }
 
 a.ref-external::after {
-    font-family: "Font Awesome 5 Free";
-    content: "\f35d";
     display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+a.ref-external::after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f35d";
     padding-left: 3px;
     vertical-align: text-bottom;
-    font-weight: 900;
 }
 
 /** static content pages styles **/
