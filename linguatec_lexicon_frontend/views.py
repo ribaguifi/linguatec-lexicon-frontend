@@ -36,6 +36,12 @@ class LinguatecBaseView(TemplateView):
         schema = client.get(api_url)
         context['autocomplete_api_url'] = schema['words'] + 'near/'
 
+        # Font Awesome Free or PRO
+        if getattr(settings, 'LINGUATEC_FONTAWESOME_PRO', False):
+            context['fa_class'] = 'fal'
+        else:
+            context['fa_class'] = 'fas'
+
         return context
 
     def generate_menu_items(self, current_url_name):

@@ -1,0 +1,14 @@
+a.ref-external::after {
+    font-family: "Font Awesome 5 Pro";
+    content: "\f35d";
+    font-weight: 300;
+    display: none;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+a.ref-external span {
+    padding-right: 0.25rem;
+}
