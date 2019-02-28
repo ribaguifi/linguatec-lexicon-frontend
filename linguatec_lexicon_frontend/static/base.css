@@ -18,6 +18,10 @@ header.rg-header {
     height: 18px;
 }
 
+header.rg-header .navbar {
+    padding-bottom: 0;
+}
+
 .rg-header .navbar-brand .navbar-brand-logo {
     /*
     minimum width supported (320px)
@@ -28,7 +32,6 @@ header.rg-header {
         ------------------
         78px
     */
-    /*width: 282px;*/
     width: 240px;
 }
 
@@ -288,14 +291,15 @@ a.ref-external::after {
     body {
         min-width: 320px;
     }
-    header.rg-header .navbar {
-        padding-left: 0;
-        padding-right: 0;
-    }
 }
 
 /** sm and smaller devices **/
 @media (max-width: 767.98px) {
+    header.rg-header .navbar {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     .home .rg-search {
         background: none;
     }
@@ -339,7 +343,7 @@ a.ref-external::after {
     }
 
     .rg-header-bottom {
-        background-position-x: 64px;
+        background-position-x: 80px;
     }
 
     .rg-search {
@@ -478,6 +482,6 @@ a.ref-external::after {
     }
 
     .rg-header-bottom {
-        background-position-x: 105px;
+        background-position-x: 121px;
     }
 }
