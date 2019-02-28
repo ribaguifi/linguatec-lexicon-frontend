@@ -408,9 +408,10 @@ a.ref-external::after {
 @media (min-width: 992px) {
     .rg-header .navbar-light .navbar-nav .nav-link {
         color: white;
-        font-size: 0.875rem;
+        font-size: 1rem;
     }
 
+    .rg-header .navbar-light .navbar-nav .nav-link:hover,
     .rg-header .navbar-light .navbar-nav .active .nav-link {
         text-decoration: underline;
     }
@@ -461,6 +462,10 @@ a.ref-external::after {
         color: white;
         font-size: 0.75rem;
         padding: 0 1rem;
+    }
+
+    .footer-lg-external-links a:hover {
+        background: #d9484d;
     }
 
     .footer-lg-external-links a:first-child {
