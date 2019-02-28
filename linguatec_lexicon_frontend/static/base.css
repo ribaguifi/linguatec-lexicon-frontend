@@ -1,3 +1,35 @@
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+a {
+    color: #707070;
+}
+
+a:hover {
+    color: #c8c8c8;
+}
+
+h1, h2, h3 {
+    font-variant: small-caps;
+}
+
+h1, h2, h3, p {
+    color: #333;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
 body.home {
     background: #FC565B;
 }
@@ -12,22 +44,19 @@ header.rg-header {
 
 .rg-header-bottom {
     background-image: url(header-bg-color.svg);
-    background-position-x: 50px; /* header-bg.width x (53/300) */
+    background-position-x: 38px; /* header-bg.width x (53/300) */
     background-position-y: bottom;
     background-repeat: no-repeat;
     height: 18px;
 }
 
 header.rg-header .navbar {
-    flex-wrap: nowrap;
-    padding-left: 0;
-    padding-right: 0;
     padding-bottom: 0;
 }
 
 .rg-header .navbar-brand .navbar-brand-logo {
     /*
-    for xs devices (360px)
+    minimum width supported (320px)
         15px padding-left
         16px (1rem) navbar-brand.margin-right
         32px (2rem) navbar-toggler icon
@@ -35,7 +64,7 @@ header.rg-header .navbar {
         ------------------
         78px
     */
-    width: 282px;
+    width: 240px;
 }
 
 header.rg-header .navbar-toggler {
@@ -173,6 +202,7 @@ footer.rg-footer {
     background: #f0f0f0; /* same color than .rg-search background image */
     border-width: 0;
     border-radius: 0;
+    color: #333;
     margin-right: 0.5em;
     height: 62px;
 }
@@ -199,7 +229,9 @@ footer.rg-footer {
 }
 
 .rg-search-results .rg-word h2 {
+    color: #707070;
     font-size: 1rem;
+    font-variant: normal;
 }
 
 .rg-search-results .rg-word .rg-word-gramcat {
@@ -210,6 +242,7 @@ footer.rg-footer {
 .rg-search-results .rg-entry-keyword {
     color: #C8C8C8;
     font-weight: normal;
+    font-style: italic;
 }
 
 .rg-search-results .rg-entries .rg-entry {
@@ -228,19 +261,21 @@ footer.rg-footer {
 
 .rg-search-results .rg-entry-conjugation {
     font-weight: normal;
-    margin-bottom: 1rem;
 }
 
 .rg-search-results .rg-entry-conjugation .rg-verbal-mood {
     background: #FC565B;
     display: inline-block;
     font-size: 1.25rem;
+    font-style: italic;
     margin-top: 1rem;
     padding: 0 15px;
 }
 
 .rg-search-results .rg-entry-conjugation .rg-verbal-tense {
     background: #c8c8c8;
+    font-size: 1.2rem;
+    font-style: italic;
     padding-left: 15px;
 }
 
@@ -248,10 +283,12 @@ footer.rg-footer {
     background: #f0f0f0;
     padding-left: 15px;
     margin-bottom: 0.5rem;
+    font-weight: bold;
 }
 
 .rg-word-separator {
     background:#e8e8e8;
+    margin-top: 1rem;
     margin-bottom: 1.5rem;
     margin-left: 6px;
     width: 32px;
@@ -289,8 +326,20 @@ a.ref-external::after {
     margin-left: 0;
 }
 
+/** xs devices **/
+@media (max-width: 575.98px) {
+    body {
+        min-width: 320px;
+    }
+}
+
 /** sm and smaller devices **/
 @media (max-width: 767.98px) {
+    header.rg-header .navbar {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     .home .rg-search {
         background: none;
     }
@@ -301,7 +350,16 @@ a.ref-external::after {
     }
 }
 
-/** tablet rules **/
+/** sm rules **/
+@media (min-width: 576px) {
+    .rg-header .navbar-brand .navbar-brand-logo {
+        width: 282px;
+    }
+    .rg-header-bottom {
+        background-position-x: 50px;
+}
+
+/** md rules **/
 @media (min-width: 768px) {
     body.home {
         background: white;
@@ -325,7 +383,7 @@ a.ref-external::after {
     }
 
     .rg-header-bottom {
-        background-position-x: 64px;
+        background-position-x: 80px;
     }
 
     .rg-search {
@@ -379,9 +437,10 @@ a.ref-external::after {
 @media (min-width: 992px) {
     .rg-header .navbar-light .navbar-nav .nav-link {
         color: white;
-        font-size: 0.875rem;
+        font-size: 1rem;
     }
 
+    .rg-header .navbar-light .navbar-nav .nav-link:hover,
     .rg-header .navbar-light .navbar-nav .active .nav-link {
         text-decoration: underline;
     }
@@ -434,6 +493,10 @@ a.ref-external::after {
         padding: 0 1rem;
     }
 
+    .footer-lg-external-links a:hover {
+        background: #d9484d;
+    }
+
     .footer-lg-external-links a:first-child {
         margin-right: 1rem;
     }
@@ -464,6 +527,6 @@ a.ref-external::after {
     }
 
     .rg-header-bottom {
-        background-position-x: 105px;
+        background-position-x: 121px;
     }
 }
