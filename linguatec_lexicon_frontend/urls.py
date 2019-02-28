@@ -9,7 +9,7 @@ urlpatterns = [
     path('contacto/', views.ContactView.as_view(), name='contact'),
     path('ayuda/', views.HelpView.as_view(), name='help'),
     path('politica-de-privacidad/', views.PrivacyPolicy.as_view(), name='privacy-policy'),
-    path('proyect-linguatec/', views.LinguatecProjectView.as_view(), name='linguatec-project'),
+    path('proyecto-linguatec/', views.LinguatecProjectView.as_view(), name='linguatec-project'),
     path('search/', views.SearchView.as_view(), name='search'),
     path('words/<int:pk>/', views.WordDetailView.as_view(), name='word-detail'),
 
