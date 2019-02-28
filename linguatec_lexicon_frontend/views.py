@@ -77,6 +77,11 @@ class HomeView(LinguatecBaseView):
 class HelpView(LinguatecBaseView):
     template_name = 'linguatec_lexicon_frontend/help.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["gramcats"] = utils.retrieve_gramcats()
+        return context
+
 
 class ContactView(LinguatecBaseView):
     template_name = "linguatec_lexicon_frontend/contact.html"

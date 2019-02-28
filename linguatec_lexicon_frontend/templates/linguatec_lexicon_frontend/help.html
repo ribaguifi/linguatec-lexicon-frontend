@@ -2,11 +2,37 @@
 {% load static %}
 
 {% block content %}
-<div class="col-12">
-    <h1>Ayuda</h1>
+<div class="col-12 rg-help">
+    <h1 class="countheads">Ayuda</h1>
     <h2>¿Cómo hacer una consulta?</h2>
+
     <h2>Estructura</h2>
+    <h3>Entrada</h3>
+    <h3>Traducción</h3>
+    <h3>Ejemplos de uso</h3>
+    <h3>Conjugación verbal</h3>
+
     <h2>Información morfológica</h2>
-    <h2>Abreviaciones</h2>
+    <h3>Las formas del femenino</h3>
+    <h3>Las formas del plural</h3>
+
+    <h2>Abreviaturas</h2>
+    <table class="table table-striped">
+        <caption>Listado de abreviaturas y sus significados</caption>
+        <thead>
+            <tr>
+                <th scope="col">Abreviatura</th>
+                <th scope="col">Significado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for gramcat in gramcats %}
+            <tr>
+                <th scope="row">{{ gramcat.abbreviation }}</th>
+                <td>{{ gramcat.title }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}
