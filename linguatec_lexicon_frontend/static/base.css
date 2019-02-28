@@ -2,6 +2,34 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
+a {
+    color: #707070;
+}
+
+a:hover {
+    color: #c8c8c8;
+}
+
+h1, h2, h3 {
+    font-variant: small-caps;
+}
+
+h1, h2, h3, p {
+    color: #333;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
 body.home {
     background: #FC565B;
 }
@@ -203,6 +231,7 @@ footer.rg-footer {
 .rg-search-results .rg-word h2 {
     color: #707070;
     font-size: 1rem;
+    font-variant: normal;
 }
 
 .rg-search-results .rg-word .rg-word-gramcat {
