@@ -1,3 +1,7 @@
+body {
+    font-family: 'Lato', sans-serif;
+}
+
 body.home {
     background: #FC565B;
 }
@@ -170,6 +174,7 @@ footer.rg-footer {
     background: #f0f0f0; /* same color than .rg-search background image */
     border-width: 0;
     border-radius: 0;
+    color: #333;
     margin-right: 0.5em;
     height: 62px;
 }
@@ -196,6 +201,7 @@ footer.rg-footer {
 }
 
 .rg-search-results .rg-word h2 {
+    color: #707070;
     font-size: 1rem;
 }
 
@@ -207,6 +213,7 @@ footer.rg-footer {
 .rg-search-results .rg-entry-keyword {
     color: #C8C8C8;
     font-weight: normal;
+    font-style: italic;
 }
 
 .rg-search-results .rg-entries .rg-entry {
@@ -231,12 +238,15 @@ footer.rg-footer {
     background: #FC565B;
     display: inline-block;
     font-size: 1.25rem;
+    font-style: italic;
     margin-top: 1rem;
     padding: 0 15px;
 }
 
 .rg-search-results .rg-entry-conjugation .rg-verbal-tense {
     background: #c8c8c8;
+    font-size: 1.2rem;
+    font-style: italic;
     padding-left: 15px;
 }
 
@@ -244,6 +254,7 @@ footer.rg-footer {
     background: #f0f0f0;
     padding-left: 15px;
     margin-bottom: 0.5rem;
+    font-weight: bold;
 }
 
 .rg-word-separator {
