@@ -30,6 +30,47 @@ h3 {
     font-size: 1.25rem;
 }
 
+.rg-loading {
+    height: 80px;
+}
+
+.rg-loading #rg_loading_flag {
+    background-image: url('loading-header-bg.png');
+    background-position: right 10px top; /** $x/2 = 10px **/
+    background-repeat: no-repeat;
+    height: 100%;
+    padding-left: 0;
+}
+
+@media (min-width: 1200px) {
+    .rg-loading #rg_loading_flag {
+        background-position: 0px top; /** $x/2 = 10px **/
+    }
+}
+
+.rg-loading #rg_loading_logo_ga {
+    padding-left: 0;
+    padding-right: 20px; /** $X is minium defined space in ga logo rules **/
+}
+
+
+.rg-loader-wrapper {
+    width: 60px;
+}
+.rg-loader  {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #333333; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 body.home {
     background: #FC565B;
 }
