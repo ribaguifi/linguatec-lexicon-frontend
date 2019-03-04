@@ -29,4 +29,17 @@
 </div>
 {% endblock %}
 
+{% block extrascript %}
+<div id="loading_overlay">
+    {% include "linguatec_lexicon_frontend/splash-screen.html" %}
+</div>
+
+<script>
+    $(document).ready(function () {
+        setInterval(function() {
+            $("#loading_overlay").hide(400);
+        }, 500);
+    });
+</script>
+{% endblock %}
 {% block footernav %}{% endblock %}

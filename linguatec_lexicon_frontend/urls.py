@@ -11,7 +11,6 @@ urlpatterns = [
     path('politica-de-privacidad/', views.PrivacyPolicy.as_view(), name='privacy-policy'),
     path('proyecto-linguatec/', views.LinguatecProjectView.as_view(), name='linguatec-project'),
     path('search/', views.SearchView.as_view(), name='search'),
-    path('loading/', views.LoadingView.as_view(), name='search'),
     path('words/<int:pk>/', views.WordDetailView.as_view(), name='word-detail'),
 
     # redirect of external links

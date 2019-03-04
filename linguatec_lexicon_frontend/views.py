@@ -97,9 +97,6 @@ class LinguatecProjectView(LinguatecBaseView):
     template_name = "linguatec_lexicon_frontend/linguatec-project.html"
 
 
-class LoadingView(TemplateView):
-    template_name = "linguatec_lexicon_frontend/splash-screen.html"
-
 
 class PrivacyPolicy(LinguatecBaseView):
     template_name = "linguatec_lexicon_frontend/privacy-policy.html"
