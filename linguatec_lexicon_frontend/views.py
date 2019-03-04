@@ -75,6 +75,15 @@ class LinguatecBaseView(TemplateView):
 class HomeView(LinguatecBaseView):
     template_name = 'linguatec_lexicon_frontend/home.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # show or not splash screen
+        context["first_load"] = self.request.session.get('first_load', True)
+        self.request.session['first_load'] = False
+
+        return context
+
 
 class HelpView(LinguatecBaseView):
     template_name = 'linguatec_lexicon_frontend/help.html'

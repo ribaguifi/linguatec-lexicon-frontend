@@ -27,13 +27,16 @@
 <div class="row text-center align-items-end external-links mt-5 d-md-none">
     {% include "linguatec_lexicon_frontend/components/external-links.html" %}
 </div>
-{% endblock %}
-
-{% block extrascript %}
+{% if first_load %}
 <div id="loading_overlay">
     {% include "linguatec_lexicon_frontend/splash-screen.html" %}
 </div>
+{% endif %}
+{% endblock %}
 
+
+{% block extrascript %}
+{% if first_load %}
 <script>
     $(document).ready(function () {
         setInterval(function() {
@@ -41,5 +44,7 @@
         }, 500);
     });
 </script>
+{% endif %}
 {% endblock %}
+
 {% block footernav %}{% endblock %}
