@@ -48,13 +48,15 @@ class LinguatecBaseView(TemplateView):
         urls = (
             (
                 MenuItem('Inicio', 'home', current_url_name),
-                MenuItem('Proyecto Linguatec', 'linguatec-project', current_url_name),
+                MenuItem('Proyecto Linguatec',
+                         'linguatec-project', current_url_name),
                 MenuItem('Contacto', 'contact', current_url_name),
                 MenuItem('Ayuda', 'help', current_url_name),
             ),
             (
                 MenuItem('Aviso legal', 'legal-notice', current_url_name),
-                MenuItem('Política de privacidad', 'privacy-policy', current_url_name),
+                MenuItem('Política de privacidad',
+                         'privacy-policy', current_url_name),
             ),
         )
 
@@ -72,6 +74,15 @@ class LinguatecBaseView(TemplateView):
 
 class HomeView(LinguatecBaseView):
     template_name = 'linguatec_lexicon_frontend/home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # show or not splash screen
+        context["first_load"] = self.request.session.get('first_load', True)
+        self.request.session['first_load'] = False
+
+        return context
 
 
 class HelpView(LinguatecBaseView):
@@ -93,6 +104,7 @@ class LegalNoticeView(LinguatecBaseView):
 
 class LinguatecProjectView(LinguatecBaseView):
     template_name = "linguatec_lexicon_frontend/linguatec-project.html"
+
 
 
 class PrivacyPolicy(LinguatecBaseView):

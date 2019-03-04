@@ -1,0 +1,26 @@
+{% load static %}
+
+<header class="container-fluid">
+    <div class="row align-items-center rg-loading">
+        <div id="rg_loading_flag" class="col">
+        </div>
+        <div id="rg_loading_logo_ga" class="col-6 text-right">
+            <img alt="Logo Gobierno de Aragón" width="140" src="{% static 'logo-gobierno-aragon.svg' %}" />
+        </div>
+    </div>
+</header>
+<main class="container">
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <img alt="Logo Aragonario" width="260" src="{% static 'aragonario-darkgray.svg' %}" />
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="rg-loader-wrapper">
+            <div class="rg-loader text-center"></div>
+            <div class="mt-3">
+                Cargando...
+            </div>
+        </div>
+    </div>
+</main>
