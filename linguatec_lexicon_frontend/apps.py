@@ -1,3 +1,8 @@
+"""
+Django Application configuration.
+
+https://docs.djangoproject.com/en/dev/ref/applications/
+"""
 from django.apps import AppConfig
 
 

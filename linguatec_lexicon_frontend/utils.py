@@ -1,3 +1,6 @@
+"""
+Utils to retrieve information of the lexicon backend API.
+"""
 import coreapi
 import urllib.parse
 

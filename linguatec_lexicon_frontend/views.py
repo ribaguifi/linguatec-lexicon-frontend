@@ -1,3 +1,6 @@
+"""
+The views.
+"""
 import coreapi
 import urllib.parse
 
