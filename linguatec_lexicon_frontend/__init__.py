@@ -7,8 +7,10 @@ VERSION = (0, 0, 1, 'alpha', 1)
 
 def get_version():
     "Returns a PEP 386-compliant version number from VERSION."
-    assert len(VERSION) == 5
-    assert VERSION[3] in ('alpha', 'beta', 'rc', 'final')
+    if (len(VERSION) != 5 or
+            VERSION[3] not in ('alpha', 'beta', 'rc', 'final')):
+        raise ValueError(
+            "{} is not PEP 386-compliant version number".format(VERSION))
 
     # Now build the two parts of the version number:
     # main = X.Y[.Z]
