@@ -1,7 +1,6 @@
 """
 The views.
 """
-import coreapi
 import urllib.parse
 
 from django.conf import settings
@@ -10,10 +9,12 @@ from django.template.response import TemplateResponse
 from django.views.generic.base import TemplateView
 from django.urls import resolve
 
+import coreapi
 from linguatec_lexicon_frontend import utils
 
 
 class MenuItem(object):
+    """Define a item of the website menu."""
     name = ''
     url = ''
     active = False
@@ -25,6 +26,10 @@ class MenuItem(object):
 
 
 class LinguatecBaseView(TemplateView):
+    """
+    Base view that initializes the common context and
+    the menu items of the website.
+    """
 
     def get_context_data(self, **kwargs):
         # detect active menu-item
@@ -48,6 +53,7 @@ class LinguatecBaseView(TemplateView):
         return context
 
     def generate_menu_items(self, current_url_name):
+        """Generate main menu navbar items."""
         urls = (
             (
                 MenuItem('Inicio', 'home', current_url_name),
@@ -66,6 +72,7 @@ class LinguatecBaseView(TemplateView):
         return urls  # menu
 
     def generate_menu_footer_lg_items(self):
+        """Generate footer menu used on lg+ devices."""
         urls = (
             MenuItem('Aviso legal', 'legal-notice'),
             MenuItem('Política de privacidad', 'privacy-policy'),
@@ -109,7 +116,6 @@ class LinguatecProjectView(LinguatecBaseView):
     template_name = "linguatec_lexicon_frontend/linguatec-project.html"
 
 
-
 class PrivacyPolicy(LinguatecBaseView):
     template_name = "linguatec_lexicon_frontend/privacy-policy.html"
 
@@ -118,6 +124,7 @@ class SearchView(LinguatecBaseView):
     template_name = "linguatec_lexicon_frontend/search_results.html"
 
     def dispatch(self, request, *args, **kwargs):
+        """Search and show results. If none, show near words."""
         context = self.get_context_data(**kwargs)
         query = request.GET.get('q', None)
         if query is not None:
@@ -141,9 +148,11 @@ class SearchView(LinguatecBaseView):
 
 
 class WordDetailView(LinguatecBaseView):
+    """Display a word."""
     template_name = "linguatec_lexicon_frontend/search_results.html"
 
     def dispatch(self, request, *args, **kwargs):
+        """Retrieve and display a word by ID."""
         pk = kwargs.get('pk')
         context = self.get_context_data(**kwargs)
 

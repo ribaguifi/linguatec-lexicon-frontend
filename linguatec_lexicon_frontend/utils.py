@@ -8,6 +8,7 @@ from django.conf import settings
 
 
 def retrieve_gramcats():
+    """Retrieve all the gramatical categories through the API."""
     api_url = settings.LINGUATEC_LEXICON_API_URL
     client = coreapi.Client()
     schema = client.get(api_url)
@@ -27,6 +28,7 @@ def retrieve_gramcats():
 
 
 def retrieve_near_words(query):
+    """Retrieve near words of a query string through the API."""
     api_url = settings.LINGUATEC_LEXICON_API_URL
     client = coreapi.Client()
     schema = client.get(api_url)
