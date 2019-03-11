@@ -67,7 +67,7 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="{{ fa_class }} fa-bars"></i>
+                        <i class="{{ fa_class }} fa-bars" aria-hidden="true"></i>
                     </button>
                     <div class="navbar-nav d-none d-lg-flex">
                         {% include "linguatec_lexicon_frontend/components/navbar-menu.html" with grouplimit=1 %}
@@ -83,7 +83,7 @@
                 <button class="text-left navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
-                    <i class="{{ fa_class }} fa-times"></i>
+                    <i class="{{ fa_class }} fa-times" aria-hidden="true"></i>
                 </button>
                 <div class="rg-navbar-separator"></div>
                 {% include "linguatec_lexicon_frontend/components/navbar-menu.html" %}
@@ -119,8 +119,8 @@
             <div class="col-12">
                 <a id="footer_collapse_button" class="collapsed" data-toggle="collapse" href="#collapseLogos"
                     role="button" aria-expanded="false" aria-controls="collapseLogos">
-                    <i class="{{ fa_class }} fa-angle-up fa-3x"></i>
-                    <i class="{{ fa_class }} fa-angle-down fa-3x"></i>
+                    <i class="{{ fa_class }} fa-angle-up fa-3x" aria-hidden="true"></i>
+                    <i class="{{ fa_class }} fa-angle-down fa-3x" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
