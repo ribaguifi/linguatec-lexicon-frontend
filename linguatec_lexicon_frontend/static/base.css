@@ -362,7 +362,7 @@ a.ref-external::after {
 }
 
 a.ref-external::after {
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 5 Free", fantasy;
     font-weight: 900;
     content: "\f35d";
     padding-left: 3px;

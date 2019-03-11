@@ -1,5 +1,5 @@
 a.ref-external::after {
-    font-family: "Font Awesome 5 Pro";
+    font-family: "Font Awesome 5 Pro", fantasy;
     content: "\f35d";
     font-weight: 300;
     display: none;
