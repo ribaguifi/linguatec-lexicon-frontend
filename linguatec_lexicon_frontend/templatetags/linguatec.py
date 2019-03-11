@@ -1,3 +1,6 @@
+"""
+Templatetags helpers to render lexicon content.
+"""
 import coreapi
 import urllib.parse
 
@@ -16,6 +19,7 @@ register = template.Library()
 @register.filter
 @stringfilter
 def render_entry(value):
+    """Parse entry content to apply weight to content."""
     # mark content in parenthesis
     try:
         validators.validate_balanced_parenthesis(value)
@@ -36,6 +40,7 @@ def render_entry(value):
 @register.filter
 @stringfilter
 def verbose_gramcat(value):
+    """Attach description to gramatical category abbreviature."""
     api_url = settings.LINGUATEC_LEXICON_API_URL
     client = coreapi.Client()
     schema = client.get(api_url)
