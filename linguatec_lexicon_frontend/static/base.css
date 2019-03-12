@@ -30,6 +30,18 @@ h3 {
     font-size: 1.25rem;
 }
 
+.rg-list-lower-alpha {
+    list-style-type: lower-alpha;
+}
+
+.rg-list-citation {
+    color: #333;
+    list-style-type: none;
+}
+.rg-list-help-variants {
+    list-style-type: square;
+}
+
 #loading_overlay {
     position: fixed;
     width: 100%;
