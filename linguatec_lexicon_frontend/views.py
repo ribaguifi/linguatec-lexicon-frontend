@@ -4,7 +4,6 @@ The views.
 import urllib.parse
 
 from django.conf import settings
-from django.shortcuts import render
 from django.template.response import TemplateResponse
 from django.views.generic.base import TemplateView
 from django.urls import resolve
