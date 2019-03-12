@@ -11,7 +11,7 @@
             <h2>{{ word.term }}</h2>
             <span class="rg-word-gramcat">
                 {% for gramcat in word.gramcats %}
-                    {{ gramcat|verbose_gramcat }}
+                {{ gramcat|verbose_gramcat }}
                 {% endfor %}
             </span>
         </header>
@@ -54,8 +54,8 @@
 
                     {# case refer to another verb as conj model #}
                     {% elif entry.conjugation.model %}
-                        <span class="rg-entry-keyword">modelo conjugación:</span>
-                        <strong>{{ entry.conjugation.model }}</strong>
+                    <span class="rg-entry-keyword">modelo conjugación:</span>
+                    <strong>{{ entry.conjugation.model }}</strong>
                     {% endif %}
                 </div>
                 {% endif %}
@@ -66,7 +66,9 @@
     <div class="rg-word-separator"></div>
     {% empty %}
     <div class="no-results">
-        <p class="pl-3 pl-lg-0"><span class="{{ fa_class }} fa-frown fa-2x"></span> No se ha encontrado la palabra "{{ query }}".</p>
+        <p class="pl-3 pl-lg-0"><
+            span class="{{ fa_class }} fa-frown fa-2x"></span> No se ha encontrado la palabra
+            "{{ query }}".</p>
         {% if near_words %}
         <p>Te listamos las palabras más cercanas lexicográficamente:</p>
         <div class="row near-words">
