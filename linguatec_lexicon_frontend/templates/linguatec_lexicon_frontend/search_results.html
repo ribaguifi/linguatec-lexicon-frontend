@@ -55,7 +55,7 @@
                     {# case refer to another verb as conj model #}
                     {% elif entry.conjugation.model %}
                     <span class="rg-entry-keyword">modelo conjugación:</span>
-                    <a href="{% url 'word-detail' entry.conjugation.model_word_id %}">
+                    <a class="btn btn-outline-secondary rg-btn-verb-model" href="{% url 'word-detail' entry.conjugation.model_word_id %}">
                         {{ entry.conjugation.model }}</a>
                     {% endif %}
                 </div>

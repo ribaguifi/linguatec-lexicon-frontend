@@ -351,6 +351,11 @@ footer.rg-footer {
     font-weight: bold;
 }
 
+.rg-entry-conjugation .rg-btn-verb-model {
+    line-height: 1;
+    margin-left: 0.2rem;
+}
+
 .rg-word-separator {
     background:#e8e8e8;
     margin-top: 1rem;
