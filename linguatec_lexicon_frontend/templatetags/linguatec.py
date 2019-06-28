@@ -33,7 +33,7 @@ def render_entry(value):
     for gramcat in utils.retrieve_gramcats():
         abbr, title = gramcat['abbreviation'], gramcat['title']
         value = value.replace(
-            abbr, "<span class='rg-word-gramcat' title='{0}'>{1}</span>".format(title, abbr))
+            abbr, "<span class='rg-gramcat' title='{0}'>{1}</span>".format(title, abbr))
     return mark_safe(value)
 
 

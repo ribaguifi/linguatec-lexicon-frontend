@@ -299,11 +299,7 @@ footer.rg-footer {
     font-variant: normal;
 }
 
-.rg-search-results .rg-word .rg-word-gramcat {
-    display: block;
-}
-
-.rg-search-results .rg-word-gramcat,
+.rg-search-results .rg-gramcat,
 .rg-search-results .rg-entry-keyword {
     color: #C8C8C8;
     font-weight: normal;
@@ -314,6 +310,10 @@ footer.rg-footer {
     color: #333333;
     font-weight: bold;
     margin-top: 1rem;
+}
+
+.rg-search-results .rg-entries .rg-entry .rg-gramcat {
+    /*margin-bottom: 1rem;*/
 }
 
 .rg-search-results .rg-entries .rg-entry .rg-usecase-comment {
