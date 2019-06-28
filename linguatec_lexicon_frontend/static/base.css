@@ -313,7 +313,7 @@ footer.rg-footer {
 }
 
 .rg-search-results .rg-entries .rg-entry .rg-gramcat {
-    /*margin-bottom: 1rem;*/
+    margin-bottom: 0.2rem;
 }
 
 .rg-search-results .rg-entries .rg-entry .rg-usecase-comment {

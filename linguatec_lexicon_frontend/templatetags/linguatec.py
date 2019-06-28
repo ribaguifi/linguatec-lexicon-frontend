@@ -37,6 +37,7 @@ def render_entry(value):
     return mark_safe(value)
 
 
+# TODO unused???
 @register.filter
 @stringfilter
 def verbose_gramcat(value):
