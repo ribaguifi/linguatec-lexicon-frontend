@@ -311,6 +311,22 @@ footer.rg-footer {
     font-weight: bold;
     margin-top: 1rem;
 }
+/*** WIP ***/
+.rg-diatopic-variations-header {
+    background: #c8c8c8;
+}
+
+.rg-variation-region {
+    background: #c8c8c8;
+}
+
+.rg-variation-content .rg-entry {
+    background: #f0f0f0;
+}
+.rg-variation-content .rg-variation-name {
+    font-weight: normal;
+}
+/*** END WIP ***/
 
 .rg-search-results .rg-entries .rg-entry .rg-gramcat {
     margin-bottom: 0.2rem;
