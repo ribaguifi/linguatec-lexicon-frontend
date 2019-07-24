@@ -2,15 +2,19 @@
 <div class="{% if navbar %}nav-item{% else %}col{% endif %}">
     {% if not navbar %}
     <a href="{% url 'lenguas-de-aragon' %}">
-        <img src="{% static 'logo-lenguas-de-aragon-white.svg' %}" alt="logotipo Lenguas de Aragón"
-            class="mb-3 mb-lg-0" width="78" height="26" /><br />
+        <img src="{% static 'logo-lenguas-de-aragon-white.svg' %}" alt="logotipo Lenguas de Aragón" class="mb-3 mb-lg-0"
+            width="78" height="26" /><br />
     </a>
     {% endif %}
-    <a class="{% if navbar %}nav-link {% endif %}ref-external"
-        href="{% url 'lenguas-de-aragon' %}"><span>Lenguas de Aragón</span></a>
+    <a class="{% if navbar %}nav-link {% endif %}ref-external" href="{% url 'lenguas-de-aragon' %}"><span>Lenguas de
+            Aragón</span></a>
 </div>
 <div class="{% if navbar %}nav-item{% else %}col{% endif %}">
     {# TODO: https://gitlab.com/linguatec/linguatec-lexicon-frontend/issues/13 #}
     <a class="{% if navbar %}nav-link {% endif %}ref-external" href="{% url 'traductor' %}"><span>Traductor
             Automático</span></a>
+</div>
+<div class="d-none d-md-block {% if navbar %}nav-item{% else %}col{% endif %}">
+    <a class="{% if navbar %}nav-link {% endif %}ref-external" href="{% url 'aragon-recursos' %}"><span>AragOn - recursos
+            en linía ta l'aragonés</span></a>
 </div>
