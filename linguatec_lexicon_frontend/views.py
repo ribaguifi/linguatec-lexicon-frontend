@@ -82,6 +82,7 @@ class LinguatecBaseView(TemplateView):
         return urls
 
     def groupby_word_entries(self, word):
+        """Group entries by variation.region"""
         common = []
         variations = OrderedDict()
         for entry in word['entries']:
@@ -91,6 +92,8 @@ class LinguatecBaseView(TemplateView):
                 region = entry['variation']['region']
                 if region not in variations:
                     variations[region] = []
+                # TODO if we want to include gramcats may be inline
+                # entry['gramcats_inline'] = ' / '.join([x['abbreviation'] for x in entry['gramcats']])
                 variations[region].append(entry)
         word['entries_common'] = common
         word['entries_variations'] = variations
