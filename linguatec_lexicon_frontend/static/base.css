@@ -312,6 +312,49 @@ footer.rg-footer {
     margin-top: 1rem;
 }
 
+/*** Diatopic variations ***/
+.rg-diatopic-variations-header {
+    background: #c8c8c8;
+    margin-bottom: 0.8rem;
+}
+
+.rg-diatopic-variations-header h3 {
+    font-variant-caps: normal;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.3rem 15px;
+}
+
+.rg-variation-content {
+    background: #f0f0f0;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.1rem;
+}
+
+.rg-variation-content .rg-variation-region {
+    background: #c8c8c8;
+    margin-bottom: 0rem;
+}
+
+.rg-variation-content .rg-variation-region h4 {
+    font-size: 1rem;
+    padding: 0.2rem  15px;
+}
+
+.rg-variation-content .rg-variation-entries {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.rg-variation-content .rg-variation-entries .rg-entry {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+.rg-variation-content .rg-variation-name {
+    font-weight: normal;
+    text-transform: capitalize;
+}
+/*** end diatopic variations ***/
+
 .rg-search-results .rg-entries .rg-entry .rg-gramcat {
     margin-bottom: 0.2rem;
 }
@@ -548,6 +591,33 @@ a.ref-external::after {
         padding-bottom: 5rem;
     }
 
+    /** diatopic variations **/
+    .rg-variation-content .rg-variation-region-wrapper {
+        padding-right: 0;
+    }
+    .rg-variation-content .rg-variation-region {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .rg-variation-content .rg-variation-region h4 {
+        margin-bottom: 0;
+    }
+    .rg-variation-name {
+        display: inline-block;
+    }
+    .rg-variation-content .rg-variation-entries {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 0;
+    }
+
+    .rg-variation-content .rg-variation-entries .rg-entry {
+        margin-bottom: 0;
+        padding-left: 0;
+    }
+
+    /** footer **/
     footer.rg-footer {
         box-shadow: none;
     }
