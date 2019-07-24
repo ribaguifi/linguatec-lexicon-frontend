@@ -342,6 +342,7 @@ footer.rg-footer {
 
 .rg-variation-content .rg-variation-entries .rg-entry {
     margin-top: 0;
+    margin-bottom: 0.5rem;
 }
 .rg-variation-content .rg-variation-name {
     font-weight: normal;
