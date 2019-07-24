@@ -311,7 +311,8 @@ footer.rg-footer {
     font-weight: bold;
     margin-top: 1rem;
 }
-/*** WIP ***/
+
+/*** Diatopic variations ***/
 .rg-diatopic-variations-header {
     background: #c8c8c8;
     margin-bottom: 0.8rem;
@@ -348,7 +349,7 @@ footer.rg-footer {
     font-weight: normal;
     text-transform: capitalize;
 }
-/*** END WIP ***/
+/*** end diatopic variations ***/
 
 .rg-search-results .rg-entries .rg-entry .rg-gramcat {
     margin-bottom: 0.2rem;
@@ -586,6 +587,29 @@ a.ref-external::after {
         padding-bottom: 5rem;
     }
 
+    /** diatopic variations **/
+    .rg-variation-content .rg-variation-region {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .rg-variation-content .rg-variation-region h4 {
+        margin-bottom: 0;
+    }
+    .rg-variation-name {
+        display: inline-block;
+    }
+    .rg-variation-entries {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .rg-variation-content .rg-variation-entries .rg-entry {
+        margin-bottom: 0;
+        padding-left: 0;
+    }
+
+    /** footer **/
     footer.rg-footer {
         box-shadow: none;
     }
