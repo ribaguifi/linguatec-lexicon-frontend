@@ -341,6 +341,10 @@ footer.rg-footer {
     padding: 0.2rem  15px;
 }
 
+.rg-variation-content .rg-variation-entries {
+    padding-left: 15px;
+    padding-right: 15px;
+}
 .rg-variation-content .rg-variation-entries .rg-entry {
     margin-top: 0;
     margin-bottom: 0.5rem;
@@ -588,6 +592,9 @@ a.ref-external::after {
     }
 
     /** diatopic variations **/
+    .rg-variation-content .rg-variation-region-wrapper {
+        padding-right: 0;
+    }
     .rg-variation-content .rg-variation-region {
         height: 100%;
         display: flex;
@@ -599,9 +606,10 @@ a.ref-external::after {
     .rg-variation-name {
         display: inline-block;
     }
-    .rg-variation-entries {
+    .rg-variation-content .rg-variation-entries {
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
+        padding-left: 0;
     }
 
     .rg-variation-content .rg-variation-entries .rg-entry {

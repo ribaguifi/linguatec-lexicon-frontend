@@ -1,0 +1,13 @@
+{% load linguatec %}
+
+<div class="rg-entry">
+    <div class="rg-variation-name">{{ variation }}:</div>
+    {% spaceless %}
+    {% for entry in variation_entries %}
+    <span class="rg-entry-translation">
+        {{ entry.translation|render_entry }}
+        {% if not forloop.last %}<span>, </span>{% endif %}
+    </span>
+    {% endfor %}
+    {% endspaceless %}
+</div>

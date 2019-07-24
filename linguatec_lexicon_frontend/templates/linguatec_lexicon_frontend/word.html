@@ -22,15 +22,18 @@
                     {% for region, entries_list in word.entries_variations.items %}
                     <div class="rg-variation-content">
                         <div class="row">
-                            <div class="col-12 col-lg-3">
+                            <div class="col-12 col-lg-3 col-xl-2 rg-variation-region-wrapper">
                                 <div class="rg-variation-region">
                                     <h4>{{ region }}</h4>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-9 rg-variation-entries">
-                                {% for entry in entries_list %}
-                                {% include "linguatec_lexicon_frontend/word_entry.html" with variation=True%}
-                                {% endfor %}
+                            <div class="col-12 col-lg-9 col-xl-10 rg-variation-entries-wrapper">
+                                <div class="rg-variation-entries">
+                                    {% regroup entries_list by variation.name as variation_list %}
+                                    {% for variation, variation_entries in variation_list %}
+                                    {% include "linguatec_lexicon_frontend/word_entry_variation.html" %}
+                                    {% endfor %}
+                                </div>
                             </div>
                         </div>
                     </div>

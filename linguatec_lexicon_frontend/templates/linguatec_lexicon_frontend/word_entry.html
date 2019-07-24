@@ -2,17 +2,13 @@
 
 <div class="col-12 rg-entry">
     {# <!-- gramcats --> #}
-    {% if not variation %}{% ifchanged %}
+    {% ifchanged %}
     <div class="rg-gramcat">
         {% for gramcat in entry.gramcats %}
         {{ gramcat.title }} ({{ gramcat.abbreviation}})
         {% endfor %}
     </div>
-    {% endifchanged %}{% endif %}
-
-    {% if variation %}{% ifchanged %}
-    <div class="rg-variation-name">{{ entry.variation.name }}:</div>
-    {% endifchanged %}{% endif %}
+    {% endifchanged %}
 
     {{ entry.translation|render_entry }}
 
