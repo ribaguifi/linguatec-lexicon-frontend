@@ -1,0 +1,54 @@
+{% load linguatec %}
+
+<div class="col-12 rg-entry">
+    {% ifchanged %}
+    <div class="rg-gramcat">
+        {% for gramcat in entry.gramcats %}
+        {{ gramcat.title }} ({{ gramcat.abbreviation}})
+        {% endfor %}
+    </div>
+    {% endifchanged %}
+    <span class="rg-variation-name">{{ entry.variation.name }}</span> {{ entry.translation|render_entry }}
+    <div class="mt-3 rg-entry-examples">
+        {% for example in entry.examples %}
+        <div class="rg-entry-example">
+            {{ example.phrase }}
+        </div>
+        {% endfor %}
+    </div>
+    {% if entry.conjugation %}{# is a verb! #}
+    <div class="rg-entry-conjugation">
+        {{ entry.conjugation.intro }}
+
+        {# case full conjugation #}
+        {% if entry.conjugation.conjugation %}
+        {% for mood, tenses in entry.conjugation.conjugation.items %}
+        <div class="row">
+            <div class="col-12">
+                <h3 class="rg-verbal-mood">{{ mood }}</h3>
+            </div>
+            {% for tense, values in tenses.items %}
+            <div class="col-6 col-sm-4 col-xl-2">
+                {% if tense %}<h4 class="rg-verbal-tense">{{ tense }}</h4>{% endif %}
+                <div class="rg-verbal-conjugation">
+                    <ul class="list-unstyled">
+                        {% for value in values %}
+                        <li>{{ value }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+        {# case refer to another verb as conj model #}
+        {% elif entry.conjugation.model %}
+        <span class="rg-entry-keyword">modelo conjugación:</span>
+        <a class="btn btn-outline-secondary rg-btn-verb-model"
+            href="{% url 'word-detail' entry.conjugation.model_word_id %}">
+            {{ entry.conjugation.model }}</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>

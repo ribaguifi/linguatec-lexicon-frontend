@@ -1,0 +1,32 @@
+{% load linguatec %}
+
+<article>
+    <header class="rg-word">
+        <h2>{{ word.term }}</h2>
+    </header>
+    <div class="rg-entries">
+        {% for entry in word.entries_common %}
+        {% include "linguatec_lexicon_frontend/word_entry.html" %}
+        {% endfor %}
+
+        {% if word.entries_variations %}
+        <div class="rg-word-separator"></div>
+        <div class="rg-diatopic-variations">
+            <h3 class="rg-diatopic-variations-header">Variedades Diatópicas</h3>
+            {% for region, entries_list in word.entries_variations.items %}
+            <div class="rg-variation-content">
+                <div class="rg-variation-region col-12">
+                    <h4>{{ region }}</h4>
+                </div>
+                <div class="rg-variation-entries">
+                    {% for entry in entries_list %}
+                    {% include "linguatec_lexicon_frontend/word_entry.html" %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</article>
+<div class="rg-word-separator"></div>

@@ -2,6 +2,7 @@
 The views.
 """
 import urllib.parse
+from collections import OrderedDict
 
 from django.conf import settings
 from django.template.response import TemplateResponse
@@ -80,6 +81,20 @@ class LinguatecBaseView(TemplateView):
         )
         return urls
 
+    def groupby_word_entries(self, word):
+        common = []
+        variations = OrderedDict()
+        for entry in word['entries']:
+            if entry['variation'] is None:
+                common.append(entry)
+            else:
+                region = entry['variation']['region']
+                if region not in variations:
+                    variations[region] = []
+                variations[region].append(entry)
+        word['entries_common'] = common
+        word['entries_variations'] = variations
+
 
 class HomeView(LinguatecBaseView):
     template_name = 'linguatec_lexicon_frontend/home.html'
@@ -135,6 +150,10 @@ class SearchView(LinguatecBaseView):
                 urllib.parse.urlencode(querystring_args)
             response = client.get(url)
             results = response["results"]
+
+            for word in results:
+                self.groupby_word_entries(word)
+
             context.update({
                 'query': query,
                 'results': results,
@@ -159,7 +178,9 @@ class WordDetailView(LinguatecBaseView):
         client = coreapi.Client()
         schema = client.get(api_url)
         url = schema['words'] + '{pk}/'.format(pk=pk)
+
         word = client.get(url)
+        self.groupby_word_entries(word)
 
         context.update({
             'results': [word],
