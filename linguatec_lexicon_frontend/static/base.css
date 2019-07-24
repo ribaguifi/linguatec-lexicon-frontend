@@ -314,17 +314,38 @@ footer.rg-footer {
 /*** WIP ***/
 .rg-diatopic-variations-header {
     background: #c8c8c8;
+    margin-bottom: 0.8rem;
 }
 
-.rg-variation-region {
-    background: #c8c8c8;
+.rg-diatopic-variations-header h3 {
+    font-variant-caps: normal;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.3rem 15px;
 }
 
-.rg-variation-content .rg-entry {
+.rg-variation-content {
     background: #f0f0f0;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.1rem;
+}
+
+.rg-variation-content .rg-variation-region {
+    background: #c8c8c8;
+    margin-bottom: 0rem;
+}
+
+.rg-variation-content .rg-variation-region h4 {
+    font-size: 1rem;
+    padding: 0.2rem  15px;
+}
+
+.rg-variation-content .rg-variation-entries .rg-entry {
+    margin-top: 0;
 }
 .rg-variation-content .rg-variation-name {
     font-weight: normal;
+    text-transform: capitalize;
 }
 /*** END WIP ***/
 
