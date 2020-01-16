@@ -1,7 +1,8 @@
 {% load linguatec %}
 
 <div class="rg-entry">
-    <div class="rg-variation-name">{{ variation }}:</div>
+    {# WARNING: hacky line because DGPL wants to hidde somontanos variation name#}
+    <div class="rg-variation-name {% if variation.lower == 'somontanos' %}d-none{% endif %}">{{ variation }}:</div>
     {% spaceless %}
     {% for entry in variation_entries %}
     <span class="rg-entry-translation">
