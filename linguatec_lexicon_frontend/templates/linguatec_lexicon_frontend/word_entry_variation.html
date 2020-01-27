@@ -3,12 +3,10 @@
 <div class="rg-entry">
     {# WARNING: hacky line because DGPL wants to hidde somontanos variation name#}
     <div class="rg-variation-name {% if variation.lower == 'somontanos' %}d-none{% endif %}">{{ variation }}:</div>
-    {% spaceless %}
     {% for entry in variation_entries %}
     <span class="rg-entry-translation">
-        {{ entry.translation|render_entry }}
-        {% if not forloop.last %}<span>, </span>{% endif %}
+        {# <!-- BE CAREFUL HERE WITH WHITESPACES! Affects final HTML render -->#}
+        {{ entry.translation|render_entry }}{% if not forloop.last %}<span>, </span>{% endif %}
     </span>
     {% endfor %}
-    {% endspaceless %}
 </div>
