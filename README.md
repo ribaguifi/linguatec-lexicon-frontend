@@ -46,3 +46,23 @@ urlpatterns = [
     path('', include('linguatec_lexicon_frontend.urls')),
 ]
 ```
+
+### Using Font Awesome PRO (self hosted)
+
+If you have a license of the PRO version you could use it following the next steps:
+1. Enable PRO version adding updating settings:
+    ```python
+    LINGUATEC_FONTAWESOME_PRO = True
+    ```
+
+2. Copy FontAwesome files to your project static dir (e.g. `myproject/static/`)
+    ```
+    $ ls myproject/static/fontawesome/
+    css  js  svgs  webfonts
+    ```
+3. Add this dir to `STATICFILES_DIRS`:
+    ```python
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static"),
+    ]
+    ```
