@@ -238,6 +238,11 @@ footer.rg-footer {
     margin-bottom: 2px;
 }
 
+.rg-footer #rg-fondos-feder {
+    color: #707070;
+    font-size: smaller;
+}
+
 .rg-search {
     margin-top: 1.5rem;
     background-image: url('search-input-bg.svg');
@@ -663,6 +668,10 @@ a.ref-external::after {
         color: black;
         font-size: 0.75rem;
         font-weight: bold;
+    }
+
+    #rg-fondos-feder {
+        margin-top: -1rem;
     }
 }
 
