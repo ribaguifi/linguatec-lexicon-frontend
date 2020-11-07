@@ -109,6 +109,17 @@ class HomeView(LinguatecBaseView):
         context["first_load"] = self.request.session.get('first_load', True)
         self.request.session['first_load'] = False
 
+        api_url = settings.LINGUATEC_LEXICON_API_URL
+        client = coreapi.Client()
+        schema = client.get(api_url)
+        url = schema['lexicon'] + 'get_lexicon_names/'
+        response = client.get(url)
+        lexicon_names = response["results"]
+
+        context.update({
+            'lexicon_names': lexicon_names,
+        })
+        
         return context
 
 
@@ -144,11 +155,12 @@ class SearchView(LinguatecBaseView):
         """Search and show results. If none, show near words."""
         context = self.get_context_data(**kwargs)
         query = request.GET.get('q', None)
+        lex = request.GET.get('l', '')
         if query is not None:
             api_url = settings.LINGUATEC_LEXICON_API_URL
             client = coreapi.Client()
             schema = client.get(api_url)
-            querystring_args = {'q': query}
+            querystring_args = {'q': query, 'l': lex}
             url = schema['words'] + 'search/?' + \
                 urllib.parse.urlencode(querystring_args)
             response = client.get(url)
@@ -157,9 +169,17 @@ class SearchView(LinguatecBaseView):
             for word in results:
                 self.groupby_word_entries(word)
 
+
+            url = schema['lexicon'] + 'get_lexicon_names/'
+            response = client.get(url)
+            lexicon_names = response["results"]
+
+
             context.update({
                 'query': query,
                 'results': results,
+                'lex': lex,
+                'lexicon_names': lexicon_names,
             })
 
             if response["count"] == 0:
