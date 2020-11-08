@@ -5,7 +5,7 @@
         <select name="l">
             {% if lexicon_names %}
                 {% for lex in lexicons %}
-                    <option value='{{ lex.name }}'>{{ lex.name }}</option> 
+                    <option value="{{ lex.name }}">{{ lex.name }}</option> 
                 {% endfor %}
             {% else %}
                 <option selected value=''>Empty Value</option>

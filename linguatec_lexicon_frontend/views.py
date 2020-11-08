@@ -177,7 +177,6 @@ class SearchView(LinguatecBaseView):
             context.update({
                 'query': query,
                 'results': results,
-                'lex': lex,
                 'lexicons': lexicons,
             })
 
