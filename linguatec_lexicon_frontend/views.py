@@ -160,6 +160,11 @@ class SearchView(LinguatecBaseView):
             api_url = settings.LINGUATEC_LEXICON_API_URL
             client = coreapi.Client()
             schema = client.get(api_url)
+            
+            url = schema['lexicon'] + 'get_lexicon_names/'
+            response = client.get(url)
+            lexicons = response["results"]
+
             querystring_args = {'q': query, 'l': lex}
             url = schema['words'] + 'search/?' + \
                 urllib.parse.urlencode(querystring_args)
@@ -169,17 +174,11 @@ class SearchView(LinguatecBaseView):
             for word in results:
                 self.groupby_word_entries(word)
 
-
-            url = schema['lexicon'] + 'get_lexicon_names/'
-            response = client.get(url)
-            lexicon_names = response["results"]
-
-
             context.update({
                 'query': query,
                 'results': results,
                 'lex': lex,
-                'lexicon_names': lexicon_names,
+                'lexicons': lexicons,
             })
 
             if response["count"] == 0:
