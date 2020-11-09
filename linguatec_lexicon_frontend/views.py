@@ -102,6 +102,17 @@ class LinguatecBaseView(TemplateView):
 class HomeView(LinguatecBaseView):
     template_name = 'linguatec_lexicon_frontend/home.html'
 
+    def order_lexicons(self, src_languages, lexicons):
+        res=[]
+        count=0
+        for source_language in src_languages:
+            res.append([])
+            for lex in lexicons:
+                if source_language == lex.src_languages:
+                    res[count].append(lex)
+            count=+1
+        return res
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
@@ -114,10 +125,18 @@ class HomeView(LinguatecBaseView):
         schema = client.get(api_url)
         url = schema['lexicon'] + 'get_lexicon_names/'
         response = client.get(url)
-        lexicon_names = response["results"]
+        lexicons = response["results"]
+
+        src_languages = []
+        for lexicon in lexicons:
+            if lexicon.src_language not in src_languages:
+                src_languages.append(lexicon.src_language)
+
+        lexicons = self.order_lexicons(src_languages, lexicons)
+
 
         context.update({
-            'lexicon_names': lexicon_names,
+            'lexicons': lexicons,
         })
         
         return context
@@ -151,6 +170,18 @@ class PrivacyPolicy(LinguatecBaseView):
 class SearchView(LinguatecBaseView):
     template_name = "linguatec_lexicon_frontend/search_results.html"
 
+
+    def order_lexicons(self, src_languages, lexicons):
+        res=[]
+        count=0
+        for source_language in src_languages:
+            res.append([])
+            for lex in lexicons:
+                if source_language == lex.src_languages:
+                    res[count].append(lex)
+            count=+1
+        return res
+
     def dispatch(self, request, *args, **kwargs):
         """Search and show results. If none, show near words."""
         context = self.get_context_data(**kwargs)
@@ -164,6 +195,14 @@ class SearchView(LinguatecBaseView):
             url = schema['lexicon'] + 'get_lexicon_names/'
             response = client.get(url)
             lexicons = response["results"]
+
+            src_languages = []
+            for lexicon in lexicons:
+                if lexicon.src_language not in src_languages:
+                    src_languages.append(lexicon.src_language)
+
+            lexicons = self.order_lexicons(src_languages, lexicons)
+
 
             querystring_args = {'q': query, 'l': lex}
             url = schema['words'] + 'search/?' + \
