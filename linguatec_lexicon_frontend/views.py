@@ -108,7 +108,7 @@ class HomeView(LinguatecBaseView):
         for source_language in src_languages:
             res.append([])
             for lex in lexicons:
-                if source_language == lex.src_languages:
+                if source_language == lex.src_language:
                     res[count].append(lex)
             count=+1
         return res
@@ -177,7 +177,7 @@ class SearchView(LinguatecBaseView):
         for source_language in src_languages:
             res.append([])
             for lex in lexicons:
-                if source_language == lex.src_languages:
+                if source_language == lex.src_language:
                     res[count].append(lex)
             count=+1
         return res
