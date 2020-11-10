@@ -108,7 +108,7 @@ class HomeView(LinguatecBaseView):
         for source_language in src_languages:
             res.append([])
             for lex in lexicons:
-                if source_language == lex.src_language:
+                if source_language == lex.get('src_language'):
                     res[count].append(lex)
             count=+1
         return res
@@ -129,8 +129,8 @@ class HomeView(LinguatecBaseView):
 
         src_languages = []
         for lexicon in lexicons:
-            if lexicon.src_language not in src_languages:
-                src_languages.append(lexicon.src_language)
+            if lexicon.get('src_language') not in src_languages:
+                src_languages.append(lexicon.get('src_language'))
 
         lexicons = self.order_lexicons(src_languages, lexicons)
 
@@ -177,7 +177,7 @@ class SearchView(LinguatecBaseView):
         for source_language in src_languages:
             res.append([])
             for lex in lexicons:
-                if source_language == lex.src_language:
+                if source_language == lex.get('src_language'):
                     res[count].append(lex)
             count=+1
         return res
@@ -198,8 +198,8 @@ class SearchView(LinguatecBaseView):
 
             src_languages = []
             for lexicon in lexicons:
-                if lexicon.src_language not in src_languages:
-                    src_languages.append(lexicon.src_language)
+                if lexicon.get('src_language') not in src_languages:
+                    src_languages.append(lexicon.get('src_language'))
 
             lexicons = self.order_lexicons(src_languages, lexicons)
 
