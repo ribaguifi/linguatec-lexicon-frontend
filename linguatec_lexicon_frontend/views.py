@@ -13,6 +13,24 @@ import coreapi
 from linguatec_lexicon_frontend import utils
 
 
+def order_lexicons(src_languages, lexicons):
+    res=[]
+    count=0
+    for source_language in src_languages:
+        res.append([])
+        for lex in lexicons:
+            if source_language == lex.get('src_language'):
+                res[count].append(lex)
+        count=+1
+    return res
+
+def get_source_languages(lexicons):
+    src_languages = []
+    for lexicon in lexicons:
+        if lexicon.get('src_language') not in src_languages:
+            src_languages.append(lexicon.get('src_language'))
+    return src_languages
+
 class MenuItem(object):
     """Define a item of the website menu."""
     name = ''
@@ -102,16 +120,7 @@ class LinguatecBaseView(TemplateView):
 class HomeView(LinguatecBaseView):
     template_name = 'linguatec_lexicon_frontend/home.html'
 
-    def order_lexicons(self, src_languages, lexicons):
-        res=[]
-        count=0
-        for source_language in src_languages:
-            res.append([])
-            for lex in lexicons:
-                if source_language == lex.get('src_language'):
-                    res[count].append(lex)
-            count=+1
-        return res
+    
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -123,16 +132,13 @@ class HomeView(LinguatecBaseView):
         api_url = settings.LINGUATEC_LEXICON_API_URL
         client = coreapi.Client()
         schema = client.get(api_url)
-        url = schema['lexicon'] + 'get_lexicon_names/'
+        url = schema['lexicons']
         response = client.get(url)
         lexicons = response["results"]
 
-        src_languages = []
-        for lexicon in lexicons:
-            if lexicon.get('src_language') not in src_languages:
-                src_languages.append(lexicon.get('src_language'))
+        src_languages = get_source_languages(lexicons)
 
-        lexicons = self.order_lexicons(src_languages, lexicons)
+        lexicons = order_lexicons(src_languages, lexicons)
 
 
         context.update({
@@ -171,40 +177,26 @@ class SearchView(LinguatecBaseView):
     template_name = "linguatec_lexicon_frontend/search_results.html"
 
 
-    def order_lexicons(self, src_languages, lexicons):
-        res=[]
-        count=0
-        for source_language in src_languages:
-            res.append([])
-            for lex in lexicons:
-                if source_language == lex.get('src_language'):
-                    res[count].append(lex)
-            count=+1
-        return res
-
     def dispatch(self, request, *args, **kwargs):
         """Search and show results. If none, show near words."""
         context = self.get_context_data(**kwargs)
         query = request.GET.get('q', None)
-        lex = request.GET.get('l', '')
+        lex_name = request.GET.get('l', '')
         if query is not None:
             api_url = settings.LINGUATEC_LEXICON_API_URL
             client = coreapi.Client()
             schema = client.get(api_url)
             
-            url = schema['lexicon'] + 'get_lexicon_names/'
+            url = schema['lexicons']
             response = client.get(url)
             lexicons = response["results"]
 
-            src_languages = []
-            for lexicon in lexicons:
-                if lexicon.get('src_language') not in src_languages:
-                    src_languages.append(lexicon.get('src_language'))
+            src_languages = get_source_languages(lexicons)
 
-            lexicons = self.order_lexicons(src_languages, lexicons)
+            lexicons = order_lexicons(src_languages, lexicons)
 
 
-            querystring_args = {'q': query, 'l': lex}
+            querystring_args = {'q': query, 'l': lex_name}
             url = schema['words'] + 'search/?' + \
                 urllib.parse.urlencode(querystring_args)
             response = client.get(url)
