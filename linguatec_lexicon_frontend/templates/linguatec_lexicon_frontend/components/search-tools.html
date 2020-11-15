@@ -6,7 +6,11 @@
             {% for lex_list_by_src in lexicons %}
                 <optgroup label="{{ lex_list_by_src.0.src_language }}"> 
                 {% for lex in lex_list_by_src %}
-                    <option value="{{ lex.name }}">{{ lex.name }}</option> 
+                    {% if lex.name == selected_lexicon %}
+                        <option selected value="{{ lex.name }}">{{ lex.name }}</option>
+                    {% else %}
+                        <option value="{{ lex.name }}">{{ lex.name }}</option> 
+                    {% endif %}
                 {% endfor %}
             {% empty %}
             <option selected value=''>Empty Value</option>

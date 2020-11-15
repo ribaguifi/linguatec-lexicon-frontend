@@ -208,11 +208,11 @@ class SearchView(LinguatecBaseView):
             context.update({
                 'query': query,
                 'results': results,
+                'selected_lexicon': lex_name,
                 'lexicons': lexicons,
             })
-
             if response["count"] == 0:
-                context["near_words"] = utils.retrieve_near_words(query)
+                context["near_words"] = utils.retrieve_near_words(query, lex_name)
 
         return TemplateResponse(request, 'linguatec_lexicon_frontend/search_results.html', context)
 

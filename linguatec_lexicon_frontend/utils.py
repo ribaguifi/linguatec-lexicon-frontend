@@ -27,12 +27,12 @@ def retrieve_gramcats():
     return gramcats
 
 
-def retrieve_near_words(query):
+def retrieve_near_words(query, lex):
     """Retrieve near words of a query string through the API."""
     api_url = settings.LINGUATEC_LEXICON_API_URL
     client = coreapi.Client()
     schema = client.get(api_url)
-    querystring_args = {'q': query}
+    querystring_args = {'q': query, 'l': lex}
     url = schema['words'] + 'near/?' + urllib.parse.urlencode(querystring_args)
     response = client.get(url)
     results = response["results"]
