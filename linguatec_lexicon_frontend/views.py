@@ -181,7 +181,7 @@ class SearchView(LinguatecBaseView):
         """Search and show results. If none, show near words."""
         context = self.get_context_data(**kwargs)
         query = request.GET.get('q', None)
-        lex_name = request.GET.get('l', '')
+        lex_code = request.GET.get('l', '')
         if query is not None:
             api_url = settings.LINGUATEC_LEXICON_API_URL
             client = coreapi.Client()
@@ -196,7 +196,7 @@ class SearchView(LinguatecBaseView):
             lexicons = order_lexicons(src_languages, lexicons)
 
 
-            querystring_args = {'q': query, 'l': lex_name}
+            querystring_args = {'q': query, 'l': lex_code}
             url = schema['words'] + 'search/?' + \
                 urllib.parse.urlencode(querystring_args)
             response = client.get(url)
@@ -208,11 +208,11 @@ class SearchView(LinguatecBaseView):
             context.update({
                 'query': query,
                 'results': results,
-                'selected_lexicon': lex_name,
+                'selected_lexicon': lex_code,
                 'lexicons': lexicons,
             })
             if response["count"] == 0:
-                context["near_words"] = utils.retrieve_near_words(query, lex_name)
+                context["near_words"] = utils.retrieve_near_words(query, lex_code)
 
         return TemplateResponse(request, 'linguatec_lexicon_frontend/search_results.html', context)
 
@@ -234,8 +234,23 @@ class WordDetailView(LinguatecBaseView):
         word = client.get(url)
         self.groupby_word_entries(word)
 
+        url = schema['lexicons']
+        response = client.get(url)
+        lexicons = response["results"]
+
+        selected_lexicon = ''
+        for lex in lexicons:
+            if word['lexicon'] == lex['id']:
+                selected_lexicon = lex['code']
+
+        src_languages = get_source_languages(lexicons)
+
+        lexicons = order_lexicons(src_languages, lexicons)
+
         context.update({
             'results': [word],
+            'selected_lexicon': selected_lexicon,
+            'lexicons': lexicons,
         })
 
         return TemplateResponse(request, self.template_name, context)
