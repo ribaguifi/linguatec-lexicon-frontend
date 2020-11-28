@@ -16,7 +16,7 @@ urlpatterns = [
     path('proyecto-linguatec/', views.LinguatecProjectView.as_view(), name='linguatec-project'),
     path('search/', views.SearchView.as_view(), name='search'),
     path('words/<int:pk>/', views.WordDetailView.as_view(), name='word-detail'),
-    path('admin/',admin.site.urls, name='index'),
+    path('admin/', admin.site.urls, name='index'),
 
     # redirect of external links
     path('external/lenguas-de-aragon/',

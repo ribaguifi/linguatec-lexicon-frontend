@@ -122,6 +122,10 @@ class LinguatecBaseView(TemplateView):
         for entry in word['entries_common']:
             entry['url'] = reverse('admin:linguatec_lexicon_entry_change', args=(entry['id'],))
 
+        for region, entry_list in word['entries_variations'].items():
+            for entry in entry_list:
+                entry['url'] = reverse('admin:linguatec_lexicon_entry_change', args=(entry['id'],))
+
 
 class HomeView(LinguatecBaseView):
     template_name = 'linguatec_lexicon_frontend/home.html'
@@ -262,7 +266,7 @@ class WordDetailView(LinguatecBaseView):
         self.get_urls(word)
 
         context.update({
-            'results': [word],            
+            'results': [word],
             'selected_lexicon': selected_lexicon,
             'lexicons': lexicons,
         })
