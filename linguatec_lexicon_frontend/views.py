@@ -7,7 +7,7 @@ from collections import OrderedDict
 from django.conf import settings
 from django.template.response import TemplateResponse
 from django.views.generic.base import TemplateView
-from django.urls import resolve
+from django.urls import resolve, reverse
 
 import coreapi
 from linguatec_lexicon_frontend import utils
@@ -116,11 +116,15 @@ class LinguatecBaseView(TemplateView):
         word['entries_common'] = common
         word['entries_variations'] = variations
 
+    def get_urls(self, word):
+        """Get the urls in admin panel of word entries"""
+
+        for entry in word['entries_common']:
+            entry['url'] = reverse('admin:linguatec_lexicon_entry_change', args=(entry['id'],))
+
 
 class HomeView(LinguatecBaseView):
     template_name = 'linguatec_lexicon_frontend/home.html'
-
-    
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -140,11 +144,10 @@ class HomeView(LinguatecBaseView):
 
         lexicons = order_lexicons(src_languages, lexicons)
 
-
         context.update({
             'lexicons': lexicons,
         })
-        
+
         return context
 
 
@@ -176,7 +179,6 @@ class PrivacyPolicy(LinguatecBaseView):
 class SearchView(LinguatecBaseView):
     template_name = "linguatec_lexicon_frontend/search_results.html"
 
-
     def dispatch(self, request, *args, **kwargs):
         """Search and show results. If none, show near words."""
         context = self.get_context_data(**kwargs)
@@ -186,7 +188,7 @@ class SearchView(LinguatecBaseView):
             api_url = settings.LINGUATEC_LEXICON_API_URL
             client = coreapi.Client()
             schema = client.get(api_url)
-            
+
             url = schema['lexicons']
             response = client.get(url)
             lexicons = response["results"]
@@ -195,24 +197,33 @@ class SearchView(LinguatecBaseView):
 
             lexicons = order_lexicons(src_languages, lexicons)
 
-
             querystring_args = {'q': query, 'l': lex_code}
             url = schema['words'] + 'search/?' + \
                 urllib.parse.urlencode(querystring_args)
             response = client.get(url)
             results = response["results"]
 
-            for word in results:
-                self.groupby_word_entries(word)
-
-            context.update({
-                'query': query,
-                'results': results,
-                'selected_lexicon': lex_code,
-                'lexicons': lexicons,
-            })
             if response["count"] == 0:
+
+                context.update({
+                    'query': query,
+                    'selected_lexicon': lex_code,
+                    'lexicons': lexicons,
+                })
+
                 context["near_words"] = utils.retrieve_near_words(query, lex_code)
+
+            else:
+                for word in results:
+                    self.groupby_word_entries(word)
+                    self.get_urls(word)
+
+                context.update({
+                    'query': query,
+                    'results': results,
+                    'selected_lexicon': lex_code,
+                    'lexicons': lexicons,
+                })
 
         return TemplateResponse(request, 'linguatec_lexicon_frontend/search_results.html', context)
 
@@ -247,8 +258,11 @@ class WordDetailView(LinguatecBaseView):
 
         lexicons = order_lexicons(src_languages, lexicons)
 
+        self.groupby_word_entries(word)
+        self.get_urls(word)
+
         context.update({
-            'results': [word],
+            'results': [word],            
             'selected_lexicon': selected_lexicon,
             'lexicons': lexicons,
         })

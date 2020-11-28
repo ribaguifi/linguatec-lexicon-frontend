@@ -10,7 +10,7 @@
     </div>
     {% endifchanged %}
 
-    {{ entry.translation|render_entry }}
+    {{ entry.translation|render_entry }} <a href= {{ entry.url }}> (edit) </a>
 
     {# <!-- examples --> #}
     {% if entry.examples %}
