@@ -10,7 +10,7 @@
     </div>
     {% endifchanged %}
 
-    {{ entry.translation|render_entry }} <a href= {{ entry.url }}> (edit) </a>
+    {{ entry.translation|render_entry }} <a href= {% url 'admin:linguatec_lexicon_entry_change' entry.id %}> (edit) </a>
 
     {# <!-- examples --> #}
     {% if entry.examples %}

@@ -7,22 +7,23 @@ from collections import OrderedDict
 from django.conf import settings
 from django.template.response import TemplateResponse
 from django.views.generic.base import TemplateView
-from django.urls import resolve, reverse
+from django.urls import resolve
 
 import coreapi
 from linguatec_lexicon_frontend import utils
 
 
 def order_lexicons(src_languages, lexicons):
-    res=[]
-    count=0
+    res = []
+    count = 0
     for source_language in src_languages:
         res.append([])
         for lex in lexicons:
             if source_language == lex.get('src_language'):
                 res[count].append(lex)
-        count=+1
+        count =+ 1
     return res
+
 
 def get_source_languages(lexicons):
     src_languages = []
@@ -30,6 +31,7 @@ def get_source_languages(lexicons):
         if lexicon.get('src_language') not in src_languages:
             src_languages.append(lexicon.get('src_language'))
     return src_languages
+
 
 class MenuItem(object):
     """Define a item of the website menu."""
@@ -116,16 +118,6 @@ class LinguatecBaseView(TemplateView):
         word['entries_common'] = common
         word['entries_variations'] = variations
 
-    def get_urls(self, word):
-        """Get the urls in admin panel of word entries"""
-
-        for entry in word['entries_common']:
-            entry['url'] = reverse('admin:linguatec_lexicon_entry_change', args=(entry['id'],))
-
-        for region, entry_list in word['entries_variations'].items():
-            for entry in entry_list:
-                entry['url'] = reverse('admin:linguatec_lexicon_entry_change', args=(entry['id'],))
-
 
 class HomeView(LinguatecBaseView):
     template_name = 'linguatec_lexicon_frontend/home.html'
@@ -207,27 +199,18 @@ class SearchView(LinguatecBaseView):
             response = client.get(url)
             results = response["results"]
 
+            for word in results:
+                self.groupby_word_entries(word)
+
+            context.update({
+                'query': query,
+                'results': results,
+                'selected_lexicon': lex_code,
+                'lexicons': lexicons,
+            })
+
             if response["count"] == 0:
-
-                context.update({
-                    'query': query,
-                    'selected_lexicon': lex_code,
-                    'lexicons': lexicons,
-                })
-
                 context["near_words"] = utils.retrieve_near_words(query, lex_code)
-
-            else:
-                for word in results:
-                    self.groupby_word_entries(word)
-                    self.get_urls(word)
-
-                context.update({
-                    'query': query,
-                    'results': results,
-                    'selected_lexicon': lex_code,
-                    'lexicons': lexicons,
-                })
 
         return TemplateResponse(request, 'linguatec_lexicon_frontend/search_results.html', context)
 
@@ -261,9 +244,6 @@ class WordDetailView(LinguatecBaseView):
         src_languages = get_source_languages(lexicons)
 
         lexicons = order_lexicons(src_languages, lexicons)
-
-        self.groupby_word_entries(word)
-        self.get_urls(word)
 
         context.update({
             'results': [word],
