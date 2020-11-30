@@ -3,7 +3,6 @@ Django URLs.
 """
 from django.urls import path
 from django.views.generic.base import RedirectView
-from django.contrib import admin
 
 from . import views
 
@@ -16,7 +15,6 @@ urlpatterns = [
     path('proyecto-linguatec/', views.LinguatecProjectView.as_view(), name='linguatec-project'),
     path('search/', views.SearchView.as_view(), name='search'),
     path('words/<int:pk>/', views.WordDetailView.as_view(), name='word-detail'),
-    path('admin/', admin.site.urls, name='index'),
 
     # redirect of external links
     path('external/lenguas-de-aragon/',
