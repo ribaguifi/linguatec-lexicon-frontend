@@ -14,15 +14,16 @@ from linguatec_lexicon_frontend import utils
 
 
 def order_lexicons(src_languages, lexicons):
-    res=[]
-    count=0
+    res = []
+    count = 0
     for source_language in src_languages:
         res.append([])
         for lex in lexicons:
             if source_language == lex.get('src_language'):
                 res[count].append(lex)
-        count=+1
+        count =+ 1
     return res
+
 
 def get_source_languages(lexicons):
     src_languages = []
@@ -30,6 +31,7 @@ def get_source_languages(lexicons):
         if lexicon.get('src_language') not in src_languages:
             src_languages.append(lexicon.get('src_language'))
     return src_languages
+
 
 class MenuItem(object):
     """Define a item of the website menu."""
@@ -120,8 +122,6 @@ class LinguatecBaseView(TemplateView):
 class HomeView(LinguatecBaseView):
     template_name = 'linguatec_lexicon_frontend/home.html'
 
-    
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
@@ -140,11 +140,10 @@ class HomeView(LinguatecBaseView):
 
         lexicons = order_lexicons(src_languages, lexicons)
 
-
         context.update({
             'lexicons': lexicons,
         })
-        
+
         return context
 
 
@@ -176,7 +175,6 @@ class PrivacyPolicy(LinguatecBaseView):
 class SearchView(LinguatecBaseView):
     template_name = "linguatec_lexicon_frontend/search_results.html"
 
-
     def dispatch(self, request, *args, **kwargs):
         """Search and show results. If none, show near words."""
         context = self.get_context_data(**kwargs)
@@ -186,7 +184,7 @@ class SearchView(LinguatecBaseView):
             api_url = settings.LINGUATEC_LEXICON_API_URL
             client = coreapi.Client()
             schema = client.get(api_url)
-            
+
             url = schema['lexicons']
             response = client.get(url)
             lexicons = response["results"]
@@ -194,7 +192,6 @@ class SearchView(LinguatecBaseView):
             src_languages = get_source_languages(lexicons)
 
             lexicons = order_lexicons(src_languages, lexicons)
-
 
             querystring_args = {'q': query, 'l': lex_code}
             url = schema['words'] + 'search/?' + \
@@ -211,6 +208,7 @@ class SearchView(LinguatecBaseView):
                 'selected_lexicon': lex_code,
                 'lexicons': lexicons,
             })
+
             if response["count"] == 0:
                 context["near_words"] = utils.retrieve_near_words(query, lex_code)
 
