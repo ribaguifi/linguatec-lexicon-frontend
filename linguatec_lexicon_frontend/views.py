@@ -13,26 +13,6 @@ import coreapi
 from linguatec_lexicon_frontend import utils
 
 
-def order_lexicons(src_languages, lexicons):
-    res = []
-    count = 0
-    for source_language in src_languages:
-        res.append([])
-        for lex in lexicons:
-            if source_language == lex.get('src_language'):
-                res[count].append(lex)
-        count =+ 1
-    return res
-
-
-def get_source_languages(lexicons):
-    src_languages = []
-    for lexicon in lexicons:
-        if lexicon.get('src_language') not in src_languages:
-            src_languages.append(lexicon.get('src_language'))
-    return src_languages
-
-
 class MenuItem(object):
     """Define a item of the website menu."""
     name = ''
@@ -136,10 +116,6 @@ class HomeView(LinguatecBaseView):
         response = client.get(url)
         lexicons = response["results"]
 
-        src_languages = get_source_languages(lexicons)
-
-        lexicons = order_lexicons(src_languages, lexicons)
-
         context.update({
             'lexicons': lexicons,
         })
@@ -188,10 +164,6 @@ class SearchView(LinguatecBaseView):
             url = schema['lexicons']
             response = client.get(url)
             lexicons = response["results"]
-
-            src_languages = get_source_languages(lexicons)
-
-            lexicons = order_lexicons(src_languages, lexicons)
 
             querystring_args = {'q': query, 'l': lex_code}
             url = schema['words'] + 'search/?' + \

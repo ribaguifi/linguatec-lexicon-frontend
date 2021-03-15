@@ -1,0 +1,9 @@
+<select id="selected_lex" name="l" class="{{ select_class }}">
+  {% for lex in lexicons %}
+    {% if lex.code == selected_lexicon %}
+        <option selected value="{{ lex.code }}">{{ lex.name }}</option>
+    {% else %}
+        <option value="{{ lex.code }}">{{ lex.name }}</option>
+    {% endif %}
+  {% endfor %}
+</select>

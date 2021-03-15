@@ -112,7 +112,7 @@
         {% block content %}
 
         <div class="col-12 col-md-7 col-lg-5 ml-md-5">
-            {% include "linguatec_lexicon_frontend/components/search-tools.html" %}
+            {% include "linguatec_lexicon_frontend/components/search-tools.html" with selector_inline=True %}
         </div>
         {% endblock %}
     </main>
