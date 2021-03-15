@@ -2,8 +2,8 @@
 
 <article>
     <header class="rg-word">
-        <h2>{{ word.term }} <a href= {{ word.admin_panel_url }}> (edit) </a></h2> 
-        
+        <h2>{{ word.term }} {% if word.admin_panel_url %}<a href= {{ word.admin_panel_url }}> (edit) </a>{% endif %}</h2>
+
     </header>
     <div class="rg-entries">
 
