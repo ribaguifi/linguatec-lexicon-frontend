@@ -201,7 +201,7 @@
                         url: "{{ autocomplete_api_url }}",
                         data: {
                             q: request.term,
-                            l: $("#selected_lex :selected").text(),
+                            l: $("#selected_lex :selected").val(),
                             limit: 5
                         },
                         success: function (json) {
