@@ -13,6 +13,19 @@ import coreapi
 from linguatec_lexicon_frontend import utils
 
 
+def get_lexicons():
+    client = coreapi.Client()
+    schema = client.get(settings.LINGUATEC_LEXICON_API_URL)
+
+    url = schema['lexicons']
+    response = client.get(url)
+    lexicons = response["results"]
+
+    lexicons.sort(key=lambda x:x['name'])
+
+    return lexicons
+
+
 class MenuItem(object):
     """Define a item of the website menu."""
     name = ''
@@ -109,16 +122,7 @@ class HomeView(LinguatecBaseView):
         context["first_load"] = self.request.session.get('first_load', True)
         self.request.session['first_load'] = False
 
-        api_url = settings.LINGUATEC_LEXICON_API_URL
-        client = coreapi.Client()
-        schema = client.get(api_url)
-        url = schema['lexicons']
-        response = client.get(url)
-        lexicons = response["results"]
-
-        context.update({
-            'lexicons': lexicons,
-        })
+        context['lexicons'] = get_lexicons()
 
         return context
 
@@ -157,13 +161,8 @@ class SearchView(LinguatecBaseView):
         query = request.GET.get('q', None)
         lex_code = request.GET.get('l', '')
         if query is not None:
-            api_url = settings.LINGUATEC_LEXICON_API_URL
             client = coreapi.Client()
-            schema = client.get(api_url)
-
-            url = schema['lexicons']
-            response = client.get(url)
-            lexicons = response["results"]
+            schema = client.get(settings.LINGUATEC_LEXICON_API_URL)
 
             querystring_args = {'q': query, 'l': lex_code}
             url = schema['words'] + 'search/?' + \
@@ -178,7 +177,7 @@ class SearchView(LinguatecBaseView):
                 'query': query,
                 'results': results,
                 'selected_lexicon': lex_code,
-                'lexicons': lexicons,
+                'lexicons': get_lexicons(),
             })
 
             if response["count"] == 0:
