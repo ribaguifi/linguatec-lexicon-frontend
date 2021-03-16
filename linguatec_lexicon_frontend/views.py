@@ -123,6 +123,8 @@ class HomeView(LinguatecBaseView):
         self.request.session['first_load'] = False
 
         context['lexicons'] = get_lexicons()
+        # keep UI behaviour: set default lexicon 'es-ar'
+        context['selected_lexicon'] = 'es-ar'
 
         return context
 
