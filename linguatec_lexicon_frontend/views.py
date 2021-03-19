@@ -13,24 +13,17 @@ import coreapi
 from linguatec_lexicon_frontend import utils
 
 
-def order_lexicons(src_languages, lexicons):
-    res = []
-    count = 0
-    for source_language in src_languages:
-        res.append([])
-        for lex in lexicons:
-            if source_language == lex.get('src_language'):
-                res[count].append(lex)
-        count =+ 1
-    return res
+def get_lexicons():
+    client = coreapi.Client()
+    schema = client.get(settings.LINGUATEC_LEXICON_API_URL)
 
+    url = schema['lexicons']
+    response = client.get(url)
+    lexicons = response["results"]
 
-def get_source_languages(lexicons):
-    src_languages = []
-    for lexicon in lexicons:
-        if lexicon.get('src_language') not in src_languages:
-            src_languages.append(lexicon.get('src_language'))
-    return src_languages
+    lexicons.sort(key=lambda x:x['name'])
+
+    return lexicons
 
 
 class MenuItem(object):
@@ -129,20 +122,9 @@ class HomeView(LinguatecBaseView):
         context["first_load"] = self.request.session.get('first_load', True)
         self.request.session['first_load'] = False
 
-        api_url = settings.LINGUATEC_LEXICON_API_URL
-        client = coreapi.Client()
-        schema = client.get(api_url)
-        url = schema['lexicons']
-        response = client.get(url)
-        lexicons = response["results"]
-
-        src_languages = get_source_languages(lexicons)
-
-        lexicons = order_lexicons(src_languages, lexicons)
-
-        context.update({
-            'lexicons': lexicons,
-        })
+        context['lexicons'] = get_lexicons()
+        # keep UI behaviour: set default lexicon 'es-ar'
+        context['selected_lexicon'] = 'es-ar'
 
         return context
 
@@ -181,17 +163,8 @@ class SearchView(LinguatecBaseView):
         query = request.GET.get('q', None)
         lex_code = request.GET.get('l', '')
         if query is not None:
-            api_url = settings.LINGUATEC_LEXICON_API_URL
             client = coreapi.Client()
-            schema = client.get(api_url)
-
-            url = schema['lexicons']
-            response = client.get(url)
-            lexicons = response["results"]
-
-            src_languages = get_source_languages(lexicons)
-
-            lexicons = order_lexicons(src_languages, lexicons)
+            schema = client.get(settings.LINGUATEC_LEXICON_API_URL)
 
             querystring_args = {'q': query, 'l': lex_code}
             url = schema['words'] + 'search/?' + \
@@ -206,7 +179,7 @@ class SearchView(LinguatecBaseView):
                 'query': query,
                 'results': results,
                 'selected_lexicon': lex_code,
-                'lexicons': lexicons,
+                'lexicons': get_lexicons(),
             })
 
             if response["count"] == 0:

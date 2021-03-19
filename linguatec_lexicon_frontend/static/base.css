@@ -277,6 +277,11 @@ footer.rg-footer {
     height: 62px;
 }
 
+.rg-search #selected_lex {
+    background: gainsboro;
+    border: 0px;
+}
+
 .home .rg-main .rg-search #button-search {
     background: #333333;
     color: white;
