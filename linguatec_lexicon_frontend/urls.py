@@ -20,7 +20,7 @@ urlpatterns = [
     path('external/lenguas-de-aragon/',
          RedirectView.as_view(url='http://lenguasdearagon.org'), name='lenguas-de-aragon'),
     path('external/traductor/',
-         RedirectView.as_view(url='/#TODO'), name='traductor'),
+         RedirectView.as_view(url='https://traduze.aragon.es'), name='traductor'),
     path('external/aragon-recursos-en-linea/',
          RedirectView.as_view(url='http://aragon.lenguasdearagon.org/'), name='aragon-recursos'),
 ]
