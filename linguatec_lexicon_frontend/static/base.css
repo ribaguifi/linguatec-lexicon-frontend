@@ -458,7 +458,27 @@ a.ref-external::after {
 /** xs devices **/
 @media (max-width: 575.98px) {
     body {
-        min-width: 320px;
+        min-width: 420px;
+    }
+
+    .rg-search {
+        padding-bottom: 14px;
+    }
+
+    .rg-search #input-search {
+        height: 52px;
+    }
+
+    .rg-search #selected_lex {
+        font-size: smaller;
+    }
+
+    .rg-main .rg-search #button-search {
+        width: 52px;
+    }
+
+    .rg-search-results {
+        padding-left: 2rem;
     }
 }
 
@@ -486,6 +506,10 @@ a.ref-external::after {
     }
     .rg-header-bottom {
         background-position-x: 50px;
+    }
+    .rg-search-results {
+        padding-left: 2rem;
+    }
 }
 
 /** md rules **/
