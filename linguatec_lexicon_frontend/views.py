@@ -21,7 +21,7 @@ def get_lexicons():
     response = client.get(url)
     lexicons = response["results"]
 
-    lexicons.sort(key=lambda x:x['name'])
+    lexicons.sort(key=lambda x: x['name'])
 
     return lexicons
 
@@ -205,18 +205,11 @@ class WordDetailView(LinguatecBaseView):
         word = client.get(url)
         self.groupby_word_entries(word)
 
-        url = schema['lexicons']
-        response = client.get(url)
-        lexicons = response["results"]
-
+        lexicons = get_lexicons()
         selected_lexicon = ''
         for lex in lexicons:
             if word['lexicon'] == lex['id']:
                 selected_lexicon = lex['code']
-
-        src_languages = get_source_languages(lexicons)
-
-        lexicons = order_lexicons(src_languages, lexicons)
 
         context.update({
             'results': [word],

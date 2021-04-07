@@ -4,25 +4,27 @@
 {% block content %}
 {{ block.super }}
 
-<div class="col-12 rg-search-results">
-    {% for word in results %}
-    {% include "linguatec_lexicon_frontend/word.html" %}
-    {% empty %}
-    <div class="no-results">
-        <p class="pl-3 pl-lg-0">
-            <span class="{{ fa_class }} fa-frown fa-2x"></span> No se ha encontrado la palabra
-            "{{ query }}".</p>
-        {% if near_words %}
-        <p>Te listamos las palabras más cercanas lexicográficamente:</p>
-        <div class="row near-words">
-            {% for word in near_words %}
-            <div class="col-3">
-                <a href="{% url 'word-detail' word.id %}">{{ word.term }}</a>
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
-    </div>
-    {% endfor %}
+<div class="row">
+  <div class="col-12 rg-search-results">
+      {% for word in results %}
+      {% include "linguatec_lexicon_frontend/word.html" %}
+      {% empty %}
+      <div class="no-results">
+          <p class="pl-3 pl-lg-0">
+              <span class="{{ fa_class }} fa-frown fa-2x"></span> No se ha encontrado la palabra
+              "{{ query }}".</p>
+          {% if near_words %}
+          <p>Te listamos las palabras más cercanas lexicográficamente:</p>
+          <div class="row near-words">
+              {% for word in near_words %}
+              <div class="col-3">
+                  <a href="{% url 'word-detail' word.id %}">{{ word.term }}</a>
+              </div>
+              {% endfor %}
+          </div>
+          {% endif %}
+      </div>
+      {% endfor %}
+  </div>
 </div>
 {% endblock %}

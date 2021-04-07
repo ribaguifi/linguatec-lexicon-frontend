@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     {% block responsive %}
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, shrink-to-fit=no">
     {% endblock %}
 
     <!-- Favicons -->
@@ -110,9 +110,10 @@
 
     <main class="{% block mainclass %}container-fluid{% endblock %} rg-main">
         {% block content %}
-
-        <div class="col-12 col-md-7 col-lg-5 ml-md-5">
-            {% include "linguatec_lexicon_frontend/components/search-tools.html" with selector_inline=True %}
+        <div class="row">
+          <div class="col-12 col-md-9 col-lg-8 col-xl-7 ml-md-5">
+              {% include "linguatec_lexicon_frontend/components/search-tools.html" with selector_inline=True %}
+          </div>
         </div>
         {% endblock %}
     </main>
