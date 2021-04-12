@@ -226,5 +226,11 @@ class ConjugationDetailView(LinguatecBaseView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         verb = kwargs.get('verb')
-        context["verb"] = verb
+
+        context.update({
+            "verb": verb,
+            "lexicons": get_lexicons(),
+            "selected_lexicon": 'es-ar',  # keep UI behaviour: set default lexicon 'es-ar'
+        })
+
         return context
