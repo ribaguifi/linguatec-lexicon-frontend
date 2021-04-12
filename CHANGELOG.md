@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## master
 
+## [0.4.1] - 2020-04-12
+- [added] Integration with Chorche Pérez conjugator deployed on softaragonés server.
+
 ## [0.4] - 2020-04-07
 - [added] Add support to multiple lexicons.
 
