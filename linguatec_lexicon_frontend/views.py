@@ -218,3 +218,13 @@ class WordDetailView(LinguatecBaseView):
         })
 
         return TemplateResponse(request, self.template_name, context)
+
+
+class ConjugationDetailView(LinguatecBaseView):
+    template_name = "linguatec_lexicon_frontend/word_entry_conjugation.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        verb = kwargs.get('verb')
+        context["verb"] = verb
+        return context
