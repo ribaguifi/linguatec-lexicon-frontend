@@ -1,0 +1,33 @@
+{% extends "linguatec_lexicon_frontend/base_site.html" %}
+{% block content %}
+{{ block.super }}
+
+<div class="row">
+  <div class="col-12 rg-search-results">
+    Conjugación de <strong>{{ verb }}</strong>
+    <div id="conjugation">
+
+    </div>
+    <div class="pl-1 mt-5 mb-3">Fuente: conjugador desarrollado por <strong>Chorche Pérez</strong></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extrascript %}
+<script>
+
+url = "https://softaragones.org/conchugador/?verbo={{verb}}&grafia=DGPL&sin_menu=true&sin_titol=true&sin_estilo=true";
+$.get( url, function( data ) {
+  conjugation_table = $.parseHTML(data)[8];
+  $("#conjugation").html(conjugation_table);
+  $("tfoot").remove();
+  $("#conjugation").css("margin-top", "20px");
+  $("table").css("border-spacing", 5);
+  $("table").css("border-collapse", "separate");
+  $("th").css("background-color","#c8c8c8");
+  $("td, th").css("margin","5px");
+  $("td, th").css("padding","5px");
+  $("td").css("background-color", "#f0f0f0");
+});
+</script>
+{% endblock %}

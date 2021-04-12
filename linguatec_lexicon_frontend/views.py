@@ -111,6 +111,14 @@ class LinguatecBaseView(TemplateView):
         word['entries_common'] = common
         word['entries_variations'] = variations
 
+        # check if word is a verb to generate conjugator link
+        ARAGONESE_LEXICON_CODE = 'ar-es'
+        if word["lexicon"] == ARAGONESE_LEXICON_CODE:
+            word['is_regular_verb'] = utils.is_regular_verb(word)
+        else:
+            # avoid trying to conjugate not Aragonese words
+            word['is_regular_verb'] = False
+
 
 class HomeView(LinguatecBaseView):
     template_name = 'linguatec_lexicon_frontend/home.html'
@@ -218,3 +226,19 @@ class WordDetailView(LinguatecBaseView):
         })
 
         return TemplateResponse(request, self.template_name, context)
+
+
+class ConjugationDetailView(LinguatecBaseView):
+    template_name = "linguatec_lexicon_frontend/word_entry_conjugation.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        verb = kwargs.get('verb')
+
+        context.update({
+            "verb": verb,
+            "lexicons": get_lexicons(),
+            "selected_lexicon": 'es-ar',  # keep UI behaviour: set default lexicon 'es-ar'
+        })
+
+        return context
