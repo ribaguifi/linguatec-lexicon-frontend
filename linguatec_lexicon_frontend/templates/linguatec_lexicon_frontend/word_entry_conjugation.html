@@ -2,13 +2,55 @@
 {% block content %}
 {{ block.super }}
 
-<div class="row">
-  <div class="col-12 rg-search-results">
-    Conjugación de <strong>{{ verb }}</strong>
-    <div id="conjugation">
-
+<div class="rg-search-results ml-3">
+  <div class="row">
+    <div>Conjugación de <strong>{{ verb }}</strong></div>
+  </div>
+  <div class="row">
+    <div class="col-10 rg-conjugator-options-header">Opciones</div>
+  </div>
+  <div class="row">
+    <div class="col-2 rg-conjugator-options-header">Grafía</div>
+    <div class="col-2 rg-conjugator-options-header">Rematanza d'os participios</div>
+    <div class="col-2 rg-conjugator-options-header">Tiempos d'os pasaus perfecto simple y anterior</div>
+    <div class="col-2 rg-conjugator-options-header">Forma d'a primer persona plural</div>
+    <div class="col-2 rg-conjugator-options-header">Forma d'o cherundio</div>
+  </div>
+  <div class="row">
+    <div class="col-2 px-0">
+      <div class="rg-conjugator-options">DGPL 2017</div>
+      <div class="rg-conjugator-options">EFA 2010</div>
+      <div class="rg-conjugator-options">SLA 2006</div>
+      <div class="rg-conjugator-options">CFA 1987</div>
     </div>
-    <div class="pl-1 mt-5 mb-3">Fuente: conjugador desarrollado por <strong>Chorche Pérez</strong></div>
+    <div class="col-2 px-0">
+      <div class="rg-conjugator-options">-au / -iu</div>
+      <div class="rg-conjugator-options">-ato / -ito</div>
+    </div>
+    <div class="col-2 px-0">
+      <div class="rg-conjugator-options">Sintético</div>
+      <div class="rg-conjugator-options">Perifrástico</div>
+      <div class="rg-conjugator-options">Sintético y perifrástico</div>
+    </div>
+    <div class="col-2 px-0">
+      <div class="rg-conjugator-options">completa<br/> (rematada en -os)</div>
+      <div class="rg-conjugator-options">apocopada<br/> (no rematada en -os)</div>
+    </div>
+    <div class="col-2 px-0">
+      <div class="rg-conjugator-options">completa<br/> (rematada en -o)</div>
+      <div class="rg-conjugator-options">apocopada<br/> (no rematada en -o)</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <input class="mr-2" type="checkbox"> Conchugar con o verbo estar como auxiliar si ye posible
+    <input class="ml-5 mr-2" type="checkbox"> Conchugar con a forma incoativa si ye posible
+  </div>
+
+  <div class="row">
+    <div class="col-12 px-0" id="conjugation">
+    </div>
+    <div class="col-12 pl-1 mt-5 mb-3">Fuente: conjugador desarrollado por <strong>Chorche Pérez</strong></div>
   </div>
 </div>
 {% endblock %}
@@ -22,6 +64,7 @@ $.get( url, function( data ) {
   $("#conjugation").html(conjugation_table);
   $("tfoot").remove();
   $("#conjugation").css("margin-top", "20px");
+  $("table").css("width", "84%");
   $("table").css("border-spacing", 5);
   $("table").css("border-collapse", "separate");
   $("th").css("background-color","#c8c8c8");
