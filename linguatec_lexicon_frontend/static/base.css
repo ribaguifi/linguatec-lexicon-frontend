@@ -436,6 +436,10 @@ footer.rg-footer {
     border-bottom-width: 0px;
 }
 
+.fa-caret-left{
+    color: #FC565B;
+}
+
 /*** end conjugator options ***/
 
 .near-words a {

@@ -22,6 +22,7 @@
       {% for value in conjugator_form.grafia %}
         <div class="rg-conjugator-options">
           <div class='d-none'>{{value}}</div>{{value.choice_label}}
+          <i class="fas fa-caret-left float-right pr-3"></i>
         </div>
       {% endfor %}
     </div>
@@ -29,6 +30,7 @@
       {% for value in conjugator_form.rematanza %}
         <div class="rg-conjugator-options">
           <div class='d-none'>{{value}}</div>{{value.choice_label}}
+          <i class="fas fa-caret-left float-right pr-3"></i>
         </div>
       {% endfor %}
     </div>
@@ -36,6 +38,7 @@
       {% for value in conjugator_form.pasaus %}
         <div class="rg-conjugator-options">
           <div class='d-none'>{{value}}</div>{{value.choice_label}}
+          <i class="fas fa-caret-left float-right pr-3"></i>
         </div>
       {% endfor %}
     </div>
@@ -43,6 +46,7 @@
       {% for value in conjugator_form.prim_pers_plural %}
         <div class="rg-conjugator-options">
           <div class='d-none'>{{value}}</div>{{value.choice_label}}
+          <i class="fas fa-caret-left float-right pr-3"></i>
         </div>
       {% endfor %}
     </div>
@@ -50,6 +54,7 @@
       {% for value in conjugator_form.cherundio %}
         <div class="rg-conjugator-options">
           <div class='d-none'>{{value}}</div>{{value.choice_label}}
+          <i class="fas fa-caret-left float-right pr-3"></i>
         </div>
       {% endfor %}
     </div>
@@ -85,5 +90,15 @@ $.get( url, function( data ) {
   $("td, th").css("padding","5px");
   $("td").css("background-color", "#f0f0f0");
 });
+
+$(".fa-caret-left").css('visibility', 'hidden')
+$('.rg-conjugator-options').click(function() {
+  $(this).parent().find(".fa-caret-left").css('visibility', 'hidden')
+  $(this).find(".fa-caret-left").css('visibility', 'visible')
+  $(this).find("input").prop("checked", true);
+  // TODO: call again softaragones
+});
+
+
 </script>
 {% endblock %}
