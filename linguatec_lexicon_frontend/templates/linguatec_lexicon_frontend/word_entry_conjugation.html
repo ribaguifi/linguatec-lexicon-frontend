@@ -1,4 +1,5 @@
 {% extends "linguatec_lexicon_frontend/base_site.html" %}
+
 {% block content %}
 {{ block.super }}
 
@@ -10,41 +11,53 @@
     <div class="col-10 rg-conjugator-options-header">Opciones</div>
   </div>
   <div class="row">
-    <div class="col-2 rg-conjugator-options-header">Grafía</div>
-    <div class="col-2 rg-conjugator-options-header">Rematanza d'os participios</div>
-    <div class="col-2 rg-conjugator-options-header">Tiempos d'os pasaus perfecto simple y anterior</div>
-    <div class="col-2 rg-conjugator-options-header">Forma d'a primer persona plural</div>
-    <div class="col-2 rg-conjugator-options-header">Forma d'o cherundio</div>
+    <div class="col-2 rg-conjugator-options-header">{{ conjugator_form.grafia.label }}</div>
+    <div class="col-2 rg-conjugator-options-header">{{ conjugator_form.rematanza.label }}</div>
+    <div class="col-2 rg-conjugator-options-header">{{ conjugator_form.pasaus.label }}</div>
+    <div class="col-2 rg-conjugator-options-header">{{ conjugator_form.prim_pers_plural.label }}</div>
+    <div class="col-2 rg-conjugator-options-header">{{ conjugator_form.cherundio.label }}</div>
   </div>
   <div class="row">
     <div class="col-2 px-0">
-      <div class="rg-conjugator-options">DGPL 2017</div>
-      <div class="rg-conjugator-options">EFA 2010</div>
-      <div class="rg-conjugator-options">SLA 2006</div>
-      <div class="rg-conjugator-options">CFA 1987</div>
+      {% for value in conjugator_form.grafia %}
+        <div class="rg-conjugator-options">
+          <div class='d-none'>{{value}}</div>{{value.choice_label}}
+        </div>
+      {% endfor %}
     </div>
     <div class="col-2 px-0">
-      <div class="rg-conjugator-options">-au / -iu</div>
-      <div class="rg-conjugator-options">-ato / -ito</div>
+      {% for value in conjugator_form.rematanza %}
+        <div class="rg-conjugator-options">
+          <div class='d-none'>{{value}}</div>{{value.choice_label}}
+        </div>
+      {% endfor %}
     </div>
     <div class="col-2 px-0">
-      <div class="rg-conjugator-options">Sintético</div>
-      <div class="rg-conjugator-options">Perifrástico</div>
-      <div class="rg-conjugator-options">Sintético y perifrástico</div>
+      {% for value in conjugator_form.pasaus %}
+        <div class="rg-conjugator-options">
+          <div class='d-none'>{{value}}</div>{{value.choice_label}}
+        </div>
+      {% endfor %}
     </div>
     <div class="col-2 px-0">
-      <div class="rg-conjugator-options">completa<br/> (rematada en -os)</div>
-      <div class="rg-conjugator-options">apocopada<br/> (no rematada en -os)</div>
+      {% for value in conjugator_form.prim_pers_plural %}
+        <div class="rg-conjugator-options">
+          <div class='d-none'>{{value}}</div>{{value.choice_label}}
+        </div>
+      {% endfor %}
     </div>
     <div class="col-2 px-0">
-      <div class="rg-conjugator-options">completa<br/> (rematada en -o)</div>
-      <div class="rg-conjugator-options">apocopada<br/> (no rematada en -o)</div>
+      {% for value in conjugator_form.cherundio %}
+        <div class="rg-conjugator-options">
+          <div class='d-none'>{{value}}</div>{{value.choice_label}}
+        </div>
+      {% endfor %}
     </div>
   </div>
 
-  <div class="row">
-    <input class="mr-2" type="checkbox"> Conchugar con o verbo estar como auxiliar si ye posible
-    <input class="ml-5 mr-2" type="checkbox"> Conchugar con a forma incoativa si ye posible
+  <div class="row mt-3">
+    <div class="mr-2">{{ conjugator_form.estar_auxiliar }}</div> {{ conjugator_form.estar_auxiliar.label }}
+    <div class="mr-2 ml-5">{{ conjugator_form.incoativa }}</div> {{ conjugator_form.incoativa.label }}
   </div>
 
   <div class="row">
