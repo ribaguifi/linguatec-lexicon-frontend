@@ -12,9 +12,9 @@
   </div>
   <div class="row">
     <div class="col-2 rg-conjugator-options-header">{{ conjugator_form.grafia.label }}</div>
-    <div class="col-2 rg-conjugator-options-header">{{ conjugator_form.rematanza.label }}</div>
-    <div class="col-2 rg-conjugator-options-header">{{ conjugator_form.pasaus.label }}</div>
-    <div class="col-2 rg-conjugator-options-header">{{ conjugator_form.prim_pers_plural.label }}</div>
+    <div class="col-2 rg-conjugator-options-header">{{ conjugator_form.participio.label }}</div>
+    <div class="col-2 rg-conjugator-options-header">{{ conjugator_form.tiempo_pasau.label }}</div>
+    <div class="col-2 rg-conjugator-options-header">{{ conjugator_form.primer_plural.label }}</div>
     <div class="col-2 rg-conjugator-options-header">{{ conjugator_form.cherundio.label }}</div>
   </div>
   <div class="row">
@@ -27,7 +27,7 @@
       {% endfor %}
     </div>
     <div class="col-2 px-0">
-      {% for value in conjugator_form.rematanza %}
+      {% for value in conjugator_form.participio %}
         <div class="rg-conjugator-options">
           <div class='d-none'>{{value}}</div>{{value.choice_label}}
           <i class="fas fa-caret-left float-right pr-3"></i>
@@ -35,7 +35,7 @@
       {% endfor %}
     </div>
     <div class="col-2 px-0">
-      {% for value in conjugator_form.pasaus %}
+      {% for value in conjugator_form.tiempo_pasau %}
         <div class="rg-conjugator-options">
           <div class='d-none'>{{value}}</div>{{value.choice_label}}
           <i class="fas fa-caret-left float-right pr-3"></i>
@@ -43,7 +43,7 @@
       {% endfor %}
     </div>
     <div class="col-2 px-0">
-      {% for value in conjugator_form.prim_pers_plural %}
+      {% for value in conjugator_form.primer_plural %}
         <div class="rg-conjugator-options">
           <div class='d-none'>{{value}}</div>{{value.choice_label}}
           <i class="fas fa-caret-left float-right pr-3"></i>
@@ -61,8 +61,8 @@
   </div>
 
   <div class="row mt-3">
-    <div class="mr-2">{{ conjugator_form.estar_auxiliar }}</div> {{ conjugator_form.estar_auxiliar.label }}
-    <div class="mr-2 ml-5">{{ conjugator_form.incoativa }}</div> {{ conjugator_form.incoativa.label }}
+    <div class="mr-2">{{ conjugator_form.auxiliar_ser }}</div> {{ conjugator_form.auxiliar_ser.label }}
+    <div class="mr-2 ml-5">{{ conjugator_form.incoativo }}</div> {{ conjugator_form.incoativo.label }}
   </div>
 
   <div class="row">
@@ -77,28 +77,62 @@
 <script>
 
 url = "https://softaragones.org/conchugador/?verbo={{verb}}&grafia=DGPL&sin_menu=true&sin_titol=true&sin_estilo=true";
-$.get( url, function( data ) {
-  conjugation_table = $.parseHTML(data)[8];
-  $("#conjugation").html(conjugation_table);
-  $("tfoot").remove();
-  $("#conjugation").css("margin-top", "20px");
-  $("table").css("width", "84%");
-  $("table").css("border-spacing", 5);
-  $("table").css("border-collapse", "separate");
-  $("th").css("background-color","#c8c8c8");
-  $("td, th").css("margin","5px");
-  $("td, th").css("padding","5px");
-  $("td").css("background-color", "#f0f0f0");
-});
+load_conjugation(url);
 
-$(".fa-caret-left").css('visibility', 'hidden')
+function load_conjugation(url){
+  $.get( url, function( data ) {
+    conjugation_table = $.parseHTML(data)[8];
+    $("#conjugation").html(conjugation_table);
+    $("tfoot").remove();
+    $("#conjugation").css("margin-top", "20px");
+    $("table").css("width", "84%");
+    $("table").css("border-spacing", 5);
+    $("table").css("border-collapse", "separate");
+    $("th").css("background-color","#c8c8c8");
+    $("td, th").css("margin","5px");
+    $("td, th").css("padding","5px");
+    $("td").css("background-color", "#f0f0f0");
+  });
+}
+
+$(".fa-caret-left").css('visibility', 'hidden');
 $('.rg-conjugator-options').click(function() {
-  $(this).parent().find(".fa-caret-left").css('visibility', 'hidden')
-  $(this).find(".fa-caret-left").css('visibility', 'visible')
+  $(this).parent().find(".fa-caret-left").css('visibility', 'hidden');
+  $(this).find(".fa-caret-left").css('visibility', 'visible');
   $(this).find("input").prop("checked", true);
-  // TODO: call again softaragones
+  url = build_url();
+  load_conjugation(url);
 });
 
+$('input[type=checkbox]').click(function() {
+  url = build_url();
+  load_conjugation(url);
+});
+
+function build_url(){
+  base_url = "https://softaragones.org/conchugador/?sin_menu=true&sin_titol=true&sin_estilo=true"
+  verbo = "{{verb}}";
+  grafia = $("input[name=grafia]:checked").val();
+  participio = $("input[name=participio]:checked").val();
+  tiempo_pasau = $("input[name=tiempo_pasau]:checked").val();
+  primer_plural = $("input[name=primer_plural]:checked").val();
+  cherundio = $("input[name=cherundio]:checked").val();
+  auxiliar_ser = $("input[name=auxiliar_ser]").prop('checked');
+  incoativo = $("input[name=incoativo]").prop('checked');
+
+  params = "&verbo=" + verbo +"&grafia=" + grafia + "&participio=" + participio + "&tiempo_pasau=" + tiempo_pasau +
+           "&primerPlural=" + primer_plural + "&cherundio=" + cherundio
+
+  if (auxiliar_ser){
+    params += "&auxiliar_ser=on"
+  }
+  if (incoativo){
+    params += "&incoativo=on"
+  }
+
+  console.log(base_url+params);
+  return base_url + params;
+}
 
 </script>
 {% endblock %}
